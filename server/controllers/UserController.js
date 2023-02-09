@@ -40,13 +40,17 @@ export const registration = async (req, res) => {
 
     res.json({ ...userData, token });
   } catch (err) {
-    console.log(err);
     res.status(500).json({ message: 'Реєстрація пройшла не коректно' });
   }
 };
 //authorization
 export const authorization = async (req, res) => {
   try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json(errors.array());
+    }
+
     const user = await UserModel.findOne({ email: req.body.email });
 
     if (!user) {
