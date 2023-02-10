@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 
 import { registration, authorization, authVerification } from './controllers/UserController.js';
-import { getAllArticles, postArticle } from './controllers/ArticleController.js';
+import { getAllArticles, getArticle, postArticle } from './controllers/ArticleController.js';
 
 import {
   registrationValidation,
@@ -32,7 +32,7 @@ app.get('/authorization/verification', checkAuthorization, authVerification);
 //get all articles
 app.get('/article', getAllArticles);
 //get an article
-// app.get('/article/:id', articleValidation, getArticle);
+app.get('/article/:id', articleValidation, getArticle);
 //post an article
 app.post('/article', checkAuthorization, articleValidation, postArticle);
 //delete an article
