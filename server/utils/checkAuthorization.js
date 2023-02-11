@@ -7,7 +7,6 @@ const checkAuthorization = (req, res, next) => {
       const decoded = jwt.verify(token, 'blog_secret_key');
       req.userId = decoded._id;
       next();
-      console.log(decoded);
     } catch (err) {
       res.status(403).json({ message: 'Доступ відсутній' });
     }

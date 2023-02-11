@@ -51,3 +51,50 @@ export const postArticle = async (req, res) => {
     res.status(500).json({ message: 'Розміщення статті пройшло не коректно' });
   }
 };
+
+export const deleteArticle = async (req, res) => {
+  try {
+    const articleId = req.params.id;
+
+    //check users permission to delete article
+    const article = await ArticleModel.findById(articleId);
+    if (String(article.author) !== req.userId) {
+      return res.status(403).json({ message: 'Доступ відсутній' });
+    }
+
+    ArticleModel.findByIdAndDelete(articleId, (err, doc) => {
+      if (err) {
+        return res.status(500).json({ message: 'Не вдалось видалити статтю' });
+      }
+      if (!doc) {
+        return res.status(404).json({ message: 'Не вдалось знайти статтю' });
+      }
+      res.json({ message: 'Статтю видалено успішно' });
+    });
+  } catch (err) {
+    res.status(500).json({ message: 'Не вдалось видалити статтю' });
+  }
+};
+
+export const patchArticle = async (req, res) => {
+  try {
+    const articleId = req.params.id;
+
+    //check users permission to update article
+    const article = await ArticleModel.findById(articleId);
+    if (String(article.author) !== req.userId) {
+      return res.status(403).json({ message: 'Доступ відсутній' });
+    }
+
+    await ArticleModel.findByIdAndUpdate(articleId, {
+      title: req.body.title,
+      text: req.body.text,
+      tags: req.body.tags,
+      imageUrl: req.body.imageUrl
+    });
+    res.json({ message: 'Статтю оновлено успішно' });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: 'Не вдалось оновити статтю' });
+  }
+};

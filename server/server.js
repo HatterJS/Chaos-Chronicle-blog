@@ -2,7 +2,13 @@ import express from 'express';
 import mongoose from 'mongoose';
 
 import { registration, authorization, authVerification } from './controllers/UserController.js';
-import { getAllArticles, getArticle, postArticle } from './controllers/ArticleController.js';
+import {
+  getAllArticles,
+  getArticle,
+  postArticle,
+  deleteArticle,
+  patchArticle
+} from './controllers/ArticleController.js';
 
 import {
   registrationValidation,
@@ -32,13 +38,13 @@ app.get('/authorization/verification', checkAuthorization, authVerification);
 //get all articles
 app.get('/article', getAllArticles);
 //get an article
-app.get('/article/:id', articleValidation, getArticle);
+app.get('/article/:id', getArticle);
 //post an article
 app.post('/article', checkAuthorization, articleValidation, postArticle);
 //delete an article
-// app.delete('/article', articleValidation, deleteArticle);
+app.delete('/article/:id', checkAuthorization, deleteArticle);
 //update an article
-// app.patch('/article', articleValidation, patchArticle);
+app.patch('/article/:id', checkAuthorization, patchArticle);
 
 //server port
 app.listen(9999, (err) => {
