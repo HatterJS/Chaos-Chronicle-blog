@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import multer from 'multer';
 
 import { registration, authorization, authVerification } from './controllers/UserController.js';
 import {
@@ -16,6 +17,7 @@ import {
   articleValidation
 } from './validations.js';
 import checkAuthorization from './utils/checkAuthorization.js';
+import handleValidationErrors from './utils/handleValidationErrors.js';
 
 //connect to MongoDB
 mongoose
@@ -28,23 +30,58 @@ const app = express();
 //connect json
 app.use(express.json());
 
+//storage setting for images
+const storage = multer.diskStorage({
+  destination: (_, __, cb) => {
+    cb(null, 'server/uploads');
+  },
+  filename: (_, file, cb) => {
+    cb(null, file.originalname);
+  }
+});
+const upload = multer({ storage });
+app.use('/uploads', express.static('server/uploads'));
+
 //registration
-app.post('/authorization/registration', registrationValidation, registration);
+app.post(
+  '/authorization/registration',
+  registrationValidation,
+  handleValidationErrors,
+  registration
+);
 //authorization
-app.post('/authorization/authorization', authorizationValidation, authorization);
+app.post(
+  '/authorization/authorization',
+  authorizationValidation,
+  handleValidationErrors,
+  authorization
+);
 //authorization verefication by token
 app.get('/authorization/verification', checkAuthorization, authVerification);
+
+//upload image
+app.post('/upload', checkAuthorization, upload.single('image'), (req, res) => {
+  res.json({
+    url: `/uploads/${req.file.originalname}`
+  });
+});
 
 //get all articles
 app.get('/article', getAllArticles);
 //get an article
 app.get('/article/:id', getArticle);
 //post an article
-app.post('/article', checkAuthorization, articleValidation, postArticle);
+app.post('/article', checkAuthorization, articleValidation, handleValidationErrors, postArticle);
 //delete an article
 app.delete('/article/:id', checkAuthorization, deleteArticle);
 //update an article
-app.patch('/article/:id', checkAuthorization, patchArticle);
+app.patch(
+  '/article/:id',
+  checkAuthorization,
+  articleValidation,
+  handleValidationErrors,
+  patchArticle
+);
 
 //server port
 app.listen(9999, (err) => {
