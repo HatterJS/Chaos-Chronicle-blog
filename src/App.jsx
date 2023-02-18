@@ -1,22 +1,13 @@
+import Header from './components/Header';
+import Banner from './components/Banner';
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header>
-        <div className="header__logo">
-          <img src="img/logo/dub.jpg" alt="logo" />
-        </div>
-        <div className="header__liks">
-          <div className="header__home">Головна</div>
-          <div className="header__about">Про блог</div>
-          <div className="header__contacts">Контакти</div>
-        </div>
-        <div className="header__user">
-          <div className="header__authorization">Вхід</div>
-          <div className="header__registration">Реєстрація</div>
-        </div>
-      </header>
+      <Header />
+      <Banner />
       <main>
         <div className="sign"></div>
         <nav>

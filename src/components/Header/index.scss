@@ -1,0 +1,45 @@
+$transition:  all 0.2s ease-in-out;
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    .header__logo {
+        transition: $transition;
+    }
+    .header__links {
+        display: flex;
+        gap: 20px;
+        div {
+            display: flex;
+            align-items: center;
+            transition: $transition;
+            svg {
+                fill: rgb(100, 100, 100);
+                padding-right: 5px;
+            }
+        }
+        div:hover {
+            filter: contrast(3);
+        }
+    }
+    .header__user {
+        display: flex;
+        gap: 10px;
+        button {
+            border: 1px solid gray;
+            border-radius: 10px;
+            padding: 5px;
+            font-size: 1em;
+            transition: $transition;
+        }
+        button:hover {
+            filter: contrast(3);
+        }
+        button:active {
+            box-shadow: 1px 1px 2px gray inset;
+            transform: translateY(2px);
+        }
+    }
+}
