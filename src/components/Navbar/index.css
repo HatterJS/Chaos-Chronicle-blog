@@ -1,0 +1,47 @@
+nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to left, rgba(0, 0, 0, 0), rgb(225, 225, 225), rgba(0, 0, 0, 0));
+  padding: 5px 0 5px 0;
+  background: -webkit-gradient(linear, right top, left top, from(rgba(0, 0, 0, 0)), color-stop(rgba(178, 246, 255, 0.3)), color-stop(rgba(255, 250, 178, 0.3)), to(rgba(0, 0, 0, 0)));
+  background: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(178, 246, 255, 0.3), rgba(255, 250, 178, 0.3), rgba(0, 0, 0, 0));
+  margin: 20px 0;
+}
+nav .nav__menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 30px;
+  cursor: pointer;
+}
+nav .nav__menu li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+nav .nav__menu li:hover {
+  -webkit-filter: contrast(3);
+          filter: contrast(3);
+}
+nav .nav__menu svg {
+  fill: rgb(100, 100, 100);
+  padding-right: 5px;
+}
+nav input {
+  background: url(../../assets/lens.svg) no-repeat 6px white;
+  padding-left: 30px;
+  padding-right: 10px;
+  color: rgb(182, 182, 182);
+}

@@ -1,5 +1,7 @@
 import Header from './components/Header';
 import Banner from './components/Banner';
+import Navbar from './components/Navbar';
+import ArticleItem from './components/ArticleItem';
 
 import './App.css';
 
@@ -10,31 +12,8 @@ function App() {
       <Banner />
       <main>
         <div className="sign"></div>
-        <nav>
-          <ul>
-            <li>Нові</li>
-            <li>Популярні</li>
-            <li>Автори</li>
-          </ul>
-          <div className="nav__search">
-            <input type="search" />
-          </div>
-        </nav>
-        <div className="articles">
-          <div className="article">
-            <div className="article__image">
-              <img
-                src="img/article/Welcome-to-Ukraine-by-Stanislav-Lunin-scaled.jpg"
-                alt="article-img"
-              />
-            </div>
-            <div className="article__description">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi consequuntur dicta
-              excepturi fuga, nihil pariatur accusamus possimus maxime libero non earum commodi sint
-              ducimus, amet tenetur obcaecati odio quae vel!
-            </div>
-          </div>
-        </div>
+        <Navbar />
+        <ArticleItem />
         <aside>
           <div className="aside__tags">
             <p>Популярні теги</p>

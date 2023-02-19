@@ -45,12 +45,21 @@ header .header__user {
   gap: 10px;
 }
 header .header__user button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border: 1px solid gray;
   border-radius: 10px;
   padding: 5px;
   font-size: 1em;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
+}
+header .header__user button svg {
+  margin-right: 5px;
 }
 header .header__user button:hover {
   -webkit-filter: contrast(3);

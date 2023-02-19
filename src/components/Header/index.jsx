@@ -1,6 +1,6 @@
 import './index.css';
 
-import { houseSVG, infoSVG, contactSVG } from '../SvgSprite';
+import { houseSVG, infoSVG, contactSVG, authorizationSVG } from '../SvgSprite';
 
 function Header() {
   return (
@@ -23,8 +23,11 @@ function Header() {
         </div>
       </div>
       <div className="header__user">
-        <button className="header__authorization">Вхід</button>
-        <button className="header__registration">Реєстрація</button>
+        <button className="header__authorization">
+          {authorizationSVG}
+          Авторизація
+        </button>
+        {/* <button className="header__registration">Реєстрація</button> */}
       </div>
     </header>
   );

@@ -28,11 +28,16 @@ header {
         display: flex;
         gap: 10px;
         button {
+            display: flex;
+            align-items: center;
             border: 1px solid gray;
             border-radius: 10px;
             padding: 5px;
             font-size: 1em;
             transition: $transition;
+            svg {
+                margin-right: 5px;
+            }
         }
         button:hover {
             filter: contrast(3);
