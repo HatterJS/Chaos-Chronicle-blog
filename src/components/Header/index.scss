@@ -48,3 +48,13 @@ header {
         }
     }
 }
+
+@media (max-width: 600px) {
+    header {
+        .header__links {
+            a {
+                display: none;
+            }
+        }
+    }
+}

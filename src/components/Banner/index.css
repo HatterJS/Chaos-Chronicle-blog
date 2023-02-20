@@ -1,3 +1,7 @@
 .banner {
   text-align: center;
 }
+.banner img {
+  max-width: 100%;
+  height: 100%;
+}

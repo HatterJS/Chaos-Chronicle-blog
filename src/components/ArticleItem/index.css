@@ -64,6 +64,8 @@
   display: -ms-flexbox;
   display: flex;
   gap: 10px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 .article__description .article__tags a:hover {
   text-decoration: underline;

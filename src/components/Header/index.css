@@ -71,3 +71,9 @@ header .header__user button:active {
   -webkit-transform: translateY(2px);
           transform: translateY(2px);
 }
+
+@media (max-width: 600px) {
+  header .header__links a {
+    display: none;
+  }
+}

@@ -45,6 +45,7 @@ $transition: all 0.2s ease-in-out;
     .article__tags {
         display: flex;
         gap: 10px;
+        flex-wrap: wrap;
         a:hover {
             text-decoration: underline;
         }

@@ -23,10 +23,12 @@ nav {
     .nav__menu {
         display: flex;
         gap: 30px;
+        margin-right: 10px;
         cursor: pointer;
         li {
             display: flex;
             align-items: center;
+            white-space: nowrap;
         }
         li:hover {
             filter: contrast(3);
@@ -41,5 +43,20 @@ nav {
         padding-left: 30px;
         padding-right: 10px;
         color: rgb(182, 182, 182);
+    }
+}
+
+@media (max-width: 650px) {
+    nav {
+        input {
+            width: 100%;
+        }
+    }
+}
+@media (max-width: 500px) {
+    nav {
+        a {
+            display: none;
+        }
     }
 }
