@@ -29,6 +29,7 @@ nav {
             display: flex;
             align-items: center;
             white-space: nowrap;
+            transition: all 0.2s ease-in-out;
         }
         li:hover {
             filter: contrast(3);

@@ -1,0 +1,10 @@
+.pageTitle {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    div {
+        border-top: 1px solid rgb(196, 196, 196);
+        flex: 1 1 auto;
+        margin: 0 20px;
+    }
+}

@@ -1,0 +1,16 @@
+.authorSign {
+    display: flex;
+    align-items: center;
+    min-width: 150px;
+    img {
+        border: 1px solid gray;
+        border-radius: 50%;
+        margin-right: 5px;
+    }
+    p:first-child {
+        font-weight: 500;
+    }
+    p:last-child {
+        font-size: 0.8em;
+    }
+}

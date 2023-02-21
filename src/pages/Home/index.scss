@@ -1,0 +1,9 @@
+.home {
+    display: flex;
+    gap: 20px;
+    .home__articles {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+}
