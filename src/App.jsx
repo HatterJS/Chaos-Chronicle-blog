@@ -2,6 +2,8 @@ import Header from './components/Header';
 import Banner from './components/Banner';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
+import Article from './pages/Article';
+import Footer from './components/Footer';
 
 import './App.css';
 
@@ -17,12 +19,10 @@ function App() {
         <div></div>
       </div>
       <main>
+        <Article />
         <Home />
       </main>
-      <footer>
-        <div className="footer__logo"></div>
-        <div className="footer__social"></div>
-      </footer>
+      <Footer />
     </div>
   );
 }

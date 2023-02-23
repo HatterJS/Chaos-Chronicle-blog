@@ -2,11 +2,12 @@ $transition: all 0.2s ease-in-out;
 
 .article {
     display: flex;
+    flex-direction: column;
     border: 1px solid gray;
     border-radius: 20px;
     filter: grayscale(0.5) contrast(0.5);
-    max-width: 1200px;
-    height: 300px;
+    flex: 1 1 350px;
+    height: 400px;
     overflow: hidden;
     cursor: pointer;
     transition: $transition;
@@ -19,8 +20,21 @@ $transition: all 0.2s ease-in-out;
 
 .article__image {
     line-height: 0;
-    width: 50%;
     overflow: hidden;
+    position: relative;
+    .article__title {
+        position: absolute;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.425);
+        width: 100%;
+        h2, p {
+            color: white;
+            line-height: 1;
+        }
+        p {
+            font-size: 0.8em;
+        }
+    }
     img {
         object-fit: cover;
         width: 100%;
@@ -29,25 +43,31 @@ $transition: all 0.2s ease-in-out;
 }
 
 .article__description {
-    padding: 10px;
     display: flex;
     flex-direction: column;
-    width: 50%;
-    .article__date {
-        display: flex;
-        gap: 10px;
-        font-size: 0.8em;
-    }
+    gap: 10px;
+    padding: 10px;
     & > p {
         flex: 1 1 auto;
-        margin: 10px 0;
+        overflow: hidden;
     }
     .article__tags {
         display: flex;
-        gap: 10px;
         flex-wrap: wrap;
+        width: 80%;
+        a {
+            margin-right: 10px;
+        }
         a:hover {
             text-decoration: underline;
         }
+    }
+    .article__views {
+        display: flex;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        gap: 5px;
+        align-items: center;
     }
 }

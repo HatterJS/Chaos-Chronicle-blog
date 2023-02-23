@@ -11,6 +11,8 @@ function Home() {
         <ArticleItem />
         <ArticleItem />
         <ArticleItem />
+        <ArticleItem />
+        <ArticleItem />
       </div>
       <Sidebar />
     </div>
