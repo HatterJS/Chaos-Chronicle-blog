@@ -1,0 +1,94 @@
+.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.hint {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.authorizationForm {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.authorizationForm__shadow {
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+}
+
+.authorizationForm__form {
+  position: absolute;
+  background-color: white;
+  border-radius: 20px;
+  -webkit-box-shadow: 4px 4px 6px rgb(30, 30, 30);
+          box-shadow: 4px 4px 6px rgb(30, 30, 30);
+  top: 50%;
+  left: 50%;
+  min-width: 300px;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0);
+  overflow: hidden;
+}
+.authorizationForm__form .authorizationForm__header {
+  background-color: rgb(255, 255, 255);
+  padding-top: 20px;
+  text-align: center;
+}
+.authorizationForm__form .authorizationForm__body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 20px 40px;
+}
+.authorizationForm__form .authorizationForm__body h4 {
+  margin-bottom: 5px;
+}
+.authorizationForm__form .authorizationForm__body input {
+  margin-bottom: 10px;
+}
+.authorizationForm__form .authorizationForm__body .authorizationForm__buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+.authorizationForm__form .authorizationForm__body .authorizationForm__buttons button {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 300px;
+          flex: 1 1 300px;
+}
+.authorizationForm__form .authorizationForm__social {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 10px;
+  border-top: 1px dashed gray;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+.authorizationForm__form .authorizationForm__social svg {
+  fill: gray;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.authorizationForm__form .authorizationForm__social svg:hover {
+  fill: rgb(75, 75, 75);
+}

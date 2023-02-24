@@ -1,0 +1,73 @@
+.show {
+    visibility: visible;
+    opacity: 1;
+}
+.hint {
+    visibility: hidden;
+    opacity: 0;
+}
+.authorizationForm {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    transition: all 0.5s ease-in-out;
+}
+.authorizationForm__shadow {
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+}
+.authorizationForm__form {
+    position: absolute;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 4px 4px 6px rgb(30, 30, 30);
+    top: 50%;
+    left: 50%;
+    min-width: 300px;
+    transform: translate3d(-50%, -50%, 0);
+    overflow: hidden;
+    .authorizationForm__header {
+        background-color: rgb(255, 255, 255);
+        padding-top: 20px;
+        text-align: center;
+    }
+    .authorizationForm__body {
+        display: flex;
+        flex-direction: column;
+        padding: 20px 40px;
+        h4 {
+            margin-bottom: 5px;
+        }
+        input {
+            margin-bottom: 10px;
+        }
+        .authorizationForm__buttons {
+            display: flex;
+            gap: 10px;
+            margin: 10px 0;
+            button {
+                flex: 1 1 300px;
+            }
+        }
+    }
+    .authorizationForm__social {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        border-top: 1px dashed gray;
+        padding-top: 10px;
+        margin-top: 10px;
+        svg {
+            fill: gray;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            &:hover {
+                fill: rgb(75, 75, 75);
+            }
+        }
+    }
+}

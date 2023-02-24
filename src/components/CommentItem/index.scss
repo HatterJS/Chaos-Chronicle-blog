@@ -1,0 +1,32 @@
+.commentItem {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid gray;
+    border-radius: 20px;
+    padding: 10px;
+    width: fit-content;
+    max-width: 80%;
+    gap: 10px;
+    .commentItem__block {
+        flex: 1 1 300px;
+        text-align: justify;
+        .commentItem__time {
+            font-size: 0.9em;
+            color: gray;
+        }
+        p {
+            margin: 10px 0;
+        }
+    }
+    .commentItem__likes {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 5px;
+        fill: gray;
+        color: gray;
+        svg {
+            cursor: pointer;
+        }
+    }
+}
