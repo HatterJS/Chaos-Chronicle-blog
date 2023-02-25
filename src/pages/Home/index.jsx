@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import ArticleItem from '../../components/ArticleItem';
+import ArticleItemLoader from '../../components/ArticleItemLoader';
 import Sidebar from '../../components/Sidebar';
 
 import { fetchArticles } from '../../redux/slices/articles';
@@ -29,28 +30,24 @@ function Home() {
       </div>
       <div className="home__body">
         <div className="home__articles">
-          {articles.status === 'loaded' ? (
-            articles.items.map((item) => (
-              <Link to={'/article'} key={item._id}>
-                <ArticleItem
-                  title={item.title}
-                  fullDate={item.createdAt}
-                  text={item.text.slice(0, 20)}
-                  tags={item.tags}
-                  views={item.viewsCount}
-                />
-              </Link>
-            ))
-          ) : (
-            //Loader
-            <div className="loader02">
-              <div className="border02">
-                <div className="shapeEye01"></div>
-                <div className="shapeEye02"></div>
-              </div>
-              <p>loading...</p>
-            </div>
-          )}
+          {articles.status === 'loaded'
+            ? articles.items.map((item) => (
+                <Link to={'/article'} key={item._id}>
+                  <ArticleItem
+                    title={item.title}
+                    fullDate={item.createdAt}
+                    text={item.text.slice(0, 20)}
+                    tags={item.tags}
+                    views={item.viewsCount}
+                  />
+                </Link>
+              ))
+            : //Loader
+              [...Array(5)].map((item, index) => (
+                <Link key={index}>
+                  <ArticleItemLoader />
+                </Link>
+              ))}
         </div>
         <Sidebar />
       </div>
