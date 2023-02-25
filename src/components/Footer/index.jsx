@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './index.css';
 
 import { instagramSVG, telegramSVG, faceBookSVG } from '../SvgSprite';
@@ -7,19 +8,15 @@ function Footer() {
     <footer>
       <div className="footer">
         <div className="footer__about unselectable">
-          <ul>
-            <h3>Defence of Ukraine blog</h3>
-            <li>Про нас</li>
-            <li>Текст</li>
-            <li>Текст</li>
-          </ul>
+          <h3>Defence of Ukraine blog</h3>
+          <Link to={'/'}>Головна</Link>
+          <Link to={'/about'}>Про нас</Link>
+          <Link to={'/contacts'}>Контакти</Link>
         </div>
         <div className="footer__legal unselectable">
-          <ul>
-            <h3>Юридична інформація</h3>
-            <li>Публічна оферта</li>
-            <li>Політика конфіденційності</li>
-          </ul>
+          <h3>Юридична інформація</h3>
+          <Link to={'/publicoffer'}>Публічна оферта</Link>
+          <Link to={'/privacypolicy'}>Політика конфіденційності</Link>
         </div>
         <div className="footer__contacts">
           <ul>
@@ -31,9 +28,15 @@ function Footer() {
         <div className="footer__social unselectable">
           <h3>Приєднуйтесь</h3>
           <div className="footer__socialImg">
-            {instagramSVG}
-            {telegramSVG}
-            {faceBookSVG}
+            <a href="https://www.instagram.com/" target={'_blank'} rel="noreferrer">
+              {instagramSVG}
+            </a>
+            <a href="https://web.telegram.org/" target={'_blank'} rel="noreferrer">
+              {telegramSVG}
+            </a>
+            <a href="https://www.facebook.com/" target={'_blank'} rel="noreferrer">
+              {faceBookSVG}
+            </a>
           </div>
         </div>
       </div>

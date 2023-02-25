@@ -14,21 +14,41 @@ footer .footer {
           justify-content: space-between;
 }
 footer .footer > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin: 0 10px;
 }
 footer .footer h3 {
   margin-bottom: 5px;
 }
-footer .footer li {
+footer .footer a {
   line-height: 1.5;
   cursor: pointer;
 }
-footer .footer li:hover {
+footer .footer a:hover {
   text-decoration: underline;
 }
+footer .footer .footer__socialImg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+}
 footer .footer .footer__socialImg svg {
-  margin-right: 10px;
+  width: 30px;
+  height: 30px;
+  fill: gray;
   cursor: pointer;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+footer .footer .footer__socialImg svg:hover {
+  fill: rgb(70, 70, 70);
 }
 
 .footer__additional {

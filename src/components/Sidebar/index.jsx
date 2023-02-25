@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import AuthorSign from '../AuthorSign';
 import './index.css';
 
@@ -16,36 +17,46 @@ function Sidebar() {
       </div>
       <div className="aside__commentsBlock unselectable">
         <h3>Останні коментарі</h3>
-        <div className="aside__commentItem">
-          <AuthorSign />
-          <div className="aside__commentText">
-            Мені дуже сподобався цей блог. Буду продовжувати читати.
+        <Link to={'/article'}>
+          <div className="aside__commentItem">
+            <AuthorSign />
+            <div className="aside__commentText">
+              Мені дуже сподобався цей блог. Буду продовжувати читати.
+            </div>
           </div>
-        </div>
-        <div className="aside__commentItem">
-          <AuthorSign />
-          <div className="aside__commentText">
-            Мені дуже сподобався цей блог. Буду продовжувати читати.
+        </Link>
+        <Link to={'/article'}>
+          <div className="aside__commentItem">
+            <AuthorSign />
+            <div className="aside__commentText">
+              Мені дуже сподобався цей блог. Буду продовжувати читати.
+            </div>
           </div>
-        </div>
-        <div className="aside__commentItem">
-          <AuthorSign />
-          <div className="aside__commentText">
-            Мені дуже сподобався цей блог. Буду продовжувати читати.
+        </Link>
+        <Link to={'/article'}>
+          <div className="aside__commentItem">
+            <AuthorSign />
+            <div className="aside__commentText">
+              Мені дуже сподобався цей блог. Буду продовжувати читати.
+            </div>
           </div>
-        </div>
-        <div className="aside__commentItem">
-          <AuthorSign />
-          <div className="aside__commentText">
-            Мені дуже сподобався цей блог. Буду продовжувати читати.
+        </Link>
+        <Link to={'/article'}>
+          <div className="aside__commentItem">
+            <AuthorSign />
+            <div className="aside__commentText">
+              Мені дуже сподобався цей блог. Буду продовжувати читати.
+            </div>
           </div>
-        </div>
-        <div className="aside__commentItem">
-          <AuthorSign />
-          <div className="aside__commentText">
-            Мені дуже сподобався цей блог. Буду продовжувати читати.
+        </Link>
+        <Link to={'/article'}>
+          <div className="aside__commentItem">
+            <AuthorSign />
+            <div className="aside__commentText">
+              Мені дуже сподобався цей блог. Буду продовжувати читати.
+            </div>
           </div>
-        </div>
+        </Link>
       </div>
     </aside>
   );

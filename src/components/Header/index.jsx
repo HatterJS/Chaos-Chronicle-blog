@@ -1,9 +1,18 @@
 import { Link } from 'react-router-dom';
 import './index.css';
 
-import { houseSVG, infoSVG, contactSVG, authorizationSVG } from '../SvgSprite';
+import {
+  houseSVG,
+  infoSVG,
+  contactSVG,
+  authorizationSVG,
+  createArticleSVG,
+  logOutSVG
+} from '../SvgSprite';
 
 function Header({ setIsShowForm }) {
+  const isAuthorized = false;
+
   return (
     <header>
       <a href="/" className="header__logo">
@@ -11,21 +20,44 @@ function Header({ setIsShowForm }) {
       </a>
       <div className="header__links">
         <Link to={'/'}>
-          <div className="header__home">{houseSVG}Головна</div>
+          <div className="header__home">
+            {houseSVG}
+            <p>Головна</p>
+          </div>
         </Link>
-        <Link to={'/'}>
-          <div className="header__about">{infoSVG}Про блог</div>
+        <Link to={'/about'}>
+          <div className="header__about">
+            {infoSVG}
+            <p>Про блог</p>{' '}
+          </div>
         </Link>
-        <Link to={'/'}>
-          <div className="header__contacts">{contactSVG}Контакти</div>
+        <Link to={'/contacts'}>
+          <div className="header__contacts">
+            {contactSVG}
+            <p>Контакти</p>{' '}
+          </div>
         </Link>
       </div>
       <div className="header__user">
-        <button className="header__authorization" onClick={setIsShowForm}>
-          {authorizationSVG}
-          Авторизація
-        </button>
-        {/* <button className="header__registration">Реєстрація</button> */}
+        {isAuthorized ? (
+          <button className="header__authorization" onClick={setIsShowForm}>
+            {authorizationSVG}
+            <p>Авторизація</p>
+          </button>
+        ) : (
+          <div className="header__authorizedUserButtons">
+            <Link to={'/createarticle'}>
+              <button className="header__createArticle">
+                {createArticleSVG}
+                <p>Нова стаття</p>
+              </button>
+            </Link>
+            <button className="header__logOut">
+              {logOutSVG}
+              <p>Вийти</p>
+            </button>
+          </div>
+        )}
       </div>
     </header>
   );

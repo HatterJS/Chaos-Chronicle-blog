@@ -6,6 +6,10 @@
     color: rgb(70, 70, 70);
   }
   
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
     display: -webkit-box;
     display: -ms-flexbox;

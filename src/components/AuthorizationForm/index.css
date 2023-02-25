@@ -71,6 +71,12 @@
       -ms-flex: 1 1 300px;
           flex: 1 1 300px;
 }
+.authorizationForm__form .authorizationForm__registration {
+  text-align: center;
+}
+.authorizationForm__form .authorizationForm__registration a {
+  color: rgb(0, 110, 255);
+}
 .authorizationForm__form .authorizationForm__social {
   display: -webkit-box;
   display: -ms-flexbox;

@@ -36,7 +36,8 @@ header {
             font-size: 1em;
             transition: $transition;
             svg {
-                margin-right: 5px;
+                fill: rgb(100, 100, 100);
+                
             }
         }
         button:hover {
@@ -46,14 +47,33 @@ header {
             box-shadow: 1px 1px 2px gray inset;
             transform: translateY(2px);
         }
+        .header__authorizedUserButtons {
+            display: flex;
+            gap: 10px;
+        }
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     header {
         .header__links {
-            a {
+            p {
                 display: none;
+            }
+            svg {
+                width: 25px;
+                height: 25px;
+            }
+        }
+        .header__user {
+            button {
+                p {
+                    display: none;
+                }
+                svg {
+                    width: 25px;
+                    height: 25px;
+                }
             }
         }
     }

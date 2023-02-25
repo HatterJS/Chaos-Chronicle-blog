@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { faceBookSVG, googleSVG, instagramSVG } from '../SvgSprite';
 import './index.css';
 
@@ -19,6 +20,12 @@ function AuthorizationForm({ isShowForm, setIsShowForm }) {
             <button className="cancelButton" onClick={setIsShowForm}>
               Відхилити
             </button>
+          </div>
+          <div className="authorizationForm__registration">
+            <p>Відсутній акаунт?</p>
+            <Link to="/registration" onClick={setIsShowForm}>
+              Реєстрація.
+            </Link>
           </div>
           <div className="authorizationForm__social">
             {googleSVG}

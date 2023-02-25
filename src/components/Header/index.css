@@ -59,7 +59,7 @@ header .header__user button {
   transition: all 0.2s ease-in-out;
 }
 header .header__user button svg {
-  margin-right: 5px;
+  fill: rgb(100, 100, 100);
 }
 header .header__user button:hover {
   -webkit-filter: contrast(3);
@@ -71,9 +71,26 @@ header .header__user button:active {
   -webkit-transform: translateY(2px);
           transform: translateY(2px);
 }
+header .header__user .header__authorizedUserButtons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+}
 
-@media (max-width: 600px) {
-  header .header__links a {
+@media (max-width: 700px) {
+  header .header__links p {
     display: none;
+  }
+  header .header__links svg {
+    width: 25px;
+    height: 25px;
+  }
+  header .header__user button p {
+    display: none;
+  }
+  header .header__user button svg {
+    width: 25px;
+    height: 25px;
   }
 }

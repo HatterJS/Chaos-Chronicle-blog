@@ -54,6 +54,12 @@
             }
         }
     }
+    .authorizationForm__registration {
+        text-align: center;
+        a {
+            color: rgb(0, 110, 255);
+        }
+    }
     .authorizationForm__social {
         display: flex;
         justify-content: center;

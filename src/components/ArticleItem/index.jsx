@@ -3,13 +3,34 @@ import './index.css';
 
 import { viewsSVG } from '../SvgSprite';
 
-function ArticleItem() {
+function ArticleItem({ title, fullDate, text, tags, views }) {
+  const formatedDate = new Date(fullDate);
+  const month = {
+    0: 'січня',
+    1: 'лютого',
+    2: 'березня',
+    3: 'квітня',
+    4: 'травня',
+    5: 'червня',
+    6: 'липня',
+    7: 'серпня',
+    8: 'вересня',
+    9: 'жовтня',
+    10: 'листопада',
+    11: 'грудня'
+  };
+  const date =
+    formatedDate.getDate() +
+    ' ' +
+    month[formatedDate.getMonth()] +
+    ' ' +
+    formatedDate.getFullYear();
   return (
     <div className="articleItem">
       <div className="articleItem__image">
         <div className="articleItem__title">
-          <h2>Title of article</h2>
-          <p>24 лютого 2022</p>
+          <h2>{title}</h2>
+          <p>{date}</p>
         </div>
         <img src="img/article/Welcome-to-Ukraine-by-Stanislav-Lunin-scaled.jpg" alt="article-img" />
       </div>
@@ -19,15 +40,16 @@ function ArticleItem() {
           excepturi fuga, nihil pariatur accusamus possimus maxime libero non earum commodi sint
           ducimus, amet tenetur obcaecati odio quae vel!
         </p>
+        <p>{text}</p>
         <AuthorSign />
         <div className="articleItem__tags">
-          <a href="/">#Укравїна</a>
-          <a href="/">#Війна</a>
-          <a href="/">#Особистаісторія</a>
+          {tags.map((tag) => (
+            <p key={tag}>#{tag}</p>
+          ))}
         </div>
         <div className="articleItem__views unselectable">
           {viewsSVG}
-          123
+          {views}
         </div>
       </div>
     </div>

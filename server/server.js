@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import multer from 'multer';
+import cors from 'cors';
 
 import { registration, authorization, authVerification } from './controllers/UserController.js';
 import {
@@ -29,6 +30,8 @@ mongoose
 const app = express();
 //connect json
 app.use(express.json());
+//connect cors
+app.use(cors());
 
 //storage setting for images
 const storage = multer.diskStorage({
@@ -67,7 +70,7 @@ app.post('/upload', checkAuthorization, upload.single('image'), (req, res) => {
 });
 
 //get all articles
-app.get('/article', getAllArticles);
+app.get('/articles', getAllArticles);
 //get an article
 app.get('/article/:id', getArticle);
 //post an article

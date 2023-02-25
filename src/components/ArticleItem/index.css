@@ -76,11 +76,8 @@
       flex-wrap: wrap;
   width: 80%;
 }
-.articleItem__description .articleItem__tags a {
-  margin-right: 10px;
-}
-.articleItem__description .articleItem__tags a:hover {
-  text-decoration: underline;
+.articleItem__description .articleItem__tags p {
+  margin-right: 8px;
 }
 .articleItem__description .articleItem__views {
   display: -webkit-box;

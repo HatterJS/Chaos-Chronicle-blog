@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { authorsSVG, newArticleSVG, recomendationSVG } from '../SvgSprite';
 import './index.css';
 
@@ -7,15 +8,15 @@ function Navbar() {
       <ul className="nav__menu unselectable">
         <li>
           {newArticleSVG}
-          <a href="/">Нові статті</a>
+          <Link to={'/'}>Нові статті</Link>
         </li>
         <li>
           {recomendationSVG}
-          <a href="/">Рекомендації</a>
+          <Link to={'/recomend'}>Рекомендації</Link>
         </li>
         <li>
           {authorsSVG}
-          <a href="/">Автори</a>
+          <Link to={'/authors'}>Автори</Link>
         </li>
       </ul>
       <div className="nav__search">
