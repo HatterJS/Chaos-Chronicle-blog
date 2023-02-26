@@ -36,6 +36,7 @@ aside h3 {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   padding: 10px;
+  min-height: 40px;
 }
 .aside__tagsBlock .aside__tags a, .aside__commentsBlock .aside__tags a {
   margin-right: 10px;

@@ -98,3 +98,26 @@ export const patchArticle = async (req, res) => {
     res.status(500).json({ message: 'Не вдалось оновити статтю' });
   }
 };
+
+export const getPopularTags = async (req, res) => {
+  try {
+    const allArticles = await ArticleModel.find().exec();
+    const allTags = allArticles.reduce((tags, article) => [...tags, ...article.tags], []);
+    //sort tags by popular ----------->
+    const counter = {};
+    allTags.forEach((item) => {
+      if (item in counter) {
+        counter[item]++;
+      } else {
+        counter[item] = 1;
+      }
+    });
+    const sortedTags = Object.keys(counter).sort((a, b) => {
+      return counter[b] - counter[a];
+    });
+    // <----------- sort tags by popular
+    res.json(sortedTags.slice(0, 6));
+  } catch (err) {
+    res.status(500).json({ message: 'Не вдалось знайти статті' });
+  }
+};

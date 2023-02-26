@@ -6,7 +6,7 @@ import ArticleItem from '../../components/ArticleItem';
 import ArticleItemLoader from '../../components/ArticleItemLoader';
 import Sidebar from '../../components/Sidebar';
 
-import { fetchArticles } from '../../redux/slices/articles';
+import { fetchArticles, fetchTags } from '../../redux/slices/articles';
 
 import './index.css';
 
@@ -15,10 +15,10 @@ function Home() {
   const dispatch = useDispatch();
   //get articles and tags from redux
   const { articles, tags } = useSelector((state) => state.articles);
-  console.log(articles.items);
   //async request to the backend to getting all articles (redux articlesSlice)
   React.useEffect(() => {
     dispatch(fetchArticles());
+    dispatch(fetchTags());
   }, [dispatch]);
 
   return (
@@ -32,11 +32,12 @@ function Home() {
         <div className="home__articles">
           {articles.status === 'loaded'
             ? articles.items.map((item) => (
-                <Link to={'/article'} key={item._id}>
+                <Link to={`/article/${item._id}`} key={item._id}>
                   <ArticleItem
                     title={item.title}
                     fullDate={item.createdAt}
-                    text={item.text.slice(0, 20)}
+                    imageUrl={item.imageUrl}
+                    text={item.text.slice(0, 280) + ' ...'}
                     tags={item.tags}
                     views={item.viewsCount}
                   />
@@ -49,7 +50,7 @@ function Home() {
                 </Link>
               ))}
         </div>
-        <Sidebar />
+        <Sidebar tags={tags.items} />
       </div>
     </div>
   );

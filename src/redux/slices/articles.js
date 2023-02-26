@@ -1,8 +1,14 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from '../../axios.js';
 
+//async request to the backend to getting all articles
 export const fetchArticles = createAsyncThunk('articles/fetchArticles', async () => {
   const { data } = await axios.get('/articles');
+  return data;
+});
+//async request to the backend to getting popular tags
+export const fetchTags = createAsyncThunk('articles/fetchTags', async () => {
+  const { data } = await axios.get('/tags');
   return data;
 });
 
@@ -33,10 +39,22 @@ const articlesSlice = createSlice({
     [fetchArticles.rejected]: (state) => {
       state.articles.items = [];
       state.articles.status = 'error';
+    },
+    [fetchTags.pending]: (state) => {
+      state.tags.items = [];
+      state.tags.status = 'loading';
+    },
+    [fetchTags.fulfilled]: (state, action) => {
+      state.tags.items = action.payload;
+      state.tags.status = 'loaded';
+    },
+    [fetchTags.pending]: (state) => {
+      state.tags.items = [];
+      state.tags.status = 'error';
     }
   }
 });
 
-export const { createArticle } = articlesSlice.actions;
+// export const { createArticle } = articlesSlice.actions;
 
 export default articlesSlice.reducer;

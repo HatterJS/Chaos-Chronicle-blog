@@ -54,6 +54,12 @@
   width: 150%;
   min-width: 200px;
 }
+.home__body .home__articles > a:first-child .articleItem .articleItem__description {
+  padding: 20px 30px;
+}
+.home__body .home__articles > a:first-child .articleItem .articleItem__description > p {
+  font-size: 1em;
+}
 .home__body .home__articles > a:first-child .articleItemLoader {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;

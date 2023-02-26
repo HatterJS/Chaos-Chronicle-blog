@@ -2,17 +2,17 @@ import { Link } from 'react-router-dom';
 import AuthorSign from '../AuthorSign';
 import './index.css';
 
-function Sidebar() {
+function Sidebar({ tags }) {
   return (
     <aside>
       <div className="aside__tagsBlock">
         <h3>Популярні теги</h3>
         <div className="aside__tags">
-          <a href="/">#Україна</a>
-          <a href="/">#перемога</a>
-          <a href="/">#робота</a>
-          <a href="/">#війна</a>
-          <a href="/">#особистаісторія</a>
+          {tags.map((tag) => (
+            <a href="/" key={tag}>
+              #{tag}
+            </a>
+          ))}
         </div>
       </div>
       <div className="aside__commentsBlock unselectable">

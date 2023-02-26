@@ -16,7 +16,7 @@ function Header({ setIsShowForm }) {
   return (
     <header>
       <a href="/" className="header__logo">
-        <img src="img/logo/dub.png" width={105} height={45} alt="logo" />
+        <img src="/img/logo/dub.png" width={105} height={45} alt="logo" />
       </a>
       <div className="header__links">
         <Link to={'/'}>

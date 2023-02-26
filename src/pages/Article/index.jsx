@@ -1,11 +1,39 @@
+import React from 'react';
+import axios from '../../axios';
+import { useParams } from 'react-router-dom';
+
 import AuthorSign from '../../components/AuthorSign';
+import CommentItem from '../../components/CommentItem';
+
 import './index.css';
 
 import { deleteSVG, penSVG, viewsSVG } from '../../components/SvgSprite';
-import CommentItem from '../../components/CommentItem';
+import { formingDate } from '../../formingDate';
 
 function Article() {
-  return (
+  //get params from URL bar
+  const { id } = useParams();
+  //article object
+  const [article, setArticle] = React.useState({});
+  //is loading an article state
+  const [isLoading, setIsLoading] = React.useState(true);
+  //get article from backend
+  React.useEffect(() => {
+    axios
+      .get(`/article/${id}`)
+      .then((res) => {
+        setArticle(res.data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert('Нажаль, виникла помилка під час завантаження статті');
+      });
+  }, [id]);
+  console.log(article);
+  return isLoading ? (
+    <div>123</div>
+  ) : (
     <article>
       <div className="article__content">
         <div className="article__author">
@@ -15,8 +43,8 @@ function Article() {
         </div>
         <div className="article__header">
           <div className="article__titleBlock">
-            <h1>Title of article</h1>
-            <p>24 лютого 2022</p>
+            <h1>{article.title}</h1>
+            <p>{formingDate(article.createdAt)}</p>
           </div>
           <div className="article__toolsBlock">
             <button>{penSVG}</button>
@@ -25,54 +53,19 @@ function Article() {
         </div>
         <div className="article__body">
           <div className="article__image">
-            <img
-              src="img/article/Welcome-to-Ukraine-by-Stanislav-Lunin-scaled.jpg"
-              alt="article-img"
-            />
+            <img src={article.imageUrl} alt="article-img" />
           </div>
-          <p>
-            Eligendi consequuntur dicta excepturi fuga, nihil pariatur accusamus possimus maxime
-            libero non earum commodi sint ducimus, amet tenetur obcaecati odio quae vel! Lorem ipsum
-            dolor sit amet, consectetur adipisicing elit. Eligendi consequuntur dicta excepturi
-            fuga, nihil pariatur accusamus possimus maxime libero non earum commodi sint ducimus,
-            amet tenetur obcaecati odio quae vel!
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi consequuntur dicta
-            excepturi fuga, nihil pariatur accusamus possimus maxime libero non earum commodi sint
-            ducimus, amet tenetur obcaecati odio quae vel! Lorem ipsum dolor sit amet, consectetur
-            adipisicing elit.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi consequuntur dicta
-            excepturi fuga, nihil pariatur accusamus possimus maxime libero non earum commodi sint
-            ducimus, amet tenetur obcaecati odio quae vel! Lorem ipsum dolor sit amet, consectetur
-            adipisicing elit.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi consequuntur dicta
-            excepturi fuga, nihil pariatur accusamus possimus maxime libero non earum commodi sint
-            ducimus, amet tenetur obcaecati odio quae vel! Lorem ipsum dolor sit amet, consectetur
-            adipisicing elit.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi consequuntur dicta
-            excepturi fuga, nihil pariatur accusamus possimus maxime libero non earum commodi sint
-            ducimus, amet tenetur obcaecati odio quae vel! Lorem ipsum dolor sit amet, consectetur
-            adipisicing elit.
-          </p>
-          <p>
-            Eligendi consequuntur dicta excepturi fuga, nihil pariatur accusamus possimus maxime
-            libero non earum commodi sint ducimus, amet tenetur obcaecati odio quae vel!
-          </p>
+          <p dangerouslySetInnerHTML={{ __html: article.text }}></p>
           <div className="article__tags">
-            <a href="/">#Укравїна</a>
-            <a href="/">#Війна</a>
-            <a href="/">#Особистаісторія</a>
+            {article.tags.map((tag, index) => (
+              <a href="/" key={index}>
+                #{tag}
+              </a>
+            ))}
           </div>
           <div className="article__views unselectable">
             {viewsSVG}
-            123
+            {article.viewsCount}
           </div>
         </div>
       </div>

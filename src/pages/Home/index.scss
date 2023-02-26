@@ -28,6 +28,12 @@
                         width: 150%;
                         min-width: 200px;
                     }
+                    .articleItem__description {
+                        padding: 20px 30px;
+                        &>p {
+                            font-size: 1em;
+                        }
+                    }
                 }
                 .articleItemLoader {
                     flex-direction: row;

@@ -9,7 +9,8 @@ import {
   getArticle,
   postArticle,
   deleteArticle,
-  patchArticle
+  patchArticle,
+  getPopularTags
 } from './controllers/ArticleController.js';
 
 import {
@@ -85,6 +86,8 @@ app.patch(
   handleValidationErrors,
   patchArticle
 );
+//get popular tags
+app.get('/tags', getPopularTags);
 
 //server port
 app.listen(9999, (err) => {
