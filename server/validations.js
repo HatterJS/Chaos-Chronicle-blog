@@ -9,7 +9,7 @@ export const registrationValidation = [
 
 export const authorizationValidation = [
   body('email', 'Не вірний формат пошти').isEmail(),
-  body('password', 'Пароль повинин бути не менше 6-ти символів').isLength({ min: 6 })
+  body('password', 'Пароль повинин містити не менше 6-ти символів').isLength({ min: 6 })
 ];
 
 export const articleValidation = [

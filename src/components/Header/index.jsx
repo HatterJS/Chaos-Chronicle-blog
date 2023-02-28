@@ -1,4 +1,8 @@
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { isAuthCheck, logOut } from '../../redux/slices/authorization';
+
 import './index.css';
 
 import {
@@ -11,7 +15,17 @@ import {
 } from '../SvgSprite';
 
 function Header({ setIsShowForm }) {
-  const isAuthorized = false;
+  //create dispatch for redux
+  const dispatch = useDispatch();
+  //check authorization with redux
+  const isAuth = useSelector(isAuthCheck);
+
+  function handleLogOut() {
+    if (window.confirm('Ви дійсно бажаєте вийти?')) {
+      dispatch(logOut());
+      localStorage.removeItem('token');
+    }
+  }
 
   return (
     <header>
@@ -39,7 +53,7 @@ function Header({ setIsShowForm }) {
         </Link>
       </div>
       <div className="header__user">
-        {isAuthorized ? (
+        {!isAuth ? (
           <button className="header__authorization" onClick={setIsShowForm}>
             {authorizationSVG}
             <p>Авторизація</p>
@@ -52,7 +66,7 @@ function Header({ setIsShowForm }) {
                 <p>Нова стаття</p>
               </button>
             </Link>
-            <button className="header__logOut">
+            <button className="header__logOut" onClick={handleLogOut}>
               {logOutSVG}
               <p>Вийти</p>
             </button>

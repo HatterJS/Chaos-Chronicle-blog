@@ -53,11 +53,57 @@
           flex-direction: column;
   padding: 20px 40px;
 }
-.authorizationForm__form .authorizationForm__body h4 {
-  margin-bottom: 5px;
+.authorizationForm__form .authorizationForm__body .authorizationForm__inputField {
+  position: relative;
+  border: 1px solid gray;
+  border-radius: 15px;
+  margin-bottom: 15px;
 }
-.authorizationForm__form .authorizationForm__body input {
-  margin-bottom: 10px;
+.authorizationForm__form .authorizationForm__body .authorizationForm__inputField input {
+  outline: none;
+  border: none;
+}
+.authorizationForm__form .authorizationForm__body .authorizationForm__inputField input:focus + div {
+  padding: 0 10px;
+  font-size: 0.8em;
+  color: rgb(120, 120, 120);
+  top: 0;
+}
+.authorizationForm__form .authorizationForm__body .authorizationForm__inputField input:not(:-moz-placeholder-shown) + div {
+  display: block;
+  padding: 0 10px;
+  font-size: 0.8em;
+  color: rgb(120, 120, 120);
+  top: 0;
+}
+.authorizationForm__form .authorizationForm__body .authorizationForm__inputField input:not(:-ms-input-placeholder) + div {
+  display: block;
+  padding: 0 10px;
+  font-size: 0.8em;
+  color: rgb(120, 120, 120);
+  top: 0;
+}
+.authorizationForm__form .authorizationForm__body .authorizationForm__inputField input:not(:placeholder-shown) + div {
+  display: block;
+  padding: 0 10px;
+  font-size: 0.8em;
+  color: rgb(120, 120, 120);
+  top: 0;
+}
+.authorizationForm__form .authorizationForm__body .authorizationForm__inputField div {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  border-radius: 10px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background-color: white;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: rgb(190, 190, 190);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 .authorizationForm__form .authorizationForm__body .authorizationForm__buttons {
   display: -webkit-box;

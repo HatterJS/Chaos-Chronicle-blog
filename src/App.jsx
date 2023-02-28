@@ -1,4 +1,7 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { Routes, Route } from 'react-router-dom';
+
 import Header from './components/Header';
 import Banner from './components/Banner';
 import Navbar from './components/Navbar';
@@ -6,21 +9,27 @@ import Home from './pages/Home';
 import Article from './pages/Article';
 import Footer from './components/Footer';
 import NotFound from './pages/NonFound';
-import { Routes, Route } from 'react-router-dom';
+import AuthorizationForm from './components/AuthorizationForm';
 
 import './App.css';
-import AuthorizationForm from './components/AuthorizationForm';
+
 import { arrowTop } from './components/SvgSprite';
+import { fetchToken } from './redux/slices/authorization';
 
 function App() {
+  //create dispatch for redux
+  const dispatch = useDispatch();
+  //show/hide authorization form
   const [isShowForm, setIsShowForm] = React.useState(false);
+
+  React.useEffect(() => {
+    dispatch(fetchToken());
+  }, [dispatch]);
+
   return (
     <div className="App">
-      <AuthorizationForm
-        isShowForm={isShowForm}
-        setIsShowForm={() => setIsShowForm((prevState) => !prevState)}
-      />
-      <Header setIsShowForm={() => setIsShowForm((prevState) => !prevState)} />
+      <AuthorizationForm isShowForm={isShowForm} setIsShowForm={setIsShowForm} />
+      <Header setIsShowForm={() => setIsShowForm(true)} />
       <Banner />
       <Navbar />
       <Routes>

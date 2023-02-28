@@ -39,11 +39,39 @@
         display: flex;
         flex-direction: column;
         padding: 20px 40px;
-        h4 {
-            margin-bottom: 5px;
-        }
-        input {
-            margin-bottom: 10px;
+        .authorizationForm__inputField {
+            position: relative;
+            border: 1px solid gray;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            input {
+                outline: none;
+                border: none;
+                &:focus + div {
+                    padding: 0 10px;
+                    font-size: 0.8em;
+                    color: rgb(120, 120, 120);
+                    top: 0;
+                }
+                &:not(:placeholder-shown) + div {
+                    display: block;
+                    padding: 0 10px;
+                    font-size: 0.8em;
+                    color: rgb(120, 120, 120);
+                    top: 0;
+                }
+            }
+            div {
+                position: absolute;
+                top: 50%;
+                left: 15px;
+                border-radius: 10px;
+                transform: translateY(-50%);
+                background-color: white;
+                width: fit-content;
+                color: rgb(190, 190, 190);
+                transition: all 0.2s ease-in-out;
+            }
         }
         .authorizationForm__buttons {
             display: flex;

@@ -48,7 +48,7 @@ const articlesSlice = createSlice({
       state.tags.items = action.payload;
       state.tags.status = 'loaded';
     },
-    [fetchTags.pending]: (state) => {
+    [fetchTags.rejected]: (state) => {
       state.tags.items = [];
       state.tags.status = 'error';
     }
