@@ -30,7 +30,6 @@ function Article() {
         alert('Нажаль, виникла помилка під час завантаження статті');
       });
   }, [id]);
-  console.log(article);
   return isLoading ? (
     <div>123</div>
   ) : (

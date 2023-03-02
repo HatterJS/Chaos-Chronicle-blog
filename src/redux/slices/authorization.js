@@ -1,10 +1,28 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from '../../axios.js';
 
+//async request to the backend for registration
+export const fetchRegistrationData = createAsyncThunk(
+  'authorization/fetchRegistrationData',
+  async (params) => {
+    try {
+      const { data } = await axios.post('/authorization/registration', params);
+      return data;
+    } catch (err) {
+      const { message } = err.response.data;
+      throw new Error(message);
+    }
+  }
+);
 //async request to the backend for authorization
 export const fetchUserData = createAsyncThunk('authorization/fetchUserData', async (params) => {
-  const { data } = await axios.post('/authorization/authorization', params);
-  return data;
+  try {
+    const { data } = await axios.post('/authorization/authorization', params);
+    return data;
+  } catch (err) {
+    const { message } = err.response.data;
+    throw new Error(message);
+  }
 });
 //async request to the backend for authorization by token
 export const fetchToken = createAsyncThunk('/authorization/fetchToken', async () => {
@@ -28,6 +46,18 @@ const authorizationSlice = createSlice({
     }
   },
   extraReducers: {
+    [fetchRegistrationData.pending]: (state) => {
+      state.userData = null;
+      state.status = 'loading';
+    },
+    [fetchRegistrationData.fulfilled]: (state, action) => {
+      state.userData = action.payload;
+      state.status = 'loaded';
+    },
+    [fetchRegistrationData.rejected]: (state) => {
+      state.userData = null;
+      state.status = 'error';
+    },
     [fetchUserData.pending]: (state) => {
       state.userData = null;
       state.status = 'loading';

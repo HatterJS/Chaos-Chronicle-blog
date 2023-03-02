@@ -10,6 +10,7 @@ import Article from './pages/Article';
 import Footer from './components/Footer';
 import NotFound from './pages/NonFound';
 import AuthorizationForm from './components/AuthorizationForm';
+import Registration from './pages/Registration';
 
 import './App.css';
 
@@ -35,6 +36,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/article/:id" element={<Article />} />
+        <Route path="/registration" element={<Registration />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

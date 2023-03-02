@@ -38,6 +38,18 @@
           transform: translate3d(-50%, -50%, 0);
   overflow: hidden;
 }
+.authorizationForm__form .authorizationForm__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.authorizationForm__form .authorizationForm__close svg {
+  fill: rgb(160, 160, 160);
+  cursor: pointer;
+}
+.authorizationForm__form .authorizationForm__close svg:hover {
+  fill: rgb(90, 90, 90);
+}
 .authorizationForm__form .authorizationForm__header {
   background-color: rgb(255, 255, 255);
   padding-top: 20px;
@@ -104,18 +116,19 @@
   color: rgb(190, 190, 190);
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
+  pointer-events: none;
 }
 .authorizationForm__form .authorizationForm__body .authorizationForm__buttons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   gap: 10px;
-  margin: 10px 0;
+  margin-bottom: 10px;
 }
 .authorizationForm__form .authorizationForm__body .authorizationForm__buttons button {
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 300px;
-          flex: 1 1 300px;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
 }
 .authorizationForm__form .authorizationForm__registration {
   text-align: center;

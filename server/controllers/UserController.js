@@ -6,6 +6,11 @@ import UserModel from '../models/Authorized.js';
 //registration
 export const registration = async (req, res) => {
   try {
+    const findUser = await UserModel.findOne({ email: req.body.email });
+    if (findUser) {
+      return res.status(404).json({ message: 'Користувач з таким email вже зареєстрований' });
+    }
+
     const password = req.body.password;
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);

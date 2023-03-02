@@ -30,6 +30,18 @@
     min-width: 300px;
     transform: translate3d(-50%, -50%, 0);
     overflow: hidden;
+    .authorizationForm__close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        svg {
+            fill: rgb(160, 160, 160);
+            cursor: pointer;
+            &:hover {
+                fill: rgb(90, 90, 90);
+            }
+        }
+    }
     .authorizationForm__header {
         background-color: rgb(255, 255, 255);
         padding-top: 20px;
@@ -71,14 +83,15 @@
                 width: fit-content;
                 color: rgb(190, 190, 190);
                 transition: all 0.2s ease-in-out;
+                pointer-events: none;
             }
         }
         .authorizationForm__buttons {
             display: flex;
             gap: 10px;
-            margin: 10px 0;
+            margin-bottom: 10px;
             button {
-                flex: 1 1 300px;
+                flex: 1 1 auto;
             }
         }
     }

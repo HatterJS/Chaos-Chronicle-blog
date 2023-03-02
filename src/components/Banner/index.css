@@ -1,7 +1,31 @@
-.banner {
-  text-align: center;
+.banner__parallax {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  margin: 0 auto;
 }
-.banner img {
-  max-width: 100%;
+
+.banner__parallax-first, .banner__parallax-second, .banner__parallax-third, .banner__gradient {
+  position: absolute;
+  width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.banner__parallax-first {
+  background: url("../../../public/img/logo/first.jpg") center/contain no-repeat;
+}
+
+.banner__parallax-second {
+  background: url("../../../public/img/logo/second.png") center/contain no-repeat;
+}
+
+.banner__parallax-third {
+  background: url("../../../public/img/logo/third.png") center/contain no-repeat;
+}
+
+.banner__gradient {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 50%, rgb(255, 255, 255) 100%);
 }
