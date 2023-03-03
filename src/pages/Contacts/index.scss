@@ -1,0 +1,32 @@
+.contacts {
+    flex: 1 1 auto;
+}
+.contacts__title {
+    display: flex;
+    align-items: center;
+    div {
+        border-top: 1px dashed gray;
+        margin: 0 20px;
+        flex: 1 1 auto;
+    }
+}
+.contacts__content {
+    max-width: 800px;
+    margin: 20px auto;
+    h2 {
+        margin-top: 20px;
+        line-height: 1.5;
+    }
+    .contacts__social {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        svg {
+            fill: gray;
+            transition: all 0.2s ease-in-out;
+            &:hover {
+                fill: rgb(60, 60, 60);
+            }
+        }
+    }
+}

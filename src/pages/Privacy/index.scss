@@ -1,0 +1,30 @@
+.privacy {
+    flex: 1 1 auto;
+}
+.privacy__title {
+    display: flex;
+    align-items: center;
+    div {
+        border-top: 1px dashed gray;
+        margin: 0 20px;
+        flex: 1 1 auto;
+    }
+}
+.privacy__content {
+    max-width: 800px;
+    margin: 20px auto;
+    h3 {
+        line-height: 1.5;
+    }
+    & > p {
+        text-align: justify;
+        text-indent: 2em;
+        margin-bottom: 15px;
+    }
+    ul {
+        margin: 0 0 15px 2em;
+    }
+    li {
+        list-style: circle;
+    }
+}

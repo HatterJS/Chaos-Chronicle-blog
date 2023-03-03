@@ -1,0 +1,24 @@
+.sponsorship {
+    flex: 1 1 auto;
+}
+.sponsorship__title {
+    display: flex;
+    align-items: center;
+    div {
+        border-top: 1px dashed gray;
+        margin: 0 20px;
+        flex: 1 1 auto;
+    }
+}
+.sponsorship__content {
+    max-width: 800px;
+    margin: 20px auto;
+    & > p {
+        text-align: justify;
+        text-indent: 2em;
+        margin-bottom: 15px;
+    }
+    .sponsorship__links {
+        margin-bottom: 15px;
+    }
+}

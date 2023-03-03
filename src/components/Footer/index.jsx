@@ -15,14 +15,14 @@ function Footer() {
         </div>
         <div className="footer__legal unselectable">
           <h3>Юридична інформація</h3>
-          <Link to={'/publicoffer'}>Публічна оферта</Link>
+          <Link to={'/sponsorship'}>Стати спонсором</Link>
           <Link to={'/privacypolicy'}>Політика конфіденційності</Link>
         </div>
         <div className="footer__contacts">
           <ul>
             <h3 className=" unselectable">Контакти</h3>
-            <li>+38(066)503-34-00</li>
-            <li>+38(067)777-34-00</li>
+            <li>+38(XXX)XXX-XX-XX</li>
+            <li>+38(XXX)XXX-XX-XX</li>
           </ul>
         </div>
         <div className="footer__social unselectable">
@@ -41,7 +41,7 @@ function Footer() {
         </div>
       </div>
       <div className="footer__additional">
-        <p>Усi права захищенi ©2022 Pizza point</p>
+        <p>Усi права захищенi ©2023 Defense of Ukraine</p>
         <p>Розроблено mr.Hatter - formarkets.ua@gmail.com</p>
       </div>
     </footer>

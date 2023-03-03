@@ -6,6 +6,10 @@ import Header from './components/Header';
 import Banner from './components/Banner';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
+import About from './pages/About';
+import Contacts from './pages/Contacts';
+import Sponsorship from './pages/Sponsorship';
+import Privacy from './pages/Privacy';
 import Article from './pages/Article';
 import Footer from './components/Footer';
 import NotFound from './pages/NonFound';
@@ -35,6 +39,10 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contacts" element={<Contacts />} />
+        <Route path="/sponsorship" element={<Sponsorship />} />
+        <Route path="/privacypolicy" element={<Privacy />} />
         <Route path="/article/:id" element={<Article />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="*" element={<NotFound />} />
