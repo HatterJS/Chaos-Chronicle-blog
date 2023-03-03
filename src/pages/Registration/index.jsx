@@ -14,9 +14,10 @@ function Registration() {
   const isAuthorized = useSelector(isAuthCheck);
   //create state for user data
   const [registrationData, setRegistrationData] = React.useState({
-    fullName: 'Олексій',
-    email: 'immortal1ka@gmail.com',
-    password: '8171078a'
+    fullName: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
   });
   //send registration data and get user data from backend
   async function sendRegistrationData() {
@@ -26,7 +27,8 @@ function Registration() {
       setRegistrationData({
         fullName: '',
         email: '',
-        password: ''
+        password: '',
+        confirmPassword: ''
       });
     } else {
       alert(data.error.message);
@@ -47,7 +49,10 @@ function Registration() {
     if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(registrationData.email)) {
       return 'Перевірте email';
     }
-    if (registrationData.password.length < 6) {
+    if (
+      registrationData.password.length < 6 ||
+      registrationData.password !== registrationData.confirmPassword
+    ) {
       return 'Перевірте пароль';
     }
     return 'Реєстрація';
@@ -102,6 +107,18 @@ function Registration() {
             onKeyUp={handleLastInputKey}
           />
           <div>Password</div>
+        </div>
+        <div className="registration__inputField">
+          <input
+            type="password"
+            placeholder=" "
+            value={registrationData.confirmPassword}
+            onChange={(event) =>
+              setRegistrationData((prev) => ({ ...prev, confirmPassword: event.target.value }))
+            }
+            onKeyUp={handleLastInputKey}
+          />
+          <div>Confirm password</div>
         </div>
         <div className="registration__buttons">
           <button

@@ -24,7 +24,11 @@ export const getArticle = async (req, res) => {
     )
       .populate('author')
       .exec();
-    res.json(article);
+    const articleWithoutAuthor = {
+      ...article.toObject(),
+      author: { ...article.author.toObject(), passwordHash: undefined }
+    };
+    res.json(articleWithoutAuthor);
   } catch (err) {
     res.status(500).json({ message: 'Не вдалось знайти статтю' });
   }
