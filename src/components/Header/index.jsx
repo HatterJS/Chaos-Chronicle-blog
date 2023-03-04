@@ -60,7 +60,7 @@ function Header({ setIsShowForm }) {
           </button>
         ) : (
           <div className="header__authorizedUserButtons">
-            <Link to={'/createarticle'}>
+            <Link to={'/addarticle'}>
               <button className="header__createArticle">
                 {createArticleSVG}
                 <p>Нова стаття</p>

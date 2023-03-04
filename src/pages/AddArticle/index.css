@@ -1,0 +1,96 @@
+.addArticle {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+}
+
+.addArticle__title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.addArticle__title div {
+  border-top: 1px dashed gray;
+  margin: 0 20px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+}
+
+.addArticle__body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.addArticle__body .addArticle__coverImage {
+  display: inline-block;
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid gray;
+  border-radius: 15px;
+  color: gray;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.addArticle__body .addArticle__coverImage:hover {
+  color: rgb(70, 70, 70);
+  -webkit-box-shadow: 1px 1px 2px gray;
+          box-shadow: 1px 1px 2px gray;
+  -webkit-transform: translate3d(0, -1px, 0);
+          transform: translate3d(0, -1px, 0);
+}
+.addArticle__body input[type=file] {
+  display: none;
+}
+.addArticle__body .addArticle__quill {
+  width: 100%;
+}
+.addArticle__body .ql-toolbar.ql-snow {
+  border-color: gray;
+}
+.addArticle__body .ql-container.ql-snow {
+  border-color: gray;
+}
+.addArticle__body .ql-editor {
+  width: 100%;
+  min-height: 200px;
+  font-size: 1.2em;
+}
+.addArticle__body .addArticle__addTitle input, .addArticle__body .addArticle__addTags input {
+  width: 100%;
+  border-color: gray;
+}
+.addArticle__body .addArticle__addTitle input:focus, .addArticle__body .addArticle__addTags input:focus {
+  outline: none;
+}
+.addArticle__body .addArticle__addTitle input {
+  font-size: 1.3em;
+  border-radius: 15px 15px 0 0;
+}
+.addArticle__body .addArticle__addTags input {
+  border-radius: 0 0 15px 15px;
+}
+.addArticle__body .addArticle__buttonsBlock {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  gap: 10px;
+  margin: 10px 0;
+}
+.addArticle__body .addArticle__buttonsBlock button {
+  min-width: 130px;
+}

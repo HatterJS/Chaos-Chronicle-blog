@@ -65,6 +65,7 @@
   
   input {
     border: 1px solid rgba(64, 64, 64, 0.2);
+    box-sizing: border-box;
     height: 40px;
     border-radius: 15px;
     padding: 0 10px;
