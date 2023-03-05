@@ -40,6 +40,7 @@ function Home() {
                     text={item.text.slice(0, 280) + ' ...'}
                     tags={item.tags}
                     views={item.viewsCount}
+                    authorName={item.author.fullName}
                   />
                 </Link>
               ))

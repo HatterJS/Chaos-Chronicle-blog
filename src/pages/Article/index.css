@@ -86,9 +86,18 @@
 .article__body > p {
   text-align: justify;
   text-indent: 3em;
+  margin-bottom: 10px;
 }
-.article__body > p p {
-  margin-bottom: 15px;
+.article__body li {
+  text-align: justify;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+.article__body a {
+  color: rgb(13, 89, 253);
+}
+.article__body a:hover {
+  text-decoration: underline;
 }
 .article__body .article__tags {
   clear: left;

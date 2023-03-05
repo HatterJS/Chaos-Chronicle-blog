@@ -119,29 +119,30 @@
     user-select: none;
   }
   
-  .acceptButton, .cancelButton {
+  .acceptButton, .cancelButton, .rejectButton {
+    color: rgb(70, 70, 70);
     border: 1px solid rgb(180, 180, 180);
     border-radius: 15px;
     background-color: rgb(240, 255, 217);
     padding: 10px;
     font-size: 16px;
-    font-weight: 500;
+    /* font-weight: 500; */
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
   }
-  .acceptButton:hover, .cancelButton:hover {
+  .acceptButton:hover, .cancelButton:hover, .rejectButton:hover {
     -webkit-transform: translateY(-1px);
             transform: translateY(-1px);
     -webkit-box-shadow: 1px 1px 2px gray;
             box-shadow: 1px 1px 2px gray;
   }
-  .acceptButton:active, .cancelButton:active {
+  .acceptButton:active, .cancelButton:active, .rejectButton:active {
     -webkit-transform: translateY(0);
             transform: translateY(0);
     -webkit-box-shadow: 1px 1px 2px gray inset;
             box-shadow: 1px 1px 2px gray inset;
   }
-  .acceptButton:disabled, .cancelButton:disabled {
+  .acceptButton:disabled, .cancelButton:disabled, .rejectButton:disabled {
     -webkit-transform: none;
             transform: none;
     -webkit-box-shadow: none;
@@ -151,7 +152,10 @@
   }
   
   .cancelButton {
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(255, 255, 255);
+  }
+  .rejectButton {
+    background-color: rgb(255, 230, 200);
   }
   
   @media (max-width: 500px) {

@@ -15,6 +15,6 @@ export const authorizationValidation = [
 export const articleValidation = [
   body('title', 'Відсутній заголовок статті').isLength({ min: 5 }).isString(),
   body('text', 'Відсутній текст статті (щонайменше 15 символів)').isLength({ min: 15 }).isString(),
-  body('tags', 'Не вірний формат тегів (очікується массив)').optional().isArray(),
-  body('imageUrl', 'Не вірна адреса зображення').optional().isURL()
+  body('tags', 'Не вірний формат тегів (очікується массив)').optional().isArray()
+  // body('imageUrl', 'Не вірна адреса зображення').optional().isURL()
 ];

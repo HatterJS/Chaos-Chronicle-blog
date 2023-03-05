@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from '../../axios';
+import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -33,7 +35,6 @@ function Article() {
         alert('Нажаль, виникла помилка під час завантаження статті');
       });
   }, [id]);
-
   function isOwner() {
     if (userData) {
       return article.author._id === userData._id;
@@ -47,7 +48,7 @@ function Article() {
       <div className="article__content">
         <div className="article__author">
           <div className="article__authorLine"></div>
-          <AuthorSign />
+          <AuthorSign authorName={article.author.fullName} />
           <div className="article__authorLine"></div>
         </div>
         <div className="article__header">
@@ -66,7 +67,7 @@ function Article() {
           <div className="article__image">
             <img src={article.imageUrl} alt="article-img" />
           </div>
-          <p dangerouslySetInnerHTML={{ __html: article.text }}></p>
+          <ReactMarkdown rehypePlugins={[rehypeRaw]} children={article.text} />
           <div className="article__tags">
             {article.tags.map((tag, index) => (
               <a href="/" key={index}>

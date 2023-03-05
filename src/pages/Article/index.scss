@@ -71,8 +71,17 @@
     & > p {
         text-align: justify;
         text-indent: 3em;
-        p {
-            margin-bottom: 15px;
+        margin-bottom: 10px;
+    }
+    li {
+        text-align: justify;
+        margin-left: 20px;
+        margin-bottom: 10px;
+    }
+    a {
+        color: rgb(13, 89, 253);
+        &:hover {
+            text-decoration: underline;
         }
     }
     .article__tags {

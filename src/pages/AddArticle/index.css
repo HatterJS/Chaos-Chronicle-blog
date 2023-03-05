@@ -33,25 +33,78 @@
   max-width: 1200px;
   margin: 0 auto;
 }
+.addArticle__body .addArticle__rules {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.addArticle__body .addArticle__rules h3 {
+  margin: 10px 0;
+}
+.addArticle__body .addArticle__rules li {
+  list-style: circle;
+  margin-left: 20px;
+}
+.addArticle__body .addArticle__rules p {
+  text-align: justify;
+  margin: 10px 0;
+}
+.addArticle__body .addArticle__coverBlock {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.addArticle__body .addArticle__coverBlock input[type=file] {
+  display: none;
+}
 .addArticle__body .addArticle__coverImage {
   display: inline-block;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   padding: 10px;
   cursor: pointer;
   border: 1px solid gray;
   border-radius: 15px;
-  color: gray;
+  color: rgb(70, 70, 70);
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
 .addArticle__body .addArticle__coverImage:hover {
-  color: rgb(70, 70, 70);
   -webkit-box-shadow: 1px 1px 2px gray;
           box-shadow: 1px 1px 2px gray;
   -webkit-transform: translate3d(0, -1px, 0);
           transform: translate3d(0, -1px, 0);
 }
-.addArticle__body input[type=file] {
-  display: none;
+.addArticle__body .addArticle__uploadedImage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 7px 10px;
+  border: 1px solid gray;
+  border-radius: 15px;
+}
+.addArticle__body .addArticle__uploadedImage div {
+  line-height: 0;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.addArticle__body .addArticle__uploadedImage div svg {
+  fill: gray;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.addArticle__body .addArticle__uploadedImage div svg:hover {
+  fill: rgb(180, 92, 92);
 }
 .addArticle__body .addArticle__quill {
   width: 100%;
