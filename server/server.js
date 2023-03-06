@@ -39,8 +39,10 @@ const storage = multer.diskStorage({
   destination: (_, __, cb) => {
     cb(null, 'server/uploads');
   },
-  filename: (_, file, cb) => {
-    cb(null, file.originalname);
+  filename: (req, file, cb) => {
+    const { id } = req.query;
+    const fileName = `${id}_${file.originalname}`;
+    cb(null, fileName);
   }
 });
 const upload = multer({ storage });
@@ -66,7 +68,7 @@ app.get('/authorization/verification', checkAuthorization, authVerification);
 //upload image
 app.post('/upload', checkAuthorization, upload.single('image'), (req, res) => {
   res.json({
-    url: `/uploads/${req.file.originalname}`
+    url: `/uploads/${req.file.filename}`
   });
 });
 

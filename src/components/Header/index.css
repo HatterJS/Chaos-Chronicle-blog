@@ -60,6 +60,7 @@ header .header__user button {
 }
 header .header__user button svg {
   fill: rgb(100, 100, 100);
+  margin: 5px;
 }
 header .header__user button:hover {
   -webkit-filter: contrast(3);
@@ -78,7 +79,7 @@ header .header__user .header__authorizedUserButtons {
   gap: 10px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 730px) {
   header .header__links p {
     display: none;
   }
@@ -90,6 +91,18 @@ header .header__user .header__authorizedUserButtons {
     display: none;
   }
   header .header__user button svg {
+    width: 25px;
+    height: 25px;
+  }
+}
+@media (max-width: 480px) {
+  header .header__links {
+    gap: 10px;
+  }
+  header .header__links p {
+    display: none;
+  }
+  header .header__links svg {
     width: 25px;
     height: 25px;
   }

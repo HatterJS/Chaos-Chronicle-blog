@@ -2,7 +2,7 @@ import React from 'react';
 import axios from '../../axios';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
-import { useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import AuthorSign from '../../components/AuthorSign';
@@ -18,6 +18,8 @@ function Article() {
   const { userData } = useSelector((state) => state.authorization);
   //get params from URL bar
   const { id } = useParams();
+  //useNavigate for redirect user to another page
+  const navigate = useNavigate();
   //article object
   const [article, setArticle] = React.useState({});
   //is loading an article state
@@ -35,6 +37,14 @@ function Article() {
         alert('Нажаль, виникла помилка під час завантаження статті');
       });
   }, [id]);
+  //checking that the user is the owner of the article
+  async function deleteArticle() {
+    if (window.confirm('Ви пеерконані, що бажаєте видалити статтю?')) {
+      await axios.delete(`/article/${id}`);
+      alert('Статтю видалено успішно.');
+      navigate('/');
+    }
+  }
   function isOwner() {
     if (userData) {
       return article.author._id === userData._id;
@@ -59,8 +69,10 @@ function Article() {
           <div
             className="article__toolsBlock"
             style={isOwner() ? { display: 'block' } : { display: 'none' }}>
-            <button>{penSVG}</button>
-            <button>{deleteSVG}</button>
+            <Link to={`/editarticle/${id}`}>
+              <button>{penSVG}</button>
+            </Link>
+            <button onClick={deleteArticle}>{deleteSVG}</button>
           </div>
         </div>
         <div className="article__body">
@@ -70,7 +82,7 @@ function Article() {
           <ReactMarkdown rehypePlugins={[rehypeRaw]} children={article.text} />
           <div className="article__tags">
             {article.tags.map((tag, index) => (
-              <a href="/" key={index}>
+              <a href="/" key={index + tag}>
                 #{tag}
               </a>
             ))}

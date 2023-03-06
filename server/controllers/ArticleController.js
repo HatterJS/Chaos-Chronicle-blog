@@ -50,9 +50,11 @@ export const postArticle = async (req, res) => {
     });
 
     const article = await doc.save();
-    res.json(article);
+    res.json({ ...article._doc, message: 'Статтю опубліковано успішно' });
   } catch (err) {
-    res.status(500).json({ message: 'Розміщення статті пройшло не коректно' });
+    res.status(500).json({
+      message: 'Розміщення статті пройшло не коректно. Можливо стаття з такою назвою вже існую.'
+    });
   }
 };
 
@@ -96,7 +98,7 @@ export const patchArticle = async (req, res) => {
       tags: req.body.tags,
       imageUrl: req.body.imageUrl
     });
-    res.json({ message: 'Статтю оновлено успішно' });
+    res.json({ _id: articleId, message: 'Статтю оновлено успішно' });
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: 'Не вдалось оновити статтю' });

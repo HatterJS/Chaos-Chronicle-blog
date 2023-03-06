@@ -48,6 +48,7 @@ function App() {
         <Route path="/article/:id" element={<Article />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/addarticle" element={<AddArticle />} />
+        <Route path="/editarticle/:id" element={<AddArticle />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

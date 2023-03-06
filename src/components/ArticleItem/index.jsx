@@ -19,8 +19,8 @@ function ArticleItem({ title, fullDate, imageUrl, text, tags, views, authorName 
         <p dangerouslySetInnerHTML={{ __html: text }}></p>
         <AuthorSign authorName={authorName} />
         <div className="articleItem__tags">
-          {tags.map((tag) => (
-            <p key={tag}>#{tag}</p>
+          {tags.map((tag, index) => (
+            <p key={index + tag + title}>#{tag}</p>
           ))}
         </div>
         <div className="articleItem__views unselectable">

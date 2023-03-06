@@ -37,7 +37,7 @@ header {
             transition: $transition;
             svg {
                 fill: rgb(100, 100, 100);
-                
+                margin: 5px;
             }
         }
         button:hover {
@@ -54,7 +54,7 @@ header {
     }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 730px) {
     header {
         .header__links {
             p {
@@ -74,6 +74,21 @@ header {
                     width: 25px;
                     height: 25px;
                 }
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        .header__links {
+            gap: 10px;
+            p {
+                display: none;
+            }
+            svg {
+                width: 25px;
+                height: 25px;
             }
         }
     }

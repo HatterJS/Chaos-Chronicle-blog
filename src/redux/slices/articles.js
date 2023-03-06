@@ -28,6 +28,7 @@ const articlesSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
+    //getting all articles
     [fetchArticles.pending]: (state) => {
       state.articles.items = [];
       state.articles.status = 'loading';
@@ -40,6 +41,7 @@ const articlesSlice = createSlice({
       state.articles.items = [];
       state.articles.status = 'error';
     },
+    //getting articles tags
     [fetchTags.pending]: (state) => {
       state.tags.items = [];
       state.tags.status = 'loading';

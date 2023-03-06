@@ -68,15 +68,17 @@
             height: 100%;
         }
     }
-    & > p {
+    & > p, h2, h3 {
         text-align: justify;
         text-indent: 3em;
         margin-bottom: 10px;
+        line-break: anywhere;
     }
     li {
         text-align: justify;
         margin-left: 20px;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
+        list-style: circle;
     }
     a {
         color: rgb(13, 89, 253);
