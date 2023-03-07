@@ -55,15 +55,12 @@ function AddArticle() {
       setCover(file);
     } else alert('Розмір файлу перевищує 1МБ');
   }
-  //upload cover image on server
+  //upload cover image to server
   async function uploadCover() {
     try {
       const formData = new FormData();
       formData.append('image', cover);
-      const { data } = await axios.post(
-        `/upload?id=${articleData.title.replace(/\s/g, '')}`,
-        formData
-      );
+      const { data } = await axios.post(`/upload?&dir=articles`, formData);
       return data.url;
     } catch (err) {
       alert('Не вдалось завантажити файл');
@@ -149,7 +146,7 @@ function AddArticle() {
             <>
               <label htmlFor="coverImage" className="addArticle__coverImage">
                 {id
-                  ? oldCoverUrl.substring(oldCoverUrl.lastIndexOf('_') + 1)
+                  ? oldCoverUrl.substring(oldCoverUrl.lastIndexOf('-') + 1)
                   : 'Завантажити обкладинку'}
               </label>
               <input

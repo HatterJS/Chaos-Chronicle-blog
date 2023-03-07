@@ -41,6 +41,7 @@ function Home() {
                     tags={item.tags}
                     views={item.viewsCount}
                     authorName={item.author.fullName}
+                    avatarUrl={item.author.avatarUrl}
                   />
                 </Link>
               ))

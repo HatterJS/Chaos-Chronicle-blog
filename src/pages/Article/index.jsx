@@ -58,7 +58,7 @@ function Article() {
       <div className="article__content">
         <div className="article__author">
           <div className="article__authorLine"></div>
-          <AuthorSign authorName={article.author.fullName} />
+          <AuthorSign authorName={article.author.fullName} avatarUrl={article.author.avatarUrl} />
           <div className="article__authorLine"></div>
         </div>
         <div className="article__header">
@@ -68,7 +68,7 @@ function Article() {
           </div>
           <div
             className="article__toolsBlock"
-            style={isOwner() ? { display: 'block' } : { display: 'none' }}>
+            style={isOwner() ? { display: 'flex' } : { display: 'none' }}>
             <Link to={`/editarticle/${id}`}>
               <button>{penSVG}</button>
             </Link>

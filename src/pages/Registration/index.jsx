@@ -1,23 +1,30 @@
 import React from 'react';
+import axios from '../../axios.js';
 import { Link, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import './index.css';
 
 import { fetchRegistrationData, isAuthCheck } from '../../redux/slices/authorization';
-import { closeSVG, userNotAvatarSVG } from '../../components/SvgSprite';
+import { closeSVG, deleteSVG } from '../../components/SvgSprite';
 
 function Registration() {
+  //ref for avatar input
+  const inputAvatar = React.useRef();
+  //default avatar url
+  const defaultAvatarUrl = 'http://localhost:3000/img/avatars/defaultAvatar.png';
   //create dispatch for redux
   const dispatch = useDispatch();
   //check is authorized from redux
   const isAuthorized = useSelector(isAuthCheck);
+  const [currentAvatarUrl, setCurrentAvatarUrl] = React.useState('');
   //create state for user data
   const [registrationData, setRegistrationData] = React.useState({
     fullName: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    avatarUrl: defaultAvatarUrl
   });
   //send registration data and get user data from backend
   async function sendRegistrationData() {
@@ -28,7 +35,8 @@ function Registration() {
         fullName: '',
         email: '',
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
+        avatarUrl: defaultAvatarUrl
       });
     } else {
       alert(data.error.message);
@@ -57,7 +65,38 @@ function Registration() {
     }
     return 'Реєстрація';
   }
-
+  //upload avatar to server
+  async function uploadAvatar(file) {
+    if (file.size > 100000) {
+      alert('Розмір файлу перевищує 100кБ');
+      return;
+    }
+    try {
+      const formData = new FormData();
+      formData.append('image', file);
+      const { data } = await axios.post(`/upload?dir=users`, formData);
+      currentAvatarUrl &&
+        (await axios.delete(
+          `delete/${currentAvatarUrl.slice(currentAvatarUrl.lastIndexOf('/') + 1)}?dir=users`
+        ));
+      setRegistrationData((prev) => ({ ...prev, avatarUrl: 'http://localhost:9999' + data.url }));
+      setCurrentAvatarUrl(data.url);
+    } catch (err) {
+      alert('Не вдалось завантажити аватар');
+    }
+  }
+  //delete avatar from server
+  function deleteAvatar() {
+    axios.delete(
+      `delete/${currentAvatarUrl.slice(currentAvatarUrl.lastIndexOf('/') + 1)}?dir=users`
+    );
+  }
+  //clear avatar
+  function clearAvatar() {
+    currentAvatarUrl && deleteAvatar();
+    inputAvatar.current.value = '';
+    setRegistrationData((prev) => ({ ...prev, avatarUrl: defaultAvatarUrl }));
+  }
   //if authorizet redirect to home page
   if (isAuthorized) {
     return <Navigate to={'/'} />;
@@ -73,7 +112,24 @@ function Registration() {
         <Link to={'/'} className="registration__close">
           {closeSVG}
         </Link>
-        <div className="registration__avatar">{userNotAvatarSVG}</div>
+        <div className="registration__avatar">
+          <label htmlFor="avatar">
+            <img src={registrationData.avatarUrl} alt="avatar" />
+          </label>
+          <input
+            ref={inputAvatar}
+            type="file"
+            name="avatar"
+            id="avatar"
+            accept="image/*"
+            onChange={(event) => {
+              uploadAvatar(event.target.files[0]);
+            }}
+          />
+          {registrationData.avatarUrl !== defaultAvatarUrl && (
+            <button onClick={clearAvatar}>{deleteSVG}</button>
+          )}
+        </div>
         <div className="registration__inputField">
           <input
             type="text"

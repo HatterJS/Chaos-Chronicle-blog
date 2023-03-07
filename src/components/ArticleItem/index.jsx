@@ -5,7 +5,7 @@ import './index.css';
 import { viewsSVG } from '../SvgSprite';
 import { formingDate } from '../../formingDate';
 
-function ArticleItem({ title, fullDate, imageUrl, text, tags, views, authorName }) {
+function ArticleItem({ title, fullDate, imageUrl, text, tags, views, authorName, avatarUrl }) {
   return (
     <div className="articleItem">
       <div className="articleItem__image">
@@ -17,7 +17,7 @@ function ArticleItem({ title, fullDate, imageUrl, text, tags, views, authorName 
       </div>
       <div className="articleItem__description">
         <p dangerouslySetInnerHTML={{ __html: text }}></p>
-        <AuthorSign authorName={authorName} />
+        <AuthorSign authorName={authorName} avatarUrl={avatarUrl} />
         <div className="articleItem__tags">
           {tags.map((tag, index) => (
             <p key={index + tag + title}>#{tag}</p>

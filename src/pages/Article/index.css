@@ -86,8 +86,10 @@
 .article__body > p, .article__body h2, .article__body h3 {
   text-align: justify;
   text-indent: 3em;
-  margin-bottom: 10px;
-  line-break: anywhere;
+  margin-bottom: 0px;
+}
+.article__body .ql-size-small {
+  font-size: 0.9em;
 }
 .article__body li {
   text-align: justify;

@@ -3,6 +3,9 @@ import mongoose from 'mongoose';
 import multer from 'multer';
 import cors from 'cors';
 
+import fs from 'fs';
+import path from 'path';
+
 import { registration, authorization, authVerification } from './controllers/UserController.js';
 import {
   getAllArticles,
@@ -36,17 +39,18 @@ app.use(cors());
 
 //storage setting for images
 const storage = multer.diskStorage({
-  destination: (_, __, cb) => {
-    cb(null, 'server/uploads');
+  destination: (req, __, cb) => {
+    cb(null, `server/uploads/${req.query.dir}/`);
   },
-  filename: (req, file, cb) => {
-    const { id } = req.query;
-    const fileName = `${id}_${file.originalname}`;
-    cb(null, fileName);
+  filename: (__, file, cb) => {
+    const originalName = file.originalname;
+    const extention = originalName.split('.').pop();
+    const unicName = `${Date.now()}-${originalName.split('.')[0]}.${extention}`;
+    cb(null, unicName);
   }
 });
 const upload = multer({ storage });
-app.use('/uploads', express.static('server/uploads'));
+app.use('/uploads', express.static('server/uploads/'));
 
 //registration
 app.post(
@@ -66,9 +70,30 @@ app.post(
 app.get('/authorization/verification', checkAuthorization, authVerification);
 
 //upload image
-app.post('/upload', checkAuthorization, upload.single('image'), (req, res) => {
-  res.json({
-    url: `/uploads/${req.file.filename}`
+app.post(
+  '/upload',
+  // checkAuthorization,
+  upload.single('image'),
+  (req, res) => {
+    res.json({
+      url: `/uploads/${req.query.dir}/${req.file.filename}`
+    });
+  }
+);
+//delete image
+app.delete('/delete/:filename', (req, res) => {
+  const filePath = path.join('server', `/uploads/${req.query.dir}/${req.params.filename}`);
+  fs.unlink(filePath, (err) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({
+        error: 'Error deleting file'
+      });
+    } else {
+      res.json({
+        message: 'File deleted successfully'
+      });
+    }
   });
 });
 

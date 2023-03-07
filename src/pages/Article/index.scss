@@ -71,8 +71,11 @@
     & > p, h2, h3 {
         text-align: justify;
         text-indent: 3em;
-        margin-bottom: 10px;
-        line-break: anywhere;
+        margin-bottom: 0px;
+        // line-break: anywhere;
+    }
+    .ql-size-small {
+        font-size: 0.9em;
     }
     li {
         text-align: justify;
