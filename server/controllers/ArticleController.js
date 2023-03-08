@@ -2,8 +2,12 @@ import { validationResult } from 'express-validator';
 import ArticleModel from '../models/Articles.js';
 
 export const getAllArticles = async (req, res) => {
+  const sortingType = req.query.sort;
   try {
-    const allArticles = await ArticleModel.find().populate('author').exec();
+    const allArticles = await ArticleModel.find()
+      .populate('author')
+      .sort({ [sortingType]: -1 })
+      .exec();
     res.json(allArticles);
   } catch (err) {
     res.status(500).json({ message: 'Не вдалось знайти статті' });

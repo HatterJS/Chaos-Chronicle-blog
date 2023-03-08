@@ -24,7 +24,7 @@ nav .nav__menu {
   margin-right: 10px;
   cursor: pointer;
 }
-nav .nav__menu li {
+nav .nav__menu a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -35,7 +35,7 @@ nav .nav__menu li {
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
-nav .nav__menu li:hover {
+nav .nav__menu a:hover {
   -webkit-filter: contrast(3);
           filter: contrast(3);
 }

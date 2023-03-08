@@ -80,6 +80,8 @@ function Article() {
             <img src={article.imageUrl} alt="article-img" />
           </div>
           <ReactMarkdown rehypePlugins={[rehypeRaw]} children={article.text} />
+        </div>
+        <div className="article__footer">
           <div className="article__tags">
             {article.tags.map((tag, index) => (
               <a href="/" key={index + tag}>

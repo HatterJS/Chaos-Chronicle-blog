@@ -2,8 +2,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from '../../axios.js';
 
 //async request to the backend to getting all articles
-export const fetchArticles = createAsyncThunk('articles/fetchArticles', async () => {
-  const { data } = await axios.get('/articles');
+export const fetchArticles = createAsyncThunk('articles/fetchArticles', async (params) => {
+  const { data } = await axios.get(`/articles?sort=${params ? params.sort : 'createdAt'}`);
   return data;
 });
 //async request to the backend to getting popular tags

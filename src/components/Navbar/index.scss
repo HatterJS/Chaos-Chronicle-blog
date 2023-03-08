@@ -25,13 +25,13 @@ nav {
         gap: 30px;
         margin-right: 10px;
         cursor: pointer;
-        li {
+        a {
             display: flex;
             align-items: center;
             white-space: nowrap;
             transition: all 0.2s ease-in-out;
         }
-        li:hover {
+        a:hover {
             filter: contrast(3);
         }
         svg {

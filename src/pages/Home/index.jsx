@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import ArticleItem from '../../components/ArticleItem';
@@ -11,15 +11,19 @@ import { fetchArticles, fetchTags } from '../../redux/slices/articles';
 import './index.css';
 
 function Home() {
+  //useParams to get sort type
+  const params = useParams();
   //create dispatch for redux
   const dispatch = useDispatch();
   //get articles and tags from redux
   const { articles, tags } = useSelector((state) => state.articles);
   //async request to the backend to getting all articles (redux articlesSlice)
   React.useEffect(() => {
-    dispatch(fetchArticles());
+    const { searchType } = params;
+    const sort = searchType === 'viewsCount' ? searchType : 'createdAt';
+    dispatch(fetchArticles({ sort }));
     dispatch(fetchTags());
-  }, [dispatch]);
+  }, [dispatch, params]);
 
   return (
     <div className="home">
