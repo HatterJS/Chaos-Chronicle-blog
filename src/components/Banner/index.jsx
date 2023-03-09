@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 
 import './index.css';
 
 function Banner() {
-  const parallaxRef = useRef(null);
-  const firstRef = useRef(null);
-  const secondRef = useRef(null);
-  const thirdRef = useRef(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [coords, setCoords] = useState({ x: 0, y: 0 });
+  const parallaxRef = React.useRef(null);
+  const firstRef = React.useRef(null);
+  const secondRef = React.useRef(null);
+  const thirdRef = React.useRef(null);
+  const [position, setPosition] = React.useState({ x: 0, y: 0 });
+  const [coords, setCoords] = React.useState({ x: 0, y: 0 });
 
   const forFirst = 40;
   const forSecond = 20;
@@ -16,7 +16,7 @@ function Banner() {
 
   const speed = 0.05;
 
-  useEffect(() => {
+  React.useEffect(() => {
     const setMouseParallaxStyle = () => {
       const distX = coords.x - position.x;
       const distY = coords.y - position.y;
@@ -34,7 +34,7 @@ function Banner() {
     };
   }, [coords, position.x, position.y, speed]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!firstRef.current || !secondRef.current || !thirdRef.current) {
       return;
     }

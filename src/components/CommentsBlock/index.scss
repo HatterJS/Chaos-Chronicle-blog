@@ -1,0 +1,44 @@
+.commentsBlock {
+    .commentsBlock__title {
+        display: flex;
+        align-items: center;
+        div {
+            border-top: 1px dashed rgb(180, 180, 180);
+            flex: 1 1 auto;
+            margin: 0 10px;
+        }
+    }
+    .commentsBlock__body {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    .commentItem:nth-child(even) {
+        align-self: flex-end;
+    }
+    .commentsBlock__input {
+        display: flex;
+        align-items: flex-end;
+        gap: 10px;
+        textarea {
+            padding: 10px;
+            resize: none;
+            border-radius: 15px;
+            height: 20px;
+            flex: 1 1 auto;
+            font-size: 1em;
+        }
+        button {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            svg {
+                fill: gray;
+            }
+            &:hover svg {
+                fill: rgb(90, 90, 90);
+            }
+        }
+    }
+}

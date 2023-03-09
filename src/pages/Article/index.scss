@@ -114,20 +114,3 @@
         }
     }
 }
-.article__comments {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    .article__commentsTitle {
-        display: flex;
-        align-items: center;
-        div {
-            border-top: 1px dashed rgb(180, 180, 180);
-            flex: 1 1 auto;
-            margin: 0 10px;
-        }
-    }
-    .commentItem:nth-child(odd) {
-        align-self: flex-end;
-    }
-}

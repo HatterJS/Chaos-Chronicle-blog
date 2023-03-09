@@ -15,6 +15,7 @@ import {
   patchArticle,
   getPopularTags
 } from './controllers/ArticleController.js';
+import { getComments, likeComment, postComment } from './controllers/CommentController.js';
 
 import {
   registrationValidation,
@@ -52,23 +53,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 app.use('/uploads', express.static('server/uploads/'));
 
-//registration
-app.post(
-  '/authorization/registration',
-  registrationValidation,
-  handleValidationErrors,
-  registration
-);
-//authorization
-app.post(
-  '/authorization/authorization',
-  authorizationValidation,
-  handleValidationErrors,
-  authorization
-);
-//authorization verefication by token
-app.get('/authorization/verification', checkAuthorization, authVerification);
-
 //upload image
 app.post(
   '/upload',
@@ -97,6 +81,23 @@ app.delete('/delete/:filename', (req, res) => {
   });
 });
 
+//registration
+app.post(
+  '/authorization/registration',
+  registrationValidation,
+  handleValidationErrors,
+  registration
+);
+//authorization
+app.post(
+  '/authorization/authorization',
+  authorizationValidation,
+  handleValidationErrors,
+  authorization
+);
+//authorization by token
+app.get('/authorization/verification', checkAuthorization, authVerification);
+
 //get all articles
 app.get('/articles', getAllArticles);
 //get an article
@@ -113,8 +114,16 @@ app.patch(
   handleValidationErrors,
   patchArticle
 );
+
 //get popular tags
 app.get('/tags', getPopularTags);
+
+//get comments
+app.get('/comments/:id', checkAuthorization, getComments);
+//post comment
+app.post('/comment', checkAuthorization, postComment);
+//like comment
+app.post('/likecomment/:id', checkAuthorization, likeComment);
 
 //server port
 app.listen(9999, (err) => {

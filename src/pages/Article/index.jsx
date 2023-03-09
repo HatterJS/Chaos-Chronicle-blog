@@ -6,7 +6,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import AuthorSign from '../../components/AuthorSign';
-import CommentItem from '../../components/CommentItem';
+import CommentsBlock from '../../components/CommentsBlock';
 
 import './index.css';
 
@@ -95,17 +95,7 @@ function Article() {
           </div>
         </div>
       </div>
-      <div className="article__comments">
-        <div className="article__commentsTitle">
-          <h4>Коментарі:</h4>
-          <div></div>
-        </div>
-        <CommentItem />
-        <CommentItem />
-        <CommentItem />
-        <CommentItem />
-        <CommentItem />
-      </div>
+      <CommentsBlock />
     </article>
   );
 }

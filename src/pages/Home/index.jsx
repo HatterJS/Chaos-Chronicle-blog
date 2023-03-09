@@ -18,7 +18,7 @@ function Home() {
   const { articles, tags } = useSelector((state) => state.articles);
   //articles sort
   const [sort, setSort] = React.useState('createdAt');
-  //search value
+  //search by title and tags
   const [search, setSearch] = React.useState('');
   //async request to the backend to getting all articles (redux articlesSlice)
   React.useEffect(() => {
