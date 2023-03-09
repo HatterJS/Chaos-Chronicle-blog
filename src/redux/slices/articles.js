@@ -3,7 +3,7 @@ import axios from '../../axios.js';
 
 //async request to the backend to getting all articles
 export const fetchArticles = createAsyncThunk('articles/fetchArticles', async (params) => {
-  const { data } = await axios.get(`/articles?sort=${params ? params.sort : 'createdAt'}`);
+  const { data } = await axios.get(`/articles`, { params });
   return data;
 });
 //async request to the backend to getting popular tags
@@ -56,7 +56,5 @@ const articlesSlice = createSlice({
     }
   }
 });
-
-// export const { createArticle } = articlesSlice.actions;
 
 export default articlesSlice.reducer;

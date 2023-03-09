@@ -19,25 +19,25 @@ nav {
         rgba(255, 250, 178, 0.3), 
         rgba(0, 0, 0, 0)
     );
-    margin: 20px 0;
     .nav__menu {
-        display: flex;
-        gap: 30px;
-        margin-right: 10px;
-        cursor: pointer;
-        a {
+        ul {
             display: flex;
-            align-items: center;
-            white-space: nowrap;
-            transition: all 0.2s ease-in-out;
-        }
-        a:hover {
-            filter: contrast(3);
-        }
-        svg {
-            fill: rgb(100, 100, 100);
-            padding-right: 5px;
-        }
+            gap: 30px;
+            margin-right: 10px;
+            li {
+                display: flex;
+                align-items: center;
+                white-space: nowrap;
+                transition: all 0.2s ease-in-out;
+                cursor: pointer;
+            }
+            li:hover {
+                filter: contrast(3);
+            }
+            svg {
+                fill: rgb(100, 100, 100);
+                padding-right: 5px;
+            }}
     }
     input {
         background: url(../../assets/lens.svg) no-repeat 6px white;
@@ -52,12 +52,24 @@ nav {
         input {
             width: 100%;
         }
+        .nav__menu {
+            ul {
+                gap: 20px;
+                li {
+                    font-size: 0.9em;
+                }
+            }
+        }
     }
 }
 @media (max-width: 500px) {
     nav {
-        a {
-            display: none;
+        .nav__menu {
+            ul {
+                li {
+                    font-size: 0;
+                }
+            }
         }
     }
 }

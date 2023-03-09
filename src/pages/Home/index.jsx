@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
+import Navbar from '../../components/Navbar';
 import ArticleItem from '../../components/ArticleItem';
 import ArticleItemLoader from '../../components/ArticleItemLoader';
 import Sidebar from '../../components/Sidebar';
@@ -11,27 +12,22 @@ import { fetchArticles, fetchTags } from '../../redux/slices/articles';
 import './index.css';
 
 function Home() {
-  //useParams to get sort type
-  const params = useParams();
   //create dispatch for redux
   const dispatch = useDispatch();
   //get articles and tags from redux
   const { articles, tags } = useSelector((state) => state.articles);
+  //articles sort
+  const [sort, setSort] = React.useState('createdAt');
+  //search value
+  const [search, setSearch] = React.useState('');
   //async request to the backend to getting all articles (redux articlesSlice)
   React.useEffect(() => {
-    const { searchType } = params;
-    const sort = searchType === 'viewsCount' ? searchType : 'createdAt';
-    dispatch(fetchArticles({ sort }));
+    dispatch(fetchArticles({ sort, search }));
     dispatch(fetchTags());
-  }, [dispatch, params]);
-
+  }, [dispatch, sort, search]);
   return (
     <div className="home">
-      <div className="home__title">
-        <div></div>
-        <h1>Нові статті</h1>
-        <div></div>
-      </div>
+      <Navbar setSort={setSort} setSearch={setSearch} />
       <div className="home__body">
         <div className="home__articles">
           {articles.status === 'loaded'

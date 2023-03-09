@@ -4,7 +4,6 @@ import { Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header';
 import Banner from './components/Banner';
-import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import AuthorizationForm from './components/AuthorizationForm';
 
@@ -38,10 +37,8 @@ function App() {
       <AuthorizationForm isShowForm={isShowForm} setIsShowForm={setIsShowForm} />
       <Header setIsShowForm={() => setIsShowForm(true)} />
       <Banner />
-      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/:searchType" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/sponsorship" element={<Sponsorship />} />
