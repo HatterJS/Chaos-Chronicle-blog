@@ -17,7 +17,6 @@ export const getAllArticles = async (req, res) => {
       .exec();
     res.json(allArticles);
   } catch (err) {
-    console.log(err);
     res.status(500).json({ message: 'Не вдалось знайти статті' });
   }
 };
@@ -112,7 +111,6 @@ export const patchArticle = async (req, res) => {
     });
     res.json({ _id: articleId, message: 'Статтю оновлено успішно' });
   } catch (err) {
-    console.log(err);
     res.status(500).json({ message: 'Не вдалось оновити статтю' });
   }
 };

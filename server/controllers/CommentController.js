@@ -3,7 +3,6 @@ import CommentModel from '../models/Comments.js';
 export const getComments = async (req, res) => {
   try {
     const articleId = req.params.id;
-    console.log(articleId);
     const comments = await CommentModel.find({ articleId })
       .populate('author')
       .sort({ createdAt: -1 })

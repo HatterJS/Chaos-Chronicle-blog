@@ -123,7 +123,7 @@ app.get('/comments/:id', checkAuthorization, getComments);
 //post comment
 app.post('/comment', checkAuthorization, postComment);
 //like comment
-app.post('/likecomment/:id', checkAuthorization, likeComment);
+app.get('/likecomment/:id', checkAuthorization, likeComment);
 
 //server port
 app.listen(9999, (err) => {
