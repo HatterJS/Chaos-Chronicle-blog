@@ -1,8 +1,22 @@
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+
 import AuthorSign from '../AuthorSign';
+
+import { fetchLastComments } from '../../redux/slices/comments';
+
 import './index.css';
 
 function Sidebar({ tags }) {
+  //dispatch for redux
+  const dispatch = useDispatch();
+  //lsat comments from redux
+  const { lastComments } = useSelector((state) => state.comments);
+
+  React.useEffect(() => {
+    dispatch(fetchLastComments(5));
+  }, [dispatch]);
   return (
     <aside>
       <div className="aside__tagsBlock">
@@ -15,49 +29,19 @@ function Sidebar({ tags }) {
           ))}
         </div>
       </div>
-      <div className="aside__commentsBlock unselectable">
-        <h3>Останні коментарі</h3>
-        <Link to={'/article'}>
-          <div className="aside__commentItem">
-            <AuthorSign />
-            <div className="aside__commentText">
-              Мені дуже сподобався цей блог. Буду продовжувати читати.
-            </div>
-          </div>
-        </Link>
-        <Link to={'/article'}>
-          <div className="aside__commentItem">
-            <AuthorSign />
-            <div className="aside__commentText">
-              Мені дуже сподобався цей блог. Буду продовжувати читати.
-            </div>
-          </div>
-        </Link>
-        <Link to={'/article'}>
-          <div className="aside__commentItem">
-            <AuthorSign />
-            <div className="aside__commentText">
-              Мені дуже сподобався цей блог. Буду продовжувати читати.
-            </div>
-          </div>
-        </Link>
-        <Link to={'/article'}>
-          <div className="aside__commentItem">
-            <AuthorSign />
-            <div className="aside__commentText">
-              Мені дуже сподобався цей блог. Буду продовжувати читати.
-            </div>
-          </div>
-        </Link>
-        <Link to={'/article'}>
-          <div className="aside__commentItem">
-            <AuthorSign />
-            <div className="aside__commentText">
-              Мені дуже сподобався цей блог. Буду продовжувати читати.
-            </div>
-          </div>
-        </Link>
-      </div>
+      {lastComments && (
+        <div className="aside__commentsBlock unselectable">
+          <h3>Останні коментарі</h3>
+          {lastComments.map((item) => (
+            <Link to={`/article/${item.articleId}`} key={item._id}>
+              <div className="aside__commentItem">
+                <AuthorSign author={item.author} />
+                <div className="aside__commentText">{item.text}</div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      )}
     </aside>
   );
 }

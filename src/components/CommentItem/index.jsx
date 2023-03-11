@@ -35,7 +35,7 @@ function CommentItem({ id, text, author, createdAt, usersLiked }) {
   }
   return (
     <div className="commentItem unselectable">
-      <AuthorSign authorName={author.fullName} avatarUrl={author.avatarUrl} />
+      <AuthorSign author={author} />
       <div className="commentItem__block">
         <div className="commentItem__time">{formingDate(createdAt)}</div>
         <p>{text}</p>

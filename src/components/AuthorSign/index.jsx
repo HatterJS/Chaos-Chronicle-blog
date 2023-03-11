@@ -1,6 +1,7 @@
 import './index.css';
 
-function AuthorSign({ authorName, avatarUrl }) {
+function AuthorSign({ author }) {
+  const { fullName, avatarUrl } = author;
   return (
     <div className="authorSign">
       <img
@@ -10,7 +11,7 @@ function AuthorSign({ authorName, avatarUrl }) {
         height={50}
       />
       <div className="authorSign__description">
-        <p>{authorName || 'Анонім'}</p>
+        <p>{fullName || 'Анонім'}</p>
         <p>Адміністратор</p>
       </div>
     </div>

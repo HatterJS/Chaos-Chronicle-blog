@@ -17,9 +17,19 @@ export const fetchAddComment = createAsyncThunk(
     }
   }
 );
+export const fetchLastComments = createAsyncThunk('/comments/fetchLastComments', async (limit) => {
+  try {
+    const { data } = await axios.get(`/lastcomments?limit=${limit}`);
+    return data;
+  } catch (err) {
+    const { message } = err.response.data;
+    throw new Error(message);
+  }
+});
 
 const initialState = {
   comments: [],
+  lastComments: [],
   status: 'loading'
 };
 
@@ -49,6 +59,15 @@ const commentsSlice = createSlice({
     },
     [fetchAddComment.rejected]: (state, action) => {
       alert(action.error.message);
+    },
+    [fetchLastComments.pending]: (state) => {
+      state.lastComments = [];
+    },
+    [fetchLastComments.fulfilled]: (state, action) => {
+      state.lastComments = action.payload;
+    },
+    [fetchLastComments.rejected]: (state, action) => {
+      console.log(action.error.message);
     }
   }
 });

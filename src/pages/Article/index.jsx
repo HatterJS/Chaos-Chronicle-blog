@@ -58,7 +58,7 @@ function Article() {
       <div className="article__content">
         <div className="article__author">
           <div className="article__authorLine"></div>
-          <AuthorSign authorName={article.author.fullName} avatarUrl={article.author.avatarUrl} />
+          <AuthorSign author={article.author} />
           <div className="article__authorLine"></div>
         </div>
         <div className="article__header">
