@@ -16,7 +16,7 @@ function CommentsBlock() {
   //is authorized user
   const isAuthorized = useSelector(isAuthCheck);
   //article comments
-  const { comments, status } = useSelector((state) => state.comments);
+  const { comments } = useSelector((state) => state.comments);
   //get article id
   const { id } = useParams();
   //comment text

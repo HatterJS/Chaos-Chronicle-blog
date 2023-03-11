@@ -18,6 +18,7 @@ import {
 import {
   deleteComment,
   getComments,
+  getLastComments,
   likeComment,
   postComment
 } from './controllers/CommentController.js';
@@ -123,6 +124,8 @@ app.patch(
 //get popular tags
 app.get('/tags', getPopularTags);
 
+//get last comments
+app.get('/lastcomments', getLastComments);
 //get comments
 app.get('/comments/:id', checkAuthorization, getComments);
 //post comment

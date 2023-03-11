@@ -11,7 +11,8 @@ import {
   contactSVG,
   authorizationSVG,
   createArticleSVG,
-  logOutSVG
+  logOutSVG,
+  userSettingSVG
 } from '../SvgSprite';
 
 function Header({ setIsShowForm }) {
@@ -42,13 +43,13 @@ function Header({ setIsShowForm }) {
         <Link to={'/about'}>
           <div className="header__about">
             {infoSVG}
-            <p>Про блог</p>{' '}
+            <p>Про блог</p>
           </div>
         </Link>
         <Link to={'/contacts'}>
           <div className="header__contacts">
             {contactSVG}
-            <p>Контакти</p>{' '}
+            <p>Контакти</p>
           </div>
         </Link>
       </div>
@@ -60,6 +61,9 @@ function Header({ setIsShowForm }) {
           </button>
         ) : (
           <div className="header__authorizedUserButtons">
+            <Link to={'/usersetting'}>
+              <button className="header__userSetting">{userSettingSVG}</button>
+            </Link>
             <Link to={'/addarticle'}>
               <button className="header__createArticle">
                 {createArticleSVG}

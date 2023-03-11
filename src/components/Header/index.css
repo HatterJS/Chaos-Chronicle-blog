@@ -17,6 +17,9 @@ header {
   border-image-slice: 1;
   border-image-source: linear-gradient(to left, rgba(0, 0, 0, 0), rgb(225, 225, 225), rgba(0, 0, 0, 0));
 }
+header p {
+  line-height: 1;
+}
 header .header__logo {
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
@@ -86,7 +89,7 @@ header .header__user .header__authorizedUserButtons {
   gap: 10px;
 }
 
-@media (max-width: 730px) {
+@media (max-width: 780px) {
   header .header__links p {
     display: none;
   }
@@ -102,7 +105,7 @@ header .header__user .header__authorizedUserButtons {
     height: 25px;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 520px) {
   header .header__links {
     gap: 10px;
   }

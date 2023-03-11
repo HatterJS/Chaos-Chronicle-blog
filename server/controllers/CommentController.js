@@ -1,5 +1,19 @@
 import CommentModel from '../models/Comments.js';
 
+export const getLastComments = async (req, res) => {
+  const { limit } = req.query;
+  try {
+    const lastComments = await CommentModel.find()
+      .sort({ createdAt: -1 })
+      .limit(limit)
+      .populate('author')
+      .exec();
+    res.json(lastComments);
+  } catch (err) {
+    res.status(500).json({ message: 'Не вдалось завантажити останні коментарі' });
+  }
+};
+
 export const getComments = async (req, res) => {
   try {
     const articleId = req.params.id;
