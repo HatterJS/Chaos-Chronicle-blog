@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import AuthorSign from '../AuthorSign';
 
 import { fetchLastComments } from '../../redux/slices/comments';
+import { setSearch } from '../../redux/slices/articles';
 
 import './index.css';
 
@@ -23,9 +24,9 @@ function Sidebar({ tags }) {
         <h3>Популярні теги</h3>
         <div className="aside__tags">
           {tags.map((tag) => (
-            <a href="/" key={tag}>
+            <div key={tag} onClick={() => dispatch(setSearch(tag))}>
               #{tag}
-            </a>
+            </div>
           ))}
         </div>
       </div>

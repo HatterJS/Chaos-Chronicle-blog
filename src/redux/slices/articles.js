@@ -20,13 +20,24 @@ const initialState = {
   tags: {
     items: [],
     status: 'loading'
+  },
+  filter: {
+    sort: 'createdAt',
+    search: ''
   }
 };
 
 const articlesSlice = createSlice({
   name: 'articles',
   initialState,
-  reducers: {},
+  reducers: {
+    setSort: (state, action) => {
+      state.filter.sort = action.payload;
+    },
+    setSearch: (state, action) => {
+      state.filter.search = action.payload;
+    }
+  },
   extraReducers: {
     //getting all articles
     [fetchArticles.pending]: (state) => {
@@ -56,5 +67,7 @@ const articlesSlice = createSlice({
     }
   }
 });
+
+export const { setSort, setSearch } = articlesSlice.actions;
 
 export default articlesSlice.reducer;

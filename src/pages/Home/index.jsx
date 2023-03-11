@@ -15,19 +15,20 @@ function Home() {
   //create dispatch for redux
   const dispatch = useDispatch();
   //get articles and tags from redux
-  const { articles, tags } = useSelector((state) => state.articles);
-  //articles sort
-  const [sort, setSort] = React.useState('createdAt');
-  //search by title and tags
-  const [search, setSearch] = React.useState('');
+  const { articles, tags, filter } = useSelector((state) => state.articles);
   //async request to the backend to getting all articles (redux articlesSlice)
   React.useEffect(() => {
-    dispatch(fetchArticles({ sort, search }));
+    dispatch(fetchArticles({ sort: filter.sort, search: filter.search }));
     dispatch(fetchTags());
-  }, [dispatch, sort, search]);
+  }, [dispatch, filter]);
   return (
     <div className="home">
-      <Navbar setSort={setSort} setSearch={setSearch} />
+      <Navbar />
+      <div className="home__title">
+        <div></div>
+        {filter.search ? <h3>Пошук: {filter.search}</h3> : <h1>DEFENCE OF UKRAINE</h1>}
+        <div></div>
+      </div>
       <div className="home__body">
         <div className="home__articles">
           {articles.status === 'loaded'

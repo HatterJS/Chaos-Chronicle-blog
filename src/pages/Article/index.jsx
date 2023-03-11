@@ -3,10 +3,11 @@ import axios from '../../axios';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import AuthorSign from '../../components/AuthorSign';
 import CommentsBlock from '../../components/CommentsBlock';
+import { setSearch } from '../../redux/slices/articles';
 
 import './index.css';
 
@@ -14,6 +15,8 @@ import { deleteSVG, penSVG, viewsSVG } from '../../components/SvgSprite';
 import { formingDate } from '../../formingDate';
 
 function Article() {
+  //dispatch for redux
+  const dispatch = useDispatch();
   //get authorized user data from redux to determine the rights to correct and delete the article
   const { userData } = useSelector((state) => state.authorization);
   //get params from URL bar
@@ -24,6 +27,19 @@ function Article() {
   const [article, setArticle] = React.useState({});
   //is loading an article state
   const [isLoading, setIsLoading] = React.useState(true);
+  //set search value and navigate to home page
+  function onClickTag(tag) {
+    dispatch(setSearch(tag));
+    navigate('/');
+  }
+  //checking that the user is the owner of the article
+  async function deleteArticle() {
+    if (window.confirm('Ви пеерконані, що бажаєте видалити статтю?')) {
+      await axios.delete(`/article/${id}`);
+      alert('Статтю видалено успішно.');
+      navigate('/');
+    }
+  }
   //get article from backend
   React.useEffect(() => {
     axios
@@ -37,14 +53,7 @@ function Article() {
         alert('Нажаль, виникла помилка під час завантаження статті');
       });
   }, [id]);
-  //checking that the user is the owner of the article
-  async function deleteArticle() {
-    if (window.confirm('Ви пеерконані, що бажаєте видалити статтю?')) {
-      await axios.delete(`/article/${id}`);
-      alert('Статтю видалено успішно.');
-      navigate('/');
-    }
-  }
+
   function isOwner() {
     if (userData) {
       return article.author._id === userData._id;
@@ -84,9 +93,9 @@ function Article() {
         <div className="article__footer">
           <div className="article__tags">
             {article.tags.map((tag, index) => (
-              <a href="/" key={index + tag}>
+              <div key={index + tag} onClick={() => onClickTag(tag)}>
                 #{tag}
-              </a>
+              </div>
             ))}
           </div>
           <div className="article__views unselectable">

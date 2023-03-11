@@ -96,9 +96,11 @@
     align-items: center;
     margin: 20px 0;
     .article__tags {
-        a {
+        div {
+            display: inline-block;
             color: rgb(65, 120, 245);
             margin-right: 10px;
+            cursor: pointer;
         }
     }
     .article__views {

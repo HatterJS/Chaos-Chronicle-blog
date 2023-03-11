@@ -1,3 +1,16 @@
+.home__title {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    h3 {
+        color: rgb(30, 140, 220);
+    }
+    div {
+        border-top: 1px dashed gray;
+        margin: 0 20px;
+        flex: 1 1 auto;
+    }
+}
 .home__body {
     display: flex;
     position: relative;

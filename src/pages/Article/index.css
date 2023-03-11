@@ -117,9 +117,11 @@
           align-items: center;
   margin: 20px 0;
 }
-.article__footer .article__tags a {
+.article__footer .article__tags div {
+  display: inline-block;
   color: rgb(65, 120, 245);
   margin-right: 10px;
+  cursor: pointer;
 }
 .article__footer .article__views {
   display: -webkit-box;

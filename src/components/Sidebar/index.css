@@ -38,10 +38,11 @@ aside h3 {
   padding: 10px;
   min-height: 40px;
 }
-.aside__tagsBlock .aside__tags a, .aside__commentsBlock .aside__tags a {
+.aside__tagsBlock .aside__tags div, .aside__commentsBlock .aside__tags div {
   margin-right: 10px;
+  cursor: pointer;
 }
-.aside__tagsBlock .aside__tags a:hover, .aside__commentsBlock .aside__tags a:hover {
+.aside__tagsBlock .aside__tags div:hover, .aside__commentsBlock .aside__tags div:hover {
   text-decoration: underline;
 }
 .aside__tagsBlock .aside__commentItem, .aside__commentsBlock .aside__commentItem {

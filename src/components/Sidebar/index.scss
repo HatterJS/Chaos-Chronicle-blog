@@ -24,10 +24,11 @@ aside {
         flex-wrap: wrap;
         padding: 10px;
         min-height: 40px;
-        a {
+        div {
             margin-right: 10px;
+            cursor: pointer;
         }
-        a:hover {
+        div:hover {
             text-decoration: underline;
         }
     }
