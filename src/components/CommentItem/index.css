@@ -1,4 +1,5 @@
 .commentItem {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9,6 +10,10 @@
   padding: 10px;
   width: 80%;
   gap: 10px;
+  -webkit-animation: apear 1s ease-in-out;
+          animation: apear 1s ease-in-out;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 .commentItem .commentItem__block {
   display: -webkit-box;
@@ -32,20 +37,56 @@
 .commentItem .commentItem__block p {
   margin: 10px 0;
 }
-.commentItem .commentItem__likes {
+.commentItem .commentItem__likes, .commentItem .commentItem__delete {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  gap: 5px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  cursor: pointer;
+}
+.commentItem .commentItem__likes svg, .commentItem .commentItem__delete svg {
   fill: gray;
+  width: 20px;
+  height: 20px;
+}
+.commentItem .commentItem__delete {
+  position: absolute;
+  bottom: 10px;
+  right: -30px;
+}
+.commentItem .commentItem__delete:hover svg {
+  fill: rgb(187, 92, 37);
+}
+.commentItem .commentItem__likes {
+  gap: 5px;
   color: gray;
 }
-.commentItem .commentItem__likes svg {
-  cursor: pointer;
+
+@-webkit-keyframes apear {
+  0% {
+    background-color: rgb(238, 255, 224);
+    opacity: 0;
+  }
+  100% {
+    background-color: white;
+    opacity: 100%;
+  }
+}
+
+@keyframes apear {
+  0% {
+    background-color: rgb(238, 255, 224);
+    opacity: 0;
+  }
+  100% {
+    background-color: white;
+    opacity: 100%;
+  }
 }

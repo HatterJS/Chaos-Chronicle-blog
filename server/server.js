@@ -15,7 +15,12 @@ import {
   patchArticle,
   getPopularTags
 } from './controllers/ArticleController.js';
-import { getComments, likeComment, postComment } from './controllers/CommentController.js';
+import {
+  deleteComment,
+  getComments,
+  likeComment,
+  postComment
+} from './controllers/CommentController.js';
 
 import {
   registrationValidation,
@@ -124,6 +129,8 @@ app.get('/comments/:id', checkAuthorization, getComments);
 app.post('/comment', checkAuthorization, postComment);
 //like comment
 app.get('/likecomment/:id', checkAuthorization, likeComment);
+//delete comment
+app.delete('/comment/:id', checkAuthorization, deleteComment);
 
 //server port
 app.listen(9999, (err) => {

@@ -13,6 +13,12 @@
           flex: 1 1 auto;
   margin: 0 10px;
 }
+.commentsBlock .commentsBlock__notAuth {
+  text-align: center;
+  line-height: 2;
+  color: rgb(218, 87, 0);
+  font-style: italic;
+}
 .commentsBlock .commentsBlock__body {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -27,6 +33,9 @@
 .commentsBlock .commentItem:nth-child(even) {
   -ms-flex-item-align: end;
       align-self: flex-end;
+}
+.commentsBlock .commentItem:nth-child(even) .commentItem__delete {
+  left: -30px;
 }
 .commentsBlock .commentsBlock__input {
   display: -webkit-box;

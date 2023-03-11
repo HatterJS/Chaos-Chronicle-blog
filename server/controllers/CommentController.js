@@ -16,15 +16,42 @@ export const getComments = async (req, res) => {
 export const postComment = async (req, res) => {
   try {
     const { articleId, text } = req.body;
+    const allComments = await CommentModel.find({ articleId });
+    const authors = allComments.map((item) => String(item.author));
+    if (authors.includes(req.userId)) {
+      return res.status(403).json({ message: 'Ви вже додавали коментар до цієї статті' });
+    }
     const doc = new CommentModel({
       articleId,
       text,
       author: req.userId
     });
     const comment = await doc.save();
-    res.json(comment);
+    const commentWithAuthor = await CommentModel.findById(comment._id).populate('author').exec();
+    res.json(commentWithAuthor);
   } catch (err) {
     res.status(500).json({ message: 'Не вдалось додати коментар' });
+  }
+};
+
+export const deleteComment = async (req, res) => {
+  try {
+    const commentId = req.params.id;
+    const { author } = await CommentModel.findById(commentId);
+    if (String(author) !== req.userId) {
+      return res.status(403).json({ message: 'Доступ відсутній' });
+    }
+    CommentModel.findByIdAndDelete(commentId, (err, doc) => {
+      if (err) {
+        return res.status(500).json({ message: 'Не вдалось видалити статтю' });
+      }
+      if (!doc) {
+        return res.status(404).json({ message: 'Не вдалось знайти статтю' });
+      }
+      res.json({ message: 'Коментар видалено успішно' });
+    });
+  } catch (err) {
+    res.status(500).json({ message: 'Не вдалось видалити коментар' });
   }
 };
 

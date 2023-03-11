@@ -8,6 +8,12 @@
             margin: 0 10px;
         }
     }
+    .commentsBlock__notAuth {
+        text-align: center;
+        line-height: 2;
+        color: rgb(218, 87, 0);
+        font-style: italic;
+    }
     .commentsBlock__body {
         display: flex;
         flex-direction: column;
@@ -16,6 +22,9 @@
     }
     .commentItem:nth-child(even) {
         align-self: flex-end;
+        .commentItem__delete {
+            left: -30px;
+        }
     }
     .commentsBlock__input {
         display: flex;
