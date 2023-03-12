@@ -85,3 +85,54 @@ export const authVerification = async (req, res) => {
     res.status(500).json('Авторизація пройшла не коректно');
   }
 };
+//change user data
+export const patchUserData = async (req, res) => {
+  console.log(req.body);
+  try {
+    const userId = req.params.id;
+    const { avatarUrl, fullName, email, password, currentPassword } = req.body;
+
+    const user = await UserModel.findById(userId);
+
+    const isValidPassword = await bcrypt.compare(currentPassword, user._doc.passwordHash);
+    if (!isValidPassword) {
+      return res.status(404).json({ message: 'Не вірний пароль' });
+    }
+
+    const salt = await bcrypt.genSalt(10);
+    const passwordHash = await bcrypt.hash(password, salt);
+
+    await UserModel.findOneAndUpdate(userId, {
+      avatarUrl,
+      fullName,
+      email,
+      passwordHash
+    });
+    res.json({ message: 'Дані користувача оновлено успішно' });
+
+    // const doc = new UserModel({
+    //   email: req.body.email,
+    //   passwordHash: hash,
+    //   fullName: req.body.fullName,
+    //   avatarUrl: req.body.avatarUrl
+    // });
+
+    // const user = await doc.save();
+
+    // const token = jwt.sign(
+    //   {
+    //     _id: user._id
+    //   },
+    //   'blog_secret_key',
+    //   {
+    //     expiresIn: '30d'
+    //   }
+    // );
+
+    // const { passwordHash, ...userData } = user._doc;
+
+    // res.json({ ...userData, token });
+  } catch (err) {
+    res.status(500).json({ message: 'Реєстрація пройшла не коректно' });
+  }
+};

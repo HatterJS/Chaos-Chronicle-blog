@@ -6,7 +6,12 @@ import cors from 'cors';
 import fs from 'fs';
 import path from 'path';
 
-import { registration, authorization, authVerification } from './controllers/UserController.js';
+import {
+  registration,
+  authorization,
+  authVerification,
+  patchUserData
+} from './controllers/UserController.js';
 import {
   getAllArticles,
   getArticle,
@@ -103,6 +108,14 @@ app.post(
 );
 //authorization by token
 app.get('/authorization/verification', checkAuthorization, authVerification);
+//change user data
+app.patch(
+  '/authorization/changeData/:id',
+  registrationValidation,
+  handleValidationErrors,
+  checkAuthorization,
+  patchUserData
+);
 
 //get all articles
 app.get('/articles', getAllArticles);
