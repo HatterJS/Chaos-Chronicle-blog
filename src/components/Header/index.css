@@ -29,6 +29,7 @@ header .header__links {
   display: -ms-flexbox;
   display: flex;
   gap: 30px;
+  margin: 0 20px;
 }
 header .header__links div {
   display: -webkit-box;

@@ -61,14 +61,14 @@ function Header({ setIsShowForm }) {
           </button>
         ) : (
           <div className="header__authorizedUserButtons">
-            <Link to={'/usersetting'}>
-              <button className="header__userSetting">{userSettingSVG}</button>
-            </Link>
             <Link to={'/addarticle'}>
               <button className="header__createArticle">
                 {createArticleSVG}
                 <p>Нова стаття</p>
               </button>
+            </Link>
+            <Link to={'/usersettings/settings'}>
+              <button className="header__userSetting">{userSettingSVG}</button>
             </Link>
             <button className="header__logOut" onClick={handleLogOut}>
               {logOutSVG}

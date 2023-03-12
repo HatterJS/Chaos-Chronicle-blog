@@ -33,8 +33,7 @@ function CommentsBlock() {
   return (
     <div className="commentsBlock">
       <div className="commentsBlock__title">
-        <div></div>
-        <h4>Коментарі:</h4>
+        <h3>Коментарі:</h3>
         <div></div>
       </div>
       {!isAuthorized ? (

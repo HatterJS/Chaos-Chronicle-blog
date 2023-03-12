@@ -1,13 +1,10 @@
+import PageTitle from '../../components/PageTitle';
 import './index.css';
 
 function Sponsorship() {
   return (
     <div className="sponsorship">
-      <div className="sponsorship__title">
-        <div></div>
-        <h1>Стати спонсором</h1>
-        <div></div>
-      </div>
+      <PageTitle title="Стати спонсором" />
       <div className="sponsorship__content">
         <p>
           Шановні користувачі та читачі блогу <strong>"Defense of Ukraine"!</strong>

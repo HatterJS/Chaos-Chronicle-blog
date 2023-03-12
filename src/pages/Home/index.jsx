@@ -6,6 +6,7 @@ import Navbar from '../../components/Navbar';
 import ArticleItem from '../../components/ArticleItem';
 import ArticleItemLoader from '../../components/ArticleItemLoader';
 import Sidebar from '../../components/Sidebar';
+import PageTitle from '../../components/PageTitle';
 
 import { fetchArticles, fetchTags } from '../../redux/slices/articles';
 
@@ -24,11 +25,7 @@ function Home() {
   return (
     <div className="home">
       <Navbar />
-      <div className="home__title">
-        <div></div>
-        {filter.search ? <h3>Пошук: {filter.search}</h3> : <h1>DEFENCE OF UKRAINE</h1>}
-        <div></div>
-      </div>
+      <PageTitle title={filter.search ? `Пошук: ${filter.search}` : 'DEFENCE OF UKRAINE'} />
       <div className="home__body">
         <div className="home__articles">
           {articles.status === 'loaded'

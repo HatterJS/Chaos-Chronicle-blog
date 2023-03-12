@@ -1,13 +1,10 @@
+import PageTitle from '../../components/PageTitle';
 import './index.css';
 
 function Privacy() {
   return (
     <div className="privacy">
-      <div className="privacy__title">
-        <div></div>
-        <h1>Політика конфіденційності</h1>
-        <div></div>
-      </div>
+      <PageTitle title="Політика конфіденційності" />
       <div className="privacy__content">
         <h3>Політика конфіденційності</h3>
         <p>

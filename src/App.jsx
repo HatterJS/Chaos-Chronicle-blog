@@ -16,6 +16,7 @@ import Privacy from './pages/Privacy';
 import Article from './pages/Article';
 import AddArticle from './pages/AddArticle';
 import NotFound from './pages/NonFound';
+import UserSettings from './pages/UserSettings';
 
 import './App.css';
 
@@ -37,18 +38,21 @@ function App() {
       <AuthorizationForm isShowForm={isShowForm} setIsShowForm={setIsShowForm} />
       <Header setIsShowForm={() => setIsShowForm(true)} />
       <Banner />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contacts" element={<Contacts />} />
-        <Route path="/sponsorship" element={<Sponsorship />} />
-        <Route path="/privacypolicy" element={<Privacy />} />
-        <Route path="/article/:id" element={<Article />} />
-        <Route path="/registration" element={<Registration />} />
-        <Route path="/addarticle" element={<AddArticle />} />
-        <Route path="/editarticle/:id" element={<AddArticle />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <body>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contacts" element={<Contacts />} />
+          <Route path="/sponsorship" element={<Sponsorship />} />
+          <Route path="/privacypolicy" element={<Privacy />} />
+          <Route path="/article/:id" element={<Article />} />
+          <Route path="/registration" element={<Registration />} />
+          <Route path="/addarticle" element={<AddArticle />} />
+          <Route path="/editarticle/:id" element={<AddArticle />} />
+          <Route path="/usersettings/*" element={<UserSettings />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </body>
       <Footer />
       <div className="arrow__top">
         <a href="#top">{arrowTop}</a>

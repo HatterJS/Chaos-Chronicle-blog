@@ -1,54 +1,42 @@
 import React from 'react';
-import axios from '../../axios.js';
-import { Link, Navigate } from 'react-router-dom';
+import axios from '../../../axios.js';
 import { useDispatch, useSelector } from 'react-redux';
 
-import PageTitle from '../../components/PageTitle/index.jsx';
-
 import './index.css';
+import { deleteSVG } from '../../../components/SvgSprite';
+import { logOut } from '../../../redux/slices/authorization.js';
 
-import { fetchRegistrationData, isAuthCheck } from '../../redux/slices/authorization';
-import { closeSVG, deleteSVG } from '../../components/SvgSprite';
-
-function Registration() {
+function Settings() {
+  // create dispatch for redux
+  const dispatch = useDispatch();
+  //user data from redux
+  const { fullName, email, avatarUrl } = useSelector((state) => state.authorization.userData);
   //ref for avatar input
   const inputAvatar = React.useRef();
   //default avatar url
   const defaultAvatarUrl = 'http://localhost:3000/img/avatars/defaultAvatar.png';
-  //create dispatch for redux
-  const dispatch = useDispatch();
-  //check is authorized from redux
-  const isAuthorized = useSelector(isAuthCheck);
+  //current avatar URL
   const [currentAvatarUrl, setCurrentAvatarUrl] = React.useState('');
-  //create state for user data
+  //state for user data
   const [registrationData, setRegistrationData] = React.useState({
-    fullName: '',
-    email: '',
+    avatarUrl,
+    fullName,
+    email,
     password: '',
     confirmPassword: '',
-    avatarUrl: defaultAvatarUrl
+    currentPassword: ''
   });
   //send registration data and get user data from backend
-  async function sendRegistrationData() {
-    const data = await dispatch(fetchRegistrationData(registrationData));
-    if (data.payload) {
-      localStorage.setItem('token', data.payload.token);
-      setRegistrationData({
-        fullName: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-        avatarUrl: defaultAvatarUrl
+  async function sendUserData() {
+    try {
+      const { data } = await axios.patch(`/authorization/changeData/63e4f7cac81ed15dafb39b96`, {
+        ...registrationData,
+        password: registrationData.password || registrationData.currentPassword
       });
-    } else {
-      alert(data.error.message);
-    }
-  }
-  //catch Enter on last input field
-  function handleLastInputKey(event) {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      sendRegistrationData();
+      alert(data.message);
+      dispatch(logOut());
+    } catch (err) {
+      alert(err.response.data.message);
     }
   }
   //check user data
@@ -60,12 +48,16 @@ function Registration() {
       return 'Перевірте email';
     }
     if (
-      registrationData.password.length < 6 ||
-      registrationData.password !== registrationData.confirmPassword
+      registrationData.password &&
+      (registrationData.password.length < 6 ||
+        registrationData.password !== registrationData.confirmPassword)
     ) {
       return 'Перевірте пароль';
     }
-    return 'Реєстрація';
+    if (!registrationData.currentPassword.length) {
+      return 'Вкажіть Ваш пароль';
+    }
+    return 'Підтвердити';
   }
   //upload avatar to server
   async function uploadAvatar(file) {
@@ -99,18 +91,10 @@ function Registration() {
     inputAvatar.current.value = '';
     setRegistrationData((prev) => ({ ...prev, avatarUrl: defaultAvatarUrl }));
   }
-  //if authorizet redirect to home page
-  if (isAuthorized) {
-    return <Navigate to={'/'} />;
-  }
   return (
-    <div className="registration">
-      <PageTitle title="Реєстрація" />
-      <div className="registration__form">
-        <Link to={'/'} className="registration__close">
-          {closeSVG}
-        </Link>
-        <div className="registration__avatar">
+    <div className="settings">
+      <div className="settings__mainData">
+        <div className="settings__avatar">
           <label htmlFor="avatar">
             <img src={registrationData.avatarUrl} alt="avatar" />
           </label>
@@ -128,7 +112,7 @@ function Registration() {
             <button onClick={clearAvatar}>{deleteSVG}</button>
           )}
         </div>
-        <div className="registration__inputField">
+        <div className="settings__inputField">
           <input
             type="text"
             placeholder=" "
@@ -139,7 +123,7 @@ function Registration() {
           />
           <div>Повне ім'я</div>
         </div>
-        <div className="registration__inputField">
+        <div className="settings__inputField">
           <input
             type="email"
             placeholder=" "
@@ -150,7 +134,8 @@ function Registration() {
           />
           <div>E-mail</div>
         </div>
-        <div className="registration__inputField">
+        <h3>Зміна паролю:</h3>
+        <div className="settings__inputField">
           <input
             type="password"
             placeholder=" "
@@ -158,11 +143,10 @@ function Registration() {
             onChange={(event) =>
               setRegistrationData((prev) => ({ ...prev, password: event.target.value }))
             }
-            onKeyUp={handleLastInputKey}
           />
-          <div>Пароль</div>
+          <div>Новий пароль</div>
         </div>
-        <div className="registration__inputField">
+        <div className="settings__inputField">
           <input
             type="password"
             placeholder=" "
@@ -170,21 +154,34 @@ function Registration() {
             onChange={(event) =>
               setRegistrationData((prev) => ({ ...prev, confirmPassword: event.target.value }))
             }
-            onKeyUp={handleLastInputKey}
           />
           <div>Підтвердіть пароль</div>
         </div>
-        <div className="registration__buttons">
-          <button
-            className="acceptButton"
-            onClick={sendRegistrationData}
-            disabled={userDataValidation() !== 'Реєстрація'}>
-            {userDataValidation()}
-          </button>
+      </div>
+      <div className="settings__confirmField">
+        <div className="setting__advice">
+          Будь ласка переконайтесь, що зазначені дані відповідають дійсності.
         </div>
+        <div className="settings__inputField">
+          <input
+            type="password"
+            placeholder=" "
+            value={registrationData.currentPassword}
+            onChange={(event) =>
+              setRegistrationData((prev) => ({ ...prev, currentPassword: event.target.value }))
+            }
+          />
+          <div>Ваш пароль</div>
+        </div>
+        <button
+          className="acceptButton"
+          onClick={sendUserData}
+          disabled={userDataValidation() !== 'Підтвердити'}>
+          {userDataValidation()}
+        </button>
       </div>
     </div>
   );
 }
 
-export default Registration;
+export default Settings;

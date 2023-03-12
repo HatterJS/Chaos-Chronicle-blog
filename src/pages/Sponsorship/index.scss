@@ -1,15 +1,6 @@
 .sponsorship {
     flex: 1 1 auto;
 }
-.sponsorship__title {
-    display: flex;
-    align-items: center;
-    div {
-        border-top: 1px dashed gray;
-        margin: 0 20px;
-        flex: 1 1 auto;
-    }
-}
 .sponsorship__content {
     max-width: 800px;
     margin: 20px auto;

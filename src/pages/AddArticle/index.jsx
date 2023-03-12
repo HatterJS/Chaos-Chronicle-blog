@@ -4,11 +4,12 @@ import axios from '../../axios.js';
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import { isAuthCheck } from '../../redux/slices/authorization';
+import PageTitle from '../../components/PageTitle/index.jsx';
 
 import 'react-quill/dist/quill.snow.css';
 import './index.css';
 
+import { isAuthCheck } from '../../redux/slices/authorization';
 import { closeSVG } from '../../components/SvgSprite.js';
 
 function AddArticle() {
@@ -111,11 +112,7 @@ function AddArticle() {
   }
   return (
     <div className="addArticle">
-      <div className="addArticle__title">
-        <div></div>
-        <h1>{id ? 'Редагування статті' : 'Створити статтю'}</h1>
-        <div></div>
-      </div>
+      <PageTitle title={id ? 'Редагування статті' : 'Створити статтю'} />
       <div className="addArticle__body">
         <div className="addArticle__rules">
           <h3>Поради щодо написання статей:</h3>

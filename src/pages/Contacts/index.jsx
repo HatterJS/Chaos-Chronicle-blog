@@ -1,14 +1,12 @@
+import PageTitle from '../../components/PageTitle';
+
 import './index.css';
 import { faceBookSVG, instagramSVG, telegramSVG } from '../../components/SvgSprite';
 
 function Contacts() {
   return (
     <div className="contacts">
-      <div className="contacts__title">
-        <div></div>
-        <h1>Контакти</h1>
-        <div></div>
-      </div>
+      <PageTitle title="Контакти" />
       <div className="contacts__content">
         Зв'язатись з нами можна будь-яким зручним для вас способом:
         <h2>Телефони:</h2>

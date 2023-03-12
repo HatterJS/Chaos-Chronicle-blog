@@ -1,13 +1,10 @@
+import PageTitle from '../../components/PageTitle';
 import './index.css';
 
 function About() {
   return (
     <div className="about">
-      <div className="about__title">
-        <div></div>
-        <h1>Про блог</h1>
-        <div></div>
-      </div>
+      <PageTitle title="Про блог" />
       <div className="about__content">
         <p>
           Блог <strong>"Defence of Ukraine"</strong> - це платформа, де українці мають можливість

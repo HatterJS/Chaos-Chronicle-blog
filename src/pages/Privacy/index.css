@@ -4,22 +4,6 @@
           flex: 1 1 auto;
 }
 
-.privacy__title {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.privacy__title div {
-  border-top: 1px dashed gray;
-  margin: 0 20px;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
-}
-
 .privacy__content {
   max-width: 800px;
   margin: 20px auto;

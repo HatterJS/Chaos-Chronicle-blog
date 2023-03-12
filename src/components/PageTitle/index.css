@@ -1,0 +1,23 @@
+.pageTitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.pageTitle .pageTitle__leftLine, .pageTitle .pageTitle__rightLine {
+  border-top: 1px dashed gray;
+  margin: 0 20px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  border: 1px 0 0 0 solid;
+  border-image-slice: 1;
+}
+.pageTitle .pageTitle__leftLine {
+  border-image-source: linear-gradient(to left, rgb(200, 200, 200), rgba(0, 0, 0, 0));
+}
+.pageTitle .pageTitle__rightLine {
+  border-image-source: linear-gradient(to right, rgb(200, 200, 200), rgba(0, 0, 0, 0));
+}

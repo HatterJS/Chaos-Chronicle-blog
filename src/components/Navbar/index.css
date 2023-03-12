@@ -14,6 +14,7 @@ nav {
   padding: 5px 0 5px 0;
   background: -webkit-gradient(linear, right top, left top, from(rgba(0, 0, 0, 0)), color-stop(rgba(178, 246, 255, 0.3)), color-stop(rgba(255, 250, 178, 0.3)), to(rgba(0, 0, 0, 0)));
   background: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(178, 246, 255, 0.3), rgba(255, 250, 178, 0.3), rgba(0, 0, 0, 0));
+  margin-bottom: 20px;
 }
 nav .nav__menu ul {
   display: -webkit-box;

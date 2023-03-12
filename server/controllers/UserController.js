@@ -87,7 +87,6 @@ export const authVerification = async (req, res) => {
 };
 //change user data
 export const patchUserData = async (req, res) => {
-  console.log(req.body);
   try {
     const userId = req.params.id;
     const { avatarUrl, fullName, email, password, currentPassword } = req.body;
@@ -109,29 +108,6 @@ export const patchUserData = async (req, res) => {
       passwordHash
     });
     res.json({ message: 'Дані користувача оновлено успішно' });
-
-    // const doc = new UserModel({
-    //   email: req.body.email,
-    //   passwordHash: hash,
-    //   fullName: req.body.fullName,
-    //   avatarUrl: req.body.avatarUrl
-    // });
-
-    // const user = await doc.save();
-
-    // const token = jwt.sign(
-    //   {
-    //     _id: user._id
-    //   },
-    //   'blog_secret_key',
-    //   {
-    //     expiresIn: '30d'
-    //   }
-    // );
-
-    // const { passwordHash, ...userData } = user._doc;
-
-    // res.json({ ...userData, token });
   } catch (err) {
     res.status(500).json({ message: 'Реєстрація пройшла не коректно' });
   }

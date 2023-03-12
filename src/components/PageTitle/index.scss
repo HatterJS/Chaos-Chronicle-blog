@@ -1,0 +1,27 @@
+.pageTitle {
+    display: flex;
+    align-items: center;
+    .pageTitle__leftLine, .pageTitle__rightLine {
+        border-top: 1px dashed gray;
+        margin: 0 20px;
+        flex: 1 1 auto;
+        border: 1px 0 0 0 solid;
+        border-image-slice: 1;
+    }
+    .pageTitle__leftLine {
+        border-image-source:  
+        linear-gradient(
+          to left,
+          rgba(200, 200, 200, 1), 
+          rgba(0, 0, 0, 0)
+        );
+    }
+    .pageTitle__rightLine {
+        border-image-source:  
+        linear-gradient(
+          to right,
+          rgba(200, 200, 200, 1), 
+          rgba(0, 0, 0, 0)
+        );
+    }
+}

@@ -1,15 +1,6 @@
 .addArticle {
     flex: 1 1 auto;
 }
-.addArticle__title {
-    display: flex;
-    align-items: center;
-    div {
-        border-top: 1px dashed gray;
-        margin: 0 20px;
-        flex: 1 1 auto;
-    }
-}
 .addArticle__body {
     display: flex;
     flex-direction: column;

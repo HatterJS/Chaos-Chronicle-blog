@@ -21,11 +21,12 @@
     -webkit-box-flex: 1;
         -ms-flex: 1 1 auto;
             flex: 1 1 auto;
-    height: 100vh;
     margin: 0 auto;
     padding: 0 10px;
     min-width: 350px;
+    width: 100%;
     max-width: 1600px;
+    box-sizing: border-box;
   }
   
   #root {

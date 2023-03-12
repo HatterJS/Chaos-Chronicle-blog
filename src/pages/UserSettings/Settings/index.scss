@@ -1,35 +1,26 @@
-.registration {
+.settings {
+    display: flex;
     flex: 1 1 auto;
+    flex-wrap: wrap;
+    gap: 20px;
 }
-.registration__form {
+.settings__mainData, .settings__confirmField {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 15px;
     border: 1px solid gray;
     border-radius: 20px;
-    box-shadow: 2px 2px 4px gray;
     padding: 20px;
     box-sizing: border-box;
-    width: fit-content;
-    min-width: 300px;
-    margin: 20px auto;
-}
-.registration__close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    svg {
-        fill: rgb(160, 160, 160);
-        cursor: pointer;
-        &:hover {
-            fill: rgb(90, 90, 90);
-        }
+    width: 300px;
+    button {
+        width: 100%;
     }
 }
-.registration__avatar {
+.settings__avatar {
     position: relative;
-    margin: 10px 0;
     label {
         display: block;
         height: 150px;
@@ -76,11 +67,10 @@
         }
     }
 }
-.registration__inputField {
+.settings__inputField {
     position: relative;
     border: 1px solid gray;
     border-radius: 15px;
-    margin-bottom: 15px;
     width: 100%;
     input {
         box-sizing: border-box;
@@ -101,6 +91,9 @@
             color: rgb(120, 120, 120);
             top: 0;
         }
+        &:invalid {
+            border: 2px solid red;
+        }
     }
     div {
         position: absolute;
@@ -115,12 +108,15 @@
         pointer-events: none;
     }
 }
-.registration__buttons {
+.setting__advice {
     display: flex;
-    gap: 10px;
-    width: 100%;
-    margin: 10px 0;
-    button {
-        flex: 1 1 auto;
+    align-items: center;
+    text-align: center;
+    flex: 1 1 auto;
+}
+
+@media (max-width: 580px) {
+    .settings {
+        justify-content: center;
     }
 }
