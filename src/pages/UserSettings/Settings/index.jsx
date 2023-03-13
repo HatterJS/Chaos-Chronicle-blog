@@ -17,6 +17,8 @@ function Settings() {
   const defaultAvatarUrl = 'http://localhost:3000/img/avatars/defaultAvatar.png';
   //current avatar URL
   const [currentAvatarUrl, setCurrentAvatarUrl] = React.useState('');
+  //readOnly status for input password because of autocompleate
+  const [readOnly, setReadOnly] = React.useState(true);
   //state for user data
   const [registrationData, setRegistrationData] = React.useState({
     avatarUrl,
@@ -29,7 +31,7 @@ function Settings() {
   //send registration data and get user data from backend
   async function sendUserData() {
     try {
-      const { data } = await axios.patch(`/authorization/changeData/63e4f7cac81ed15dafb39b96`, {
+      const { data } = await axios.patch(`/authorization/changeData`, {
         ...registrationData,
         password: registrationData.password || registrationData.currentPassword
       });
@@ -91,6 +93,7 @@ function Settings() {
     inputAvatar.current.value = '';
     setRegistrationData((prev) => ({ ...prev, avatarUrl: defaultAvatarUrl }));
   }
+  console.log(readOnly);
   return (
     <div className="settings">
       <div className="settings__mainData">
@@ -138,6 +141,9 @@ function Settings() {
         <div className="settings__inputField">
           <input
             type="password"
+            readOnly={readOnly}
+            onFocus={() => setReadOnly(false)}
+            onBlur={() => setReadOnly(true)}
             placeholder=" "
             value={registrationData.password}
             onChange={(event) =>
@@ -149,6 +155,9 @@ function Settings() {
         <div className="settings__inputField">
           <input
             type="password"
+            readOnly={readOnly}
+            onFocus={() => setReadOnly(false)}
+            onBlur={() => setReadOnly(true)}
             placeholder=" "
             value={registrationData.confirmPassword}
             onChange={(event) =>

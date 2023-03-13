@@ -88,7 +88,7 @@ export const authVerification = async (req, res) => {
 //change user data
 export const patchUserData = async (req, res) => {
   try {
-    const userId = req.params.id;
+    const { userId } = req;
     const { avatarUrl, fullName, email, password, currentPassword } = req.body;
 
     const user = await UserModel.findById(userId);
@@ -101,7 +101,7 @@ export const patchUserData = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const passwordHash = await bcrypt.hash(password, salt);
 
-    await UserModel.findOneAndUpdate(userId, {
+    await UserModel.findByIdAndUpdate(userId, {
       avatarUrl,
       fullName,
       email,
@@ -109,6 +109,6 @@ export const patchUserData = async (req, res) => {
     });
     res.json({ message: 'Дані користувача оновлено успішно' });
   } catch (err) {
-    res.status(500).json({ message: 'Реєстрація пройшла не коректно' });
+    res.status(500).json({ message: 'Не вдалось змінити дані' });
   }
 };

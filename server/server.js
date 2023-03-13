@@ -18,12 +18,14 @@ import {
   postArticle,
   deleteArticle,
   patchArticle,
-  getPopularTags
+  getPopularTags,
+  getMyArticles
 } from './controllers/ArticleController.js';
 import {
   deleteComment,
   getComments,
   getLastComments,
+  getMyComments,
   likeComment,
   postComment
 } from './controllers/CommentController.js';
@@ -110,7 +112,7 @@ app.post(
 app.get('/authorization/verification', checkAuthorization, authVerification);
 //change user data
 app.patch(
-  '/authorization/changeData/:id',
+  '/authorization/changeData',
   registrationValidation,
   handleValidationErrors,
   checkAuthorization,
@@ -119,6 +121,8 @@ app.patch(
 
 //get all articles
 app.get('/articles', getAllArticles);
+//get user articles
+app.get('/myarticles', checkAuthorization, getMyArticles);
 //get an article
 app.get('/article/:id', getArticle);
 //post an article
@@ -141,6 +145,8 @@ app.get('/tags', getPopularTags);
 app.get('/lastcomments', getLastComments);
 //get comments
 app.get('/comments/:id', checkAuthorization, getComments);
+//get user comments
+app.get('/mycomments', checkAuthorization, getMyComments);
 //post comment
 app.post('/comment', checkAuthorization, postComment);
 //like comment

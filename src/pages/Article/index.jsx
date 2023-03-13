@@ -66,9 +66,9 @@ function Article() {
     <article>
       <div className="article__content">
         <div className="article__author">
-          <div className="article__authorLine"></div>
+          <div className="pageTitle__leftLine"></div>
           <AuthorSign author={article.author} />
-          <div className="article__authorLine"></div>
+          <div className="pageTitle__rightLine"></div>
         </div>
         <div className="article__header">
           <div className="article__titleBlock">

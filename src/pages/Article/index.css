@@ -15,10 +15,20 @@
       -ms-flex-align: center;
           align-items: center;
 }
-.article__author .article__authorLine {
-  border-top: 1px dashed rgb(190, 190, 190);
-  width: 80%;
+.article__author .pageTitle__leftLine, .article__author .pageTitle__rightLine {
+  border-top: 1px dashed gray;
   margin: 0 20px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  border: 1px 0 0 0 solid;
+  border-image-slice: 1;
+}
+.article__author .pageTitle__leftLine {
+  border-image-source: linear-gradient(to left, rgb(200, 200, 200), rgba(0, 0, 0, 0));
+}
+.article__author .pageTitle__rightLine {
+  border-image-source: linear-gradient(to right, rgb(200, 200, 200), rgba(0, 0, 0, 0));
 }
 
 .article__header {

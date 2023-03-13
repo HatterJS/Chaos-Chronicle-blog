@@ -1,0 +1,39 @@
+.userComments {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.userComments__item {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+    border-radius: 20px;
+    padding: 10px 20px;
+    width: 90%;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+        box-shadow: 2px 2px 4px gray;
+        transform: translateY(-2px);
+    }
+    &:nth-child(even) {
+        align-self: flex-end;
+    }
+    em {
+        text-indent: 1em;
+    }
+}
+.userComments__date {
+    align-self: flex-end;
+    color: gray;
+    font-size: 0.9em;
+}
+.userComments__likes {
+    display: flex;
+    align-items: center;
+    align-self: flex-end;
+    gap: 5px;
+    svg {
+        fill: rgb(90, 90, 90);
+    }
+}

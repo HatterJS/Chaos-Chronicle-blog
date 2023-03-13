@@ -27,6 +27,19 @@ export const getComments = async (req, res) => {
   }
 };
 
+export const getMyComments = async (req, res) => {
+  try {
+    const { userId } = req;
+    const myComments = await CommentModel.find({ author: userId })
+      .populate('articleId')
+      .sort({ createdAt: -1 })
+      .exec();
+    res.json(myComments);
+  } catch (err) {
+    res.status(500).json({ message: 'Не вдалось знайти коментарі' });
+  }
+};
+
 export const postComment = async (req, res) => {
   try {
     const { articleId, text } = req.body;

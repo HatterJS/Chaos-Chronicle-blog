@@ -8,8 +8,8 @@
           flex-direction: column;
   border: 1px solid gray;
   border-radius: 20px;
-  -webkit-filter: grayscale(0.5) contrast(0.5);
-          filter: grayscale(0.5) contrast(0.5);
+  -webkit-filter: grayscale(0.5);
+          filter: grayscale(0.5);
   height: 400px;
   overflow: hidden;
   cursor: pointer;
@@ -36,7 +36,7 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 10px;
-  background-color: rgba(0, 0, 0, 0.425);
+  background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
 }
 .articleItem__image .articleItem__title h2, .articleItem__image .articleItem__title p {

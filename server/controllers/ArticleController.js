@@ -2,8 +2,8 @@ import { validationResult } from 'express-validator';
 import ArticleModel from '../models/Articles.js';
 
 export const getAllArticles = async (req, res) => {
-  const sort = req.query.sort;
-  const search = req.query.search;
+  const { sort } = req.query;
+  const { search } = req.query;
   try {
     const allArticles = await ArticleModel.find(
       search
@@ -16,6 +16,19 @@ export const getAllArticles = async (req, res) => {
       .sort({ [sort]: -1 })
       .exec();
     res.json(allArticles);
+  } catch (err) {
+    res.status(500).json({ message: 'Не вдалось знайти статті' });
+  }
+};
+
+export const getMyArticles = async (req, res) => {
+  const { userId } = req;
+  try {
+    const myArticles = await ArticleModel.find({ author: userId })
+      .populate('author')
+      .sort({ createdAt: -1 })
+      .exec();
+    res.json(myArticles);
   } catch (err) {
     res.status(500).json({ message: 'Не вдалось знайти статті' });
   }
