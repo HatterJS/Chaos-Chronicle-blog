@@ -10,7 +10,8 @@ import {
   registration,
   authorization,
   authVerification,
-  patchUserData
+  patchUserData,
+  getAuthors
 } from './controllers/UserController.js';
 import {
   getAllArticles,
@@ -118,6 +119,8 @@ app.patch(
   checkAuthorization,
   patchUserData
 );
+//get all authors
+app.get('/authors', getAuthors);
 
 //get all articles
 app.get('/articles', getAllArticles);

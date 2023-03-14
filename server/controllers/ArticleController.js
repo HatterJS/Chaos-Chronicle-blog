@@ -1,5 +1,6 @@
 import { validationResult } from 'express-validator';
 import ArticleModel from '../models/Articles.js';
+import UserModel from '../models/Authorized.js';
 
 export const getAllArticles = async (req, res) => {
   const { sort } = req.query;
@@ -72,8 +73,10 @@ export const postArticle = async (req, res) => {
       imageUrl: req.body.imageUrl,
       author: req.userId
     });
-
     const article = await doc.save();
+
+    await UserModel.findByIdAndUpdate(req.userId, { $inc: { userArticles: 1, rating: 1 } });
+
     res.json({ ...article._doc, message: 'Статтю опубліковано успішно' });
   } catch (err) {
     res.status(500).json({
@@ -101,6 +104,7 @@ export const deleteArticle = async (req, res) => {
       }
       res.json({ message: 'Статтю видалено успішно' });
     });
+    await UserModel.findByIdAndUpdate(req.userId, { $inc: { userArticles: -1, rating: -1 } });
   } catch (err) {
     res.status(500).json({ message: 'Не вдалось видалити статтю' });
   }

@@ -1,4 +1,5 @@
 import CommentModel from '../models/Comments.js';
+import UserModel from '../models/Authorized.js';
 
 export const getLastComments = async (req, res) => {
   const { limit } = req.query;
@@ -54,6 +55,7 @@ export const postComment = async (req, res) => {
       author: req.userId
     });
     const comment = await doc.save();
+    await UserModel.findByIdAndUpdate(req.userId, { $inc: { userComments: 1, rating: 0.1 } });
     const commentWithAuthor = await CommentModel.findById(comment._id).populate('author').exec();
     res.json(commentWithAuthor);
   } catch (err) {
@@ -77,6 +79,7 @@ export const deleteComment = async (req, res) => {
       }
       res.json({ message: 'Коментар видалено успішно' });
     });
+    await UserModel.findByIdAndUpdate(req.userId, { $inc: { userComments: -1, rating: -0.1 } });
   } catch (err) {
     res.status(500).json({ message: 'Не вдалось видалити коментар' });
   }

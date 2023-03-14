@@ -15,7 +15,27 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    avatarUrl: String
+    avatarUrl: String,
+    status: {
+      type: String,
+      required: true,
+      default: 'Читач'
+    },
+    rating: {
+      type: Number,
+      required: true,
+      default: 0
+    },
+    userArticles: {
+      type: Number,
+      required: true,
+      default: 0
+    },
+    userComments: {
+      type: Number,
+      required: true,
+      default: 0
+    }
   },
   {
     timestamps: true

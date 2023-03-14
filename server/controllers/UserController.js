@@ -38,6 +38,7 @@ export const registration = async (req, res) => {
 
     res.json({ ...userData, token });
   } catch (err) {
+    console.log(err);
     res.status(500).json({ message: 'Реєстрація пройшла не коректно' });
   }
 };
@@ -110,5 +111,14 @@ export const patchUserData = async (req, res) => {
     res.json({ message: 'Дані користувача оновлено успішно' });
   } catch (err) {
     res.status(500).json({ message: 'Не вдалось змінити дані' });
+  }
+};
+//get authors by rating
+export const getAuthors = async (req, res) => {
+  try {
+    const authors = await UserModel.find({ rating: { $gt: 0 } }).sort({ rating: -1 });
+    res.json(authors);
+  } catch (err) {
+    res.status(500).json({ message: 'Не вдалось знайти авторів' });
   }
 };
