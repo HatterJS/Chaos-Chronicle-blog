@@ -12,7 +12,7 @@ function AuthorSign({ author }) {
       />
       <div className="authorSign__description">
         <p>{fullName || 'Анонім'}</p>
-        <p>Адміністратор</p>
+        <p>{author.status}</p>
       </div>
     </div>
   );

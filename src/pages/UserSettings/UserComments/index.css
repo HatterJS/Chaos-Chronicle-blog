@@ -7,6 +7,14 @@
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 10px;
+  padding: 20px;
+  background-color: rgb(240, 240, 240);
+  border-radius: 20px;
+  -webkit-box-shadow: 2px 2px 4px gray inset;
+          box-shadow: 2px 2px 4px gray inset;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
 }
 
 .userComments__item {
@@ -17,7 +25,10 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  background-color: rgb(245, 255, 255);
   border: 1px solid gray;
+  -webkit-box-shadow: 1px 1px 2px gray;
+          box-shadow: 1px 1px 2px gray;
   border-radius: 20px;
   padding: 10px 20px;
   width: 90%;
@@ -32,8 +43,7 @@
           transform: translateY(-2px);
 }
 .userComments__item:nth-child(even) {
-  -ms-flex-item-align: end;
-      align-self: flex-end;
+  background-color: rgb(255, 255, 245);
 }
 .userComments__item em {
   text-indent: 1em;

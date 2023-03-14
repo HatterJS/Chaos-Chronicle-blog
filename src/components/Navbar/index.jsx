@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { setSearch, setSort } from '../../redux/slices/articles';
@@ -32,7 +33,9 @@ function Navbar() {
         <ul>
           <li onClick={() => dispatch(setSort('createdAt'))}>{newArticleSVG}Нові статті</li>
           <li onClick={() => dispatch(setSort('viewsCount'))}>{recomendationSVG}Популярні</li>
-          <li>{authorsSVG}Автори</li>
+          <li>
+            <Link to={'/authors'}>{authorsSVG}Автори</Link>
+          </li>
         </ul>
       </div>
       <div className="nav__search">

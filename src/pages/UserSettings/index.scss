@@ -1,7 +1,13 @@
+.userSettings {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
 .userSettings__body {
     display: flex;
     gap: 20px;
     margin-top: 10px;
+    flex: 1 1 auto;
 }
 .userSettings__nav {
     display: flex;

@@ -69,7 +69,6 @@
   padding: 10px 10px;
 }
 .articleItem__description > p {
-  line-break: anywhere;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
