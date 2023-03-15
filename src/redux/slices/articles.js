@@ -11,6 +11,11 @@ export const fetchTags = createAsyncThunk('articles/fetchTags', async () => {
   const { data } = await axios.get('/tags');
   return data;
 });
+//async request to the backend to getting author articles
+export const fetchAuthorArticles = createAsyncThunk('/articles/fetchAuthorArticles', async (id) => {
+  const { data } = await axios.get(`/authorarticles/${id}`);
+  return data;
+});
 
 const initialState = {
   articles: {
@@ -64,6 +69,19 @@ const articlesSlice = createSlice({
     [fetchTags.rejected]: (state) => {
       state.tags.items = [];
       state.tags.status = 'error';
+    },
+    //getting author articles
+    [fetchAuthorArticles.pending]: (state) => {
+      state.articles.items = [];
+      state.articles.status = 'loading';
+    },
+    [fetchAuthorArticles.fulfilled]: (state, action) => {
+      state.articles.items = action.payload;
+      state.articles.status = 'loaded';
+    },
+    [fetchAuthorArticles.rejected]: (state) => {
+      state.articles.items = [];
+      state.articles.status = 'error';
     }
   }
 });

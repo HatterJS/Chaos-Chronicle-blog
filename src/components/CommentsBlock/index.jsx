@@ -21,6 +21,16 @@ function CommentsBlock() {
   const { id } = useParams();
   //comment text
   const [text, setText] = React.useState('');
+  //handle Enter
+  function handleKey(event) {
+    console.log(event.key);
+    if (text.length > 500 && event.key !== 'Backspace') {
+      return alert('Текст коментаря не може перевищувати 500 символів');
+    }
+    if (event.key === 'Enter') {
+      sendComment();
+    }
+  }
   //send comment
   async function sendComment() {
     dispatch(fetchAddComment({ articleId: id, text }));
@@ -57,8 +67,9 @@ function CommentsBlock() {
               placeholder="Написати коментар"
               value={text}
               onChange={(event) => setText(event.target.value)}
+              onKeyUp={handleKey}
             />
-            <button className="acceptButton" onClick={sendComment} disabled={text.length < 10}>
+            <button className="acceptButton" onClick={sendComment} disabled={text.length > 500}>
               {sendSVG}Відправити
             </button>
           </div>

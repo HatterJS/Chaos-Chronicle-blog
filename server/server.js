@@ -11,7 +11,8 @@ import {
   authorization,
   authVerification,
   patchUserData,
-  getAuthors
+  getAuthors,
+  promoteUser
 } from './controllers/UserController.js';
 import {
   getAllArticles,
@@ -119,13 +120,17 @@ app.patch(
   checkAuthorization,
   patchUserData
 );
+//user promotion
+app.patch('/promotion', checkAuthorization, promoteUser);
 //get all authors
 app.get('/authors', getAuthors);
 
 //get all articles
 app.get('/articles', getAllArticles);
-//get user articles
+//get my articles
 app.get('/myarticles', checkAuthorization, getMyArticles);
+//get author articles
+app.get('/authorarticles/:id', getMyArticles);
 //get an article
 app.get('/article/:id', getArticle);
 //post an article

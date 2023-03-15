@@ -18,6 +18,7 @@ import AddArticle from './pages/AddArticle';
 import NotFound from './pages/NonFound';
 import UserSettings from './pages/UserSettings';
 import Authors from './pages/Authors';
+import AuthorArticles from './pages/AuthorArticles';
 
 import './App.css';
 
@@ -52,6 +53,7 @@ function App() {
           <Route path="/editarticle/:id" element={<AddArticle />} />
           <Route path="/usersettings/*" element={<UserSettings />} />
           <Route path="/authors" element={<Authors />} />
+          <Route path="/authorarticles/:id" element={<AuthorArticles />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

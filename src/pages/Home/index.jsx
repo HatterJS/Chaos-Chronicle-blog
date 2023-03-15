@@ -25,7 +25,7 @@ function Home() {
   return (
     <div className="home">
       <Navbar />
-      <PageTitle title={filter.search ? `Пошук: ${filter.search}` : 'DEFENCE OF UKRAINE'} />
+      <PageTitle title={filter.search ? `Пошук: ${filter.search}` : 'Cтатті'} />
       <div className="home__body">
         <div className="home__articles">
           {articles.status === 'loaded'

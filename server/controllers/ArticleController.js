@@ -23,7 +23,7 @@ export const getAllArticles = async (req, res) => {
 };
 
 export const getMyArticles = async (req, res) => {
-  const { userId } = req;
+  const userId = req.params.id || req.userId;
   try {
     const myArticles = await ArticleModel.find({ author: userId })
       .populate('author')
@@ -75,7 +75,7 @@ export const postArticle = async (req, res) => {
     });
     const article = await doc.save();
 
-    await UserModel.findByIdAndUpdate(req.userId, { $inc: { userArticles: 1, rating: 1 } });
+    await UserModel.findByIdAndUpdate(req.userId, { $inc: { userArticles: 1, rating: 10 } });
 
     res.json({ ...article._doc, message: 'Статтю опубліковано успішно' });
   } catch (err) {
@@ -104,7 +104,7 @@ export const deleteArticle = async (req, res) => {
       }
       res.json({ message: 'Статтю видалено успішно' });
     });
-    await UserModel.findByIdAndUpdate(req.userId, { $inc: { userArticles: -1, rating: -1 } });
+    await UserModel.findByIdAndUpdate(req.userId, { $inc: { userArticles: -1, rating: -10 } });
   } catch (err) {
     res.status(500).json({ message: 'Не вдалось видалити статтю' });
   }

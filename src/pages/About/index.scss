@@ -4,9 +4,13 @@
 .about__content {
     max-width: 800px;
     margin: 20px auto;
+    text-align: center;
     p {
         text-align: justify;
         text-indent: 2em;
-        margin-bottom: 15px;
+        margin: 10px 0;
+    }
+    img {
+        border-radius: 20px;
     }
 }

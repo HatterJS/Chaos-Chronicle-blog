@@ -7,9 +7,13 @@
 .about__content {
   max-width: 800px;
   margin: 20px auto;
+  text-align: center;
 }
 .about__content p {
   text-align: justify;
   text-indent: 2em;
-  margin-bottom: 15px;
+  margin: 10px 0;
+}
+.about__content img {
+  border-radius: 20px;
 }

@@ -93,7 +93,6 @@ function Settings() {
     inputAvatar.current.value = '';
     setRegistrationData((prev) => ({ ...prev, avatarUrl: defaultAvatarUrl }));
   }
-  console.log(readOnly);
   return (
     <div className="settings">
       <div className="settings__mainData">

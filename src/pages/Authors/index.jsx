@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import PageTitle from '../../components/PageTitle';
-import { commentsSVG, createArticleSVG, ratingSVG } from '../../components/SvgSprite';
+import AuthorsItem from '../../components/AuthorsItem';
+import AuthorItemLoader from '../../components/AuthorItemLoader';
 
 import { fetchAuthors } from '../../redux/slices/authors';
 import './index.css';
@@ -13,8 +15,6 @@ function Authors() {
   //authors
   const { authors, status } = useSelector((state) => state.authors);
 
-  //users status array for promote
-
   React.useEffect(() => {
     dispatch(fetchAuthors());
   }, [dispatch]);
@@ -23,35 +23,28 @@ function Authors() {
     <div className="authors">
       <PageTitle title={'Активні користувачі'} />
       <div className="authors__content">
-        {status === 'loaded' ? (
-          authors.map((item) => (
-            <div className="author__item unselectable" key={item._id}>
-              <div className="author__avatar">
-                <img src={item.avatarUrl} alt="avatar" />
-              </div>
-              <div className="author__info">
-                <h3>{item.fullName}</h3>
-                <p>{item.status}</p>
-                <div className="authors__statistics">
-                  <div title="опубліковано статей">
-                    {createArticleSVG}
-                    {item.userArticles}
-                  </div>
-                  <div title="додано коментарів">
-                    {commentsSVG}
-                    {item.userComments}
-                  </div>
-                  <div title="рейтинг">
-                    {ratingSVG}
-                    {item.rating}
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))
-        ) : (
-          <div className="author__loader">Loading...</div>
-        )}
+        {status === 'loaded'
+          ? authors.map((item) => (
+              <Link
+                to={`/authorarticles/${item._id}`}
+                key={item._id}
+                className={item.userArticles === 0 ? 'disabled_link' : undefined}>
+                <AuthorsItem
+                  userId={item._id}
+                  avatarUrl={item.avatarUrl}
+                  fullName={item.fullName}
+                  status={item.status}
+                  rating={item.rating}
+                  userArticles={item.userArticles}
+                  userComments={item.userComments}
+                />
+              </Link>
+            ))
+          : [...Array(6)].map((item, index) => (
+              <Link key={index}>
+                <AuthorItemLoader />
+              </Link>
+            ))}
       </div>
     </div>
   );

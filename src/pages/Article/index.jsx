@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import AuthorSign from '../../components/AuthorSign';
 import CommentsBlock from '../../components/CommentsBlock';
+import Loader from '../../components/Loader';
 import { setSearch } from '../../redux/slices/articles';
 
 import './index.css';
@@ -61,7 +62,7 @@ function Article() {
     return false;
   }
   return isLoading ? (
-    <div>123</div> //have to change to loader
+    <Loader />
   ) : (
     <article>
       <div className="article__content">

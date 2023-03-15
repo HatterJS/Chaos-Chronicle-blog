@@ -113,6 +113,16 @@ export const patchUserData = async (req, res) => {
     res.status(500).json({ message: 'Не вдалось змінити дані' });
   }
 };
+//user promotion
+export const promoteUser = async (req, res) => {
+  try {
+    const { userId, status } = req.body;
+    await UserModel.findByIdAndUpdate(userId, { status });
+    res.json({ message: 'Статус користувача змінено успішно' });
+  } catch (err) {
+    res.status(500).json({ message: 'Не вдалось змінити статус користувача' });
+  }
+};
 //get authors by rating
 export const getAuthors = async (req, res) => {
   try {

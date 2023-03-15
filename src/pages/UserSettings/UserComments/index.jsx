@@ -17,7 +17,6 @@ function UserComments() {
       .then((res) => setMyComments(res.data))
       .catch((err) => alert(err.response.data.message));
   }, []);
-  console.log(myComments);
   return (
     <div className="userComments">
       {myComments ? (
