@@ -23,7 +23,6 @@ function CommentsBlock() {
   const [text, setText] = React.useState('');
   //handle Enter
   function handleKey(event) {
-    console.log(event.key);
     if (text.length > 500 && event.key !== 'Backspace') {
       return alert('Текст коментаря не може перевищувати 500 символів');
     }

@@ -15,19 +15,20 @@ const authorsSlice = createSlice({
   name: 'authors',
   initialState,
   reducers: {},
-  extraReducers: {
-    [fetchAuthors.pending]: (state) => {
-      state.authors = [];
-      state.status = 'loading';
-    },
-    [fetchAuthors.fulfilled]: (state, action) => {
-      state.authors = action.payload;
-      state.status = 'loaded';
-    },
-    [fetchAuthors.rejected]: (state) => {
-      state.authors = [];
-      state.status = 'error';
-    }
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchAuthors.pending, (state) => {
+        state.authors = [];
+        state.status = 'loading';
+      })
+      .addCase(fetchAuthors.fulfilled, (state, action) => {
+        state.authors = action.payload;
+        state.status = 'loaded';
+      })
+      .addCase(fetchAuthors.rejected, (state, action) => {
+        state.authors = [];
+        state.status = 'error';
+      });
   }
 });
 

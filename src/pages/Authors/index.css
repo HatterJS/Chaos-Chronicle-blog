@@ -10,12 +10,3 @@
   gap: 10px;
   margin-top: 20px;
 }
-.authors__content a {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.disabled_link {
-  pointer-events: none;
-}

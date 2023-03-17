@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import PageTitle from '../../components/PageTitle';
@@ -25,26 +24,18 @@ function Authors() {
       <div className="authors__content">
         {status === 'loaded'
           ? authors.map((item) => (
-              <Link
-                to={`/authorarticles/${item._id}`}
+              <AuthorsItem
                 key={item._id}
-                className={item.userArticles === 0 ? 'disabled_link' : undefined}>
-                <AuthorsItem
-                  userId={item._id}
-                  avatarUrl={item.avatarUrl}
-                  fullName={item.fullName}
-                  status={item.status}
-                  rating={item.rating}
-                  userArticles={item.userArticles}
-                  userComments={item.userComments}
-                />
-              </Link>
+                userId={item._id}
+                avatarUrl={item.avatarUrl}
+                fullName={item.fullName}
+                status={item.status}
+                rating={item.rating}
+                userArticles={item.userArticles}
+                userComments={item.userComments}
+              />
             ))
-          : [...Array(6)].map((item, index) => (
-              <Link key={index}>
-                <AuthorItemLoader />
-              </Link>
-            ))}
+          : [...Array(6)].map((item, index) => <AuthorItemLoader key={index} />)}
       </div>
     </div>
   );

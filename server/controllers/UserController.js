@@ -118,7 +118,7 @@ export const promoteUser = async (req, res) => {
   try {
     const { userId, status } = req.body;
     await UserModel.findByIdAndUpdate(userId, { status });
-    res.json({ message: 'Статус користувача змінено успішно' });
+    res.json({ message: 'Статус користувача змінено успішно', status });
   } catch (err) {
     res.status(500).json({ message: 'Не вдалось змінити статус користувача' });
   }

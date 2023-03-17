@@ -41,34 +41,42 @@ const commentsSlice = createSlice({
       state.comments = state.comments.filter((item) => item._id !== action.payload);
     }
   },
-  extraReducers: {
-    [fetchComments.pending]: (state) => {
-      state.comments = [];
-      state.status = 'loading';
-    },
-    [fetchComments.fulfilled]: (state, action) => {
-      state.comments = action.payload;
-      state.status = 'loaded';
-    },
-    [fetchComments.rejected]: (state) => {
-      state.comments = [];
-      state.status = 'loading';
-    },
-    [fetchAddComment.fulfilled]: (state, action) => {
-      state.comments.unshift(action.payload);
-    },
-    [fetchAddComment.rejected]: (state, action) => {
-      alert(action.error.message);
-    },
-    [fetchLastComments.pending]: (state) => {
-      state.lastComments = [];
-    },
-    [fetchLastComments.fulfilled]: (state, action) => {
-      state.lastComments = action.payload;
-    },
-    [fetchLastComments.rejected]: (state, action) => {
-      console.log(action.error.message);
-    }
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchComments.pending, (state) => {
+        state.comments = [];
+        state.status = 'loading';
+      })
+      .addCase(fetchComments.fulfilled, (state, action) => {
+        state.comments = action.payload;
+        state.status = 'loaded';
+      })
+      .addCase(fetchComments.rejected, (state) => {
+        state.comments = [];
+        state.status = 'loading';
+      })
+      .addCase(fetchAddComment.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchAddComment.fulfilled, (state, action) => {
+        state.comments.unshift(action.payload);
+      })
+      .addCase(fetchAddComment.rejected, (state, action) => {
+        alert(action.error.message);
+      })
+      .addCase(fetchLastComments.pending, (state) => {
+        state.lastComments = [];
+        state.status = 'loading';
+      })
+      .addCase(fetchLastComments.fulfilled, (state, action) => {
+        state.lastComments = action.payload;
+        state.status = 'loaded';
+      })
+      .addCase(fetchLastComments.rejected, (state, action) => {
+        console.log(action.error.message);
+        state.lastComments = [];
+        state.status = 'loading';
+      });
   }
 });
 
