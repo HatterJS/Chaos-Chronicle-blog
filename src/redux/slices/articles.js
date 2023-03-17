@@ -43,46 +43,44 @@ const articlesSlice = createSlice({
       state.filter.search = action.payload;
     }
   },
-  extraReducers: {
-    //getting all articles
-    [fetchArticles.pending]: (state) => {
-      state.articles.items = [];
-      state.articles.status = 'loading';
-    },
-    [fetchArticles.fulfilled]: (state, action) => {
-      state.articles.items = action.payload;
-      state.articles.status = 'loaded';
-    },
-    [fetchArticles.rejected]: (state) => {
-      state.articles.items = [];
-      state.articles.status = 'error';
-    },
-    //getting articles tags
-    [fetchTags.pending]: (state) => {
-      state.tags.items = [];
-      state.tags.status = 'loading';
-    },
-    [fetchTags.fulfilled]: (state, action) => {
-      state.tags.items = action.payload;
-      state.tags.status = 'loaded';
-    },
-    [fetchTags.rejected]: (state) => {
-      state.tags.items = [];
-      state.tags.status = 'error';
-    },
-    //getting author articles
-    [fetchAuthorArticles.pending]: (state) => {
-      state.articles.items = [];
-      state.articles.status = 'loading';
-    },
-    [fetchAuthorArticles.fulfilled]: (state, action) => {
-      state.articles.items = action.payload;
-      state.articles.status = 'loaded';
-    },
-    [fetchAuthorArticles.rejected]: (state) => {
-      state.articles.items = [];
-      state.articles.status = 'error';
-    }
+  extraReducers: (build) => {
+    build
+      .addCase(fetchArticles.pending, (state) => {
+        state.articles.items = [];
+        state.articles.status = 'loading';
+      })
+      .addCase(fetchArticles.fulfilled, (state, action) => {
+        state.articles.items = action.payload;
+        state.articles.status = 'loaded';
+      })
+      .addCase(fetchArticles.rejected, (state) => {
+        state.articles.items = [];
+        state.articles.status = 'error';
+      })
+      .addCase(fetchTags.pending, (state) => {
+        state.tags.items = [];
+        state.tags.status = 'loading';
+      })
+      .addCase(fetchTags.fulfilled, (state, action) => {
+        state.tags.items = action.payload;
+        state.tags.status = 'loaded';
+      })
+      .addCase(fetchTags.rejected, (state) => {
+        state.tags.items = [];
+        state.tags.status = 'error';
+      })
+      .addCase(fetchAuthorArticles.pending, (state) => {
+        state.articles.items = [];
+        state.articles.status = 'loading';
+      })
+      .addCase(fetchAuthorArticles.fulfilled, (state, action) => {
+        state.articles.items = action.payload;
+        state.articles.status = 'loaded';
+      })
+      .addCase(fetchAuthorArticles.rejected, (state) => {
+        state.articles.items = [];
+        state.articles.status = 'error';
+      });
   }
 });
 

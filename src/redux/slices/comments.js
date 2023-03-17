@@ -53,7 +53,7 @@ const commentsSlice = createSlice({
       })
       .addCase(fetchComments.rejected, (state) => {
         state.comments = [];
-        state.status = 'loading';
+        state.status = 'error';
       })
       .addCase(fetchAddComment.pending, (state) => {
         state.status = 'loading';
@@ -75,7 +75,7 @@ const commentsSlice = createSlice({
       .addCase(fetchLastComments.rejected, (state, action) => {
         console.log(action.error.message);
         state.lastComments = [];
-        state.status = 'loading';
+        state.status = 'error';
       });
   }
 });
