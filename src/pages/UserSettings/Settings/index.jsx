@@ -3,14 +3,16 @@ import axios from '../../../axios.js';
 import { useDispatch, useSelector } from 'react-redux';
 
 import './index.css';
-import { deleteSVG } from '../../../components/SvgSprite';
+import { commentsSVG, createArticleSVG, deleteSVG, ratingSVG } from '../../../components/SvgSprite';
 import { logOut } from '../../../redux/slices/authorization.js';
 
 function Settings() {
   // create dispatch for redux
   const dispatch = useDispatch();
   //user data from redux
-  const { fullName, email, avatarUrl } = useSelector((state) => state.authorization.userData);
+  const { fullName, email, avatarUrl, rating, userArticles, userComments } = useSelector(
+    (state) => state.authorization.userData
+  );
   //ref for avatar input
   const inputAvatar = React.useRef();
   //default avatar url
@@ -96,6 +98,20 @@ function Settings() {
   return (
     <div className="settings">
       <div className="settings__mainData">
+        <div className="settings__statistics">
+          <div title="Рейтинг">
+            {ratingSVG}
+            {rating}
+          </div>
+          <div title="Опубліковано статей">
+            {createArticleSVG}
+            {userArticles}
+          </div>
+          <div title="Додано коментарів">
+            {commentsSVG}
+            {userComments}
+          </div>
+        </div>
         <div className="settings__avatar">
           <label htmlFor="avatar">
             <img src={registrationData.avatarUrl} alt="avatar" />

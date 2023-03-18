@@ -43,6 +43,9 @@
   background-color: rgb(240, 240, 240);
   padding: 20px;
 }
+.userSettings__nav a {
+  width: 100%;
+}
 .userSettings__nav button {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -84,6 +87,11 @@
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  .userSettings__nav button {
     width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;

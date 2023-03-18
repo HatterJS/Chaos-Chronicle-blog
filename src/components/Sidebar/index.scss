@@ -1,12 +1,10 @@
 aside {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 20px;
     width: 300px;
     min-width: 300px;
-    position: sticky;
-    top: 10px;
-    height: fit-content;
     h3 {
         display: block;
         background-color: gray;
@@ -46,9 +44,30 @@ aside {
         font-size: 0.9em;
     }
 }
+.aside__donate {
+    display: flex;
+    position: sticky;
+    top: 70px;
+    a {
+        border: 1px solid gray;
+        border-radius: 20px;
+        box-shadow: 1px 1px 2px gray;
+        line-height: 0;
+        overflow: hidden;
+        transition: all 0.2s ease-in-out;
+        min-width: 300px;
+        &:hover {
+            box-shadow: 2px 2px 4px gray;
+            transform: translateY(-2px);
+        }
+    }
+}
 
 @media (max-width: 680px) {
-    aside {
+    // aside {
+    //     display: none;
+    // }
+    .aside__tagsBlock, .aside__commentsBlock {
         display: none;
     }
 }

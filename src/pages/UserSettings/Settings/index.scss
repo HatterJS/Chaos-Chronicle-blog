@@ -25,6 +25,22 @@
         width: 100%;
     }
 }
+.settings__statistics {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    flex: 1 1 auto;
+    gap: 10px;
+    div {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        svg {
+            fill: rgb(70, 70, 70);
+        }
+    }
+}
 .settings__avatar {
     position: relative;
     label {

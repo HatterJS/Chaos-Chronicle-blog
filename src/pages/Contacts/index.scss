@@ -8,16 +8,39 @@
         margin-top: 20px;
         line-height: 1.5;
     }
-    .contacts__social {
+}
+.constacts__telegram {
+    border: 1px solid gray;
+    border-radius: 15px;
+    padding: 15px;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    width: fit-content;
+    &:hover {
+        box-shadow: 2px 2px 4px gray;
+        transform: translateY(-1px);
+    }
+    a {
         display: flex;
-        gap: 10px;
-        margin-bottom: 20px;
-        svg {
-            fill: gray;
-            transition: all 0.2s ease-in-out;
-            &:hover {
-                fill: rgb(60, 60, 60);
-            }
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        li {
+            margin: 5px 0;
+            list-style: circle;
+            list-style-position: inside;
         }
+    }
+}
+.constacts__describe {
+    display: flex;
+    flex-direction: column;
+    ul {
+    }
+    h2 {
+        flex: 1 1 auto;
+        margin: 0;
+        text-align: center;
     }
 }

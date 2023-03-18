@@ -12,18 +12,55 @@
   margin-top: 20px;
   line-height: 1.5;
 }
-.contacts__content .contacts__social {
+
+.constacts__telegram {
+  border: 1px solid gray;
+  border-radius: 15px;
+  padding: 15px;
+  margin: 10px 0;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.constacts__telegram:hover {
+  -webkit-box-shadow: 2px 2px 4px gray;
+          box-shadow: 2px 2px 4px gray;
+  -webkit-transform: translateY(-1px);
+          transform: translateY(-1px);
+}
+.constacts__telegram a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 20px;
 }
-.contacts__content .contacts__social svg {
-  fill: gray;
-  -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
+.constacts__telegram a li {
+  margin: 5px 0;
+  list-style: circle;
+  list-style-position: inside;
 }
-.contacts__content .contacts__social svg:hover {
-  fill: rgb(60, 60, 60);
+
+.constacts__describe {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.constacts__describe h2 {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  margin: 0;
+  text-align: center;
 }

@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
 import './index.css';
 
-import { instagramSVG, telegramSVG, faceBookSVG } from '../SvgSprite';
-
 function Footer() {
   return (
     <footer>
@@ -18,25 +16,14 @@ function Footer() {
           <Link to={'/sponsorship'}>Стати спонсором</Link>
           <Link to={'/privacypolicy'}>Політика конфіденційності</Link>
         </div>
-        <div className="footer__contacts">
-          <ul>
-            <h3 className=" unselectable">Контакти</h3>
-            <li>+38(XXX)XXX-XX-XX</li>
-            <li>+38(XXX)XXX-XX-XX</li>
-          </ul>
-        </div>
         <div className="footer__social unselectable">
           <h3>Приєднуйтесь</h3>
           <div className="footer__socialImg">
-            <a href="https://www.instagram.com/" target={'_blank'} rel="noreferrer">
-              {instagramSVG}
-            </a>
-            <a href="https://web.telegram.org/" target={'_blank'} rel="noreferrer">
-              {telegramSVG}
-            </a>
-            <a href="https://www.facebook.com/" target={'_blank'} rel="noreferrer">
-              {faceBookSVG}
-            </a>
+            <div className="banner__telegram unselectable">
+              <a href="https://t.me/ChaosChroniclesBlog" target={'_blank'} rel="noreferrer">
+                <img src="/img/logo/telegram.jpg" alt="telegram" width={80} height={80} />
+              </a>
+            </div>
           </div>
         </div>
       </div>

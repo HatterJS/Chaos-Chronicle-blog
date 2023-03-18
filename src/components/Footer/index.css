@@ -9,9 +9,9 @@ footer .footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 footer .footer > div {
   display: -webkit-box;
@@ -33,22 +33,20 @@ footer .footer a {
 footer .footer a:hover {
   text-decoration: underline;
 }
-footer .footer .footer__socialImg {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 10px;
-}
-footer .footer .footer__socialImg svg {
-  width: 30px;
-  height: 30px;
-  fill: gray;
-  cursor: pointer;
+footer .banner__telegram a {
+  display: inline-block;
+  border: 1px solid gray;
+  border-radius: 15px;
+  padding: 10px;
+  line-height: 0;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
-footer .footer .footer__socialImg svg:hover {
-  fill: rgb(70, 70, 70);
+footer .banner__telegram a:hover {
+  -webkit-box-shadow: 1px 1px 2px gray;
+          box-shadow: 1px 1px 2px gray;
+  -webkit-transform: translateY(-1px);
+          transform: translateY(-1px);
 }
 
 .footer__additional {

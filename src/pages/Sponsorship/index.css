@@ -16,3 +16,30 @@
 .sponsorship__content .sponsorship__links {
   margin-bottom: 15px;
 }
+
+.sponsorship__donate {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 10px;
+}
+.sponsorship__donate a {
+  border: 1px solid gray;
+  border-radius: 20px;
+  line-height: 0;
+  overflow: hidden;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  min-width: 300px;
+}
+.sponsorship__donate a:hover {
+  -webkit-box-shadow: 2px 2px 4px gray;
+          box-shadow: 2px 2px 4px gray;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+}

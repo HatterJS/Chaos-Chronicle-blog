@@ -4,6 +4,8 @@
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -ms-flex-line-pack: baseline;
+      align-content: baseline;
   gap: 20px;
   padding: 20px;
   background-color: rgb(240, 240, 240);

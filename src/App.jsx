@@ -58,9 +58,6 @@ function App() {
         </Routes>
       </main>
       <Footer />
-      <div className="arrow__top">
-        <a href="#top">{arrowTop}</a>
-      </div>
     </div>
   );
 }

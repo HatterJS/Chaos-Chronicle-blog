@@ -1,4 +1,5 @@
 aside {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9,11 +10,6 @@ aside {
   gap: 20px;
   width: 300px;
   min-width: 300px;
-  position: sticky;
-  top: 10px;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
 }
 aside h3 {
   display: block;
@@ -62,8 +58,33 @@ aside h3 {
   font-size: 0.9em;
 }
 
+.aside__donate {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: sticky;
+  top: 70px;
+}
+.aside__donate a {
+  border: 1px solid gray;
+  border-radius: 20px;
+  -webkit-box-shadow: 1px 1px 2px gray;
+          box-shadow: 1px 1px 2px gray;
+  line-height: 0;
+  overflow: hidden;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  min-width: 300px;
+}
+.aside__donate a:hover {
+  -webkit-box-shadow: 2px 2px 4px gray;
+          box-shadow: 2px 2px 4px gray;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+}
+
 @media (max-width: 680px) {
-  aside {
+  .aside__tagsBlock, .aside__commentsBlock {
     display: none;
   }
 }

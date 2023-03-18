@@ -11,7 +11,7 @@ footer {
     );
     .footer {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
         & > div {
             display: flex;
             flex-direction: column;
@@ -27,18 +27,18 @@ footer {
                 text-decoration: underline;
             }
         }
-        .footer__socialImg {
-            display: flex;
-            gap: 10px;
-            svg {
-                width: 30px;
-                height: 30px;
-                fill: gray;
-                cursor: pointer;
-                transition: all 0.2s ease-in-out;
-                &:hover {
-                    fill: rgb(70, 70, 70);
-                }
+    }
+    .banner__telegram {
+        a {
+            display: inline-block;
+            border: 1px solid gray;
+            border-radius: 15px;
+            padding: 10px;
+            line-height: 0;
+            transition: all 0.2s ease-in-out;
+            &:hover {
+                box-shadow: 1px 1px 2px gray;
+                transform: translateY(-1px);
             }
         }
     }

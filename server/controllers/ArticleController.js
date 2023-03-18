@@ -1,6 +1,7 @@
 import { validationResult } from 'express-validator';
 import ArticleModel from '../models/Articles.js';
 import UserModel from '../models/Authorized.js';
+import CommentModel from '../models/Comments.js';
 
 export const getAllArticles = async (req, res) => {
   const { sort } = req.query;
@@ -95,6 +96,9 @@ export const deleteArticle = async (req, res) => {
       return res.status(403).json({ message: 'Доступ відсутній' });
     }
 
+    //delete comments related to the article
+    await CommentModel.deleteMany({ articleId: articleId });
+    //delete the article
     ArticleModel.findByIdAndDelete(articleId, (err, doc) => {
       if (err) {
         return res.status(500).json({ message: 'Не вдалось видалити статтю' });

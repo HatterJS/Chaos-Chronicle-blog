@@ -13,3 +13,21 @@
         margin-bottom: 15px;
     }
 }
+.sponsorship__donate {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 10px;
+    a {
+        border: 1px solid gray;
+        border-radius: 20px;
+        line-height: 0;
+        overflow: hidden;
+        transition: all 0.2s ease-in-out;
+        min-width: 300px;
+        &:hover {
+            box-shadow: 2px 2px 4px gray;
+            transform: translateY(-2px);
+        }
+    }
+}

@@ -20,6 +20,9 @@
     box-shadow: 2px 2px 4px gray inset;
     background-color: rgb(240, 240, 240);
     padding: 20px;
+    a {
+        width: 100%;
+    }
     button {
         display: flex;
         gap: 10px;
@@ -50,6 +53,7 @@
         flex-direction: row;
         width: fit-content;
         button {
+            width: fit-content;
             p {
                 display: none;
             }

@@ -1,13 +1,16 @@
 .home__body {
     display: flex;
+    justify-content: center;
     position: relative;
     gap: 20px;
     margin-top: 20px;
     .home__articles {
         display: flex;
         flex-wrap: wrap;
+        align-content: baseline;
         gap: 20px;
         flex: 1 1 auto;
+        height: fit-content;
         & > a {
             flex: 1 1 350px;
             &:first-child {
@@ -52,5 +55,10 @@
                 }
             }
         }
+    }
+}
+@media (max-width: 680px) {
+    .home__body {
+        flex-wrap: wrap;
     }
 }

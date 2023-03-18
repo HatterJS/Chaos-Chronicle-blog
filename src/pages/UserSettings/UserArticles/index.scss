@@ -1,6 +1,7 @@
 .userArticles {
     display: flex;
     flex-wrap: wrap;
+    align-content: baseline;
     gap: 20px;
     padding: 20px;
     background-color: rgb(240, 240, 240);

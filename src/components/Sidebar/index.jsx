@@ -43,6 +43,11 @@ function Sidebar({ tags }) {
           ))}
         </div>
       )}
+      <div className="aside__donate">
+        <a href="https://send.monobank.ua/jar/2D2z173X3Q" target={'_blank'} rel="noreferrer">
+          <img src="/img/donate/donate_zsu.jpg" alt="ZSU" width={300} height={525} />
+        </a>
+      </div>
     </aside>
   );
 }
