@@ -42,7 +42,7 @@ import handleValidationErrors from './utils/handleValidationErrors.js';
 
 //connect to MongoDB
 mongoose
-  .connect('mongodb://127.0.0.1:27017/photo_blog')
+  .connect('mongodb+srv://hatter3ds:KoZFIVr5iJfQ3ief@chaos-chronicle.remrd8f.mongodb.net/CCblog')
   .then(() => console.log('DB ok'))
   .catch((err) => console.log('DB error:', err));
 

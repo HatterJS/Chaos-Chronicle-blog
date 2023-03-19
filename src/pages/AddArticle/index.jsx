@@ -185,7 +185,7 @@ function AddArticle() {
                 ['bold', 'italic', 'underline', 'strike'],
                 [{ list: 'ordered' }, { list: 'bullet' }],
                 [{ color: [] }, { background: [] }],
-                ['link', 'image'],
+                ['link'],
                 ['clean']
               ]
             }

@@ -1,7 +1,9 @@
-import { validationResult } from 'express-validator';
 import ArticleModel from '../models/Articles.js';
 import UserModel from '../models/Authorized.js';
 import CommentModel from '../models/Comments.js';
+
+import { validationResult } from 'express-validator';
+import { telegramMessage } from '../telegram.js';
 
 export const getAllArticles = async (req, res) => {
   const { sort } = req.query;
@@ -19,6 +21,7 @@ export const getAllArticles = async (req, res) => {
       .exec();
     res.json(allArticles);
   } catch (err) {
+    console.log(err);
     res.status(500).json({ message: 'Не вдалось знайти статті' });
   }
 };
@@ -75,11 +78,14 @@ export const postArticle = async (req, res) => {
       author: req.userId
     });
     const article = await doc.save();
-
+    const author = await UserModel.findById(req.userId);
     await UserModel.findByIdAndUpdate(req.userId, { $inc: { userArticles: 1, rating: 10 } });
+
+    telegramMessage(article._doc, author.fullName);
 
     res.json({ ...article._doc, message: 'Статтю опубліковано успішно' });
   } catch (err) {
+    console.log(err);
     res.status(500).json({
       message: 'Розміщення статті пройшло не коректно. Можливо стаття з такою назвою вже існую.'
     });
