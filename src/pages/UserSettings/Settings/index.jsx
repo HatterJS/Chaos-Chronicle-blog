@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './index.css';
 import { commentsSVG, createArticleSVG, deleteSVG, ratingSVG } from '../../../components/SvgSprite';
 import { logOut } from '../../../redux/slices/authorization.js';
+import { backendUrl } from '../../../variables.js';
 
 function Settings() {
   // create dispatch for redux
@@ -77,7 +78,10 @@ function Settings() {
         (await axios.delete(
           `delete/${currentAvatarUrl.slice(currentAvatarUrl.lastIndexOf('/') + 1)}?dir=users`
         ));
-      setRegistrationData((prev) => ({ ...prev, avatarUrl: 'http://localhost:9999' + data.url }));
+      setRegistrationData((prev) => ({
+        ...prev,
+        avatarUrl: backendUrl + data.url
+      }));
       setCurrentAvatarUrl(data.url);
     } catch (err) {
       alert('Не вдалось завантажити аватар');

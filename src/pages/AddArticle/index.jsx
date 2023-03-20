@@ -11,6 +11,7 @@ import './index.css';
 
 import { isAuthCheck } from '../../redux/slices/authorization';
 import { closeSVG } from '../../components/SvgSprite.js';
+import { backendUrl } from '../../variables.js';
 
 function AddArticle() {
   //check is authorized from redux
@@ -69,7 +70,7 @@ function AddArticle() {
   }
   //upload article
   async function uploadArticle() {
-    const coverUrl = cover ? 'http://localhost:9999' + (await uploadCover()) : oldCoverUrl;
+    const coverUrl = cover ? backendUrl + (await uploadCover()) : oldCoverUrl;
     try {
       const { data } = id
         ? await axios.patch(`/article/${id}`, {
