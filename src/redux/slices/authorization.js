@@ -29,6 +29,21 @@ export const fetchToken = createAsyncThunk('/authorization/fetchToken', async ()
   const { data } = await axios.get('/authorization/verification');
   return data;
 });
+//async request to the backend to change user data
+export const fetchChangeUserData = createAsyncThunk(
+  '/authorization/fetchChangeUserData',
+  async (params) => {
+    try {
+      const { data } = await axios.patch(`/authorization/changeData`, params);
+      alert(data.message);
+      return data;
+    } catch (err) {
+      const { message } = err.response.data;
+      alert(message);
+      throw new Error(message);
+    }
+  }
+);
 
 export const isAuthCheck = (state) => Boolean(state.authorization.userData);
 
@@ -82,6 +97,16 @@ const authorizationSlice = createSlice({
       .addCase(fetchToken.rejected, (state) => {
         state.userData = null;
         state.status = 'error';
+      })
+      .addCase(fetchChangeUserData.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchChangeUserData.fulfilled, (state, action) => {
+        state.userData = action.payload;
+        state.status = 'loaded';
+      })
+      .addCase(fetchChangeUserData.rejected, (state) => {
+        state.status = 'loaded';
       });
   }
 });

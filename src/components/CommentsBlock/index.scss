@@ -20,12 +20,12 @@
         gap: 10px;
         margin-top: 10px;
     }
-    .commentItem:nth-child(even) {
-        align-self: flex-end;
-        .commentItem__delete {
-            left: -30px;
-        }
-    }
+    // .commentItem:nth-child(even) {
+    //     align-self: flex-end;
+    //     .commentItem__delete {
+    //         left: -30px;
+    //     }
+    // }
     .commentsBlock__input {
         display: flex;
         align-items: flex-end;

@@ -42,7 +42,7 @@ import handleValidationErrors from './utils/handleValidationErrors.js';
 
 //connect to MongoDB
 mongoose
-  .connect('mongodb+srv://hatter3ds:KoZFIVr5iJfQ3ief@chaos-chronicle.remrd8f.mongodb.net/CCblog')
+  .connect('mongodb://127.0.0.1:27017/photo_blog')
   .then(() => console.log('DB ok'))
   .catch((err) => console.log('DB error:', err));
 
@@ -56,7 +56,7 @@ app.use(cors());
 //storage setting for images
 const storage = multer.diskStorage({
   destination: (req, __, cb) => {
-    cb(null, `server/uploads/${req.query.dir}/`);
+    cb(null, `uploads/${req.query.dir}/`);
   },
   filename: (__, file, cb) => {
     const originalName = file.originalname;
@@ -66,7 +66,7 @@ const storage = multer.diskStorage({
   }
 });
 const upload = multer({ storage });
-app.use('/uploads', express.static('server/uploads/'));
+app.use('/uploads', express.static('uploads/'));
 
 //upload image
 app.post(
@@ -75,13 +75,13 @@ app.post(
   upload.single('image'),
   (req, res) => {
     res.json({
-      url: `/uploads/${req.query.dir}/${req.file.filename}`
+      url: `uploads/${req.query.dir}/${req.file.filename}`
     });
   }
 );
 //delete image
 app.delete('/delete/:filename', (req, res) => {
-  const filePath = path.join('server', `/uploads/${req.query.dir}/${req.params.filename}`);
+  const filePath = path.join(`uploads/${req.query.dir}/${req.params.filename}`);
   fs.unlink(filePath, (err) => {
     if (err) {
       console.error(err);
@@ -115,8 +115,8 @@ app.get('/authorization/verification', checkAuthorization, authVerification);
 //change user data
 app.patch(
   '/authorization/changeData',
-  registrationValidation,
-  handleValidationErrors,
+  // registrationValidation,
+  // handleValidationErrors,
   checkAuthorization,
   patchUserData
 );

@@ -90,25 +90,16 @@ export const authVerification = async (req, res) => {
 export const patchUserData = async (req, res) => {
   try {
     const { userId } = req;
-    const { avatarUrl, fullName, email, password, currentPassword } = req.body;
+    if (req.body.password) {
+      const salt = await bcrypt.genSalt(10);
+      const passwordHash = await bcrypt.hash(req.body.password, salt);
 
-    const user = await UserModel.findById(userId);
-
-    const isValidPassword = await bcrypt.compare(currentPassword, user._doc.passwordHash);
-    if (!isValidPassword) {
-      return res.status(404).json({ message: 'Не вірний пароль' });
+      const user = await UserModel.findByIdAndUpdate(userId, { passwordHash }, { new: true });
+      return res.json({ ...user._doc, message: 'Пароль користувача оновлено успішно' });
     }
 
-    const salt = await bcrypt.genSalt(10);
-    const passwordHash = await bcrypt.hash(password, salt);
-
-    await UserModel.findByIdAndUpdate(userId, {
-      avatarUrl,
-      fullName,
-      email,
-      passwordHash
-    });
-    res.json({ message: 'Дані користувача оновлено успішно' });
+    const user = await UserModel.findByIdAndUpdate(userId, req.body, { new: true });
+    res.json({ ...user._doc, message: 'Дані користувача оновлено успішно' });
   } catch (err) {
     res.status(500).json({ message: 'Не вдалось змінити дані' });
   }
