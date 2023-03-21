@@ -20,7 +20,7 @@ function ArticleItem({ title, fullDate, imageUrl, text, tags, views, author }) {
         <AuthorSign author={author} />
         <div className="articleItem__tags">
           {tags.map((tag, index) => (
-            <p key={index + tag + title}>#{tag}</p>
+            <p key={index + tag + title}>{tag}</p>
           ))}
         </div>
         <div className="articleItem__views unselectable">

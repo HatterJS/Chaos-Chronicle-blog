@@ -17,7 +17,7 @@ function Settings() {
   //ref for avatar input
   const inputAvatar = React.useRef();
   //default avatar url
-  const defaultAvatarUrl = 'http://localhost:3000/img/avatars/defaultAvatar.png';
+  const defaultAvatarUrl = `${backendUrl}uploads/defaultAvatar.png`;
   //state for user data
   const [registrationData, setRegistrationData] = React.useState({
     avatarUrl,

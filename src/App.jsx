@@ -22,7 +22,6 @@ import AuthorArticles from './pages/AuthorArticles';
 
 import './App.css';
 
-import { arrowTop } from './components/SvgSprite';
 import { fetchToken } from './redux/slices/authorization';
 
 function App() {
@@ -39,7 +38,6 @@ function App() {
     <div className="App">
       <AuthorizationForm isShowForm={isShowForm} setIsShowForm={setIsShowForm} />
       <Header setIsShowForm={() => setIsShowForm(true)} />
-      <Banner />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />

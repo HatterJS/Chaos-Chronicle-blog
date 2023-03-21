@@ -54,7 +54,6 @@ function Article() {
         alert('Нажаль, виникла помилка під час завантаження статті');
       });
   }, [id]);
-
   function isOwner() {
     if (userData) {
       return article.author._id === userData._id;
@@ -93,11 +92,12 @@ function Article() {
         </div>
         <div className="article__footer">
           <div className="article__tags">
-            {article.tags.map((tag, index) => (
-              <div key={index + tag} onClick={() => onClickTag(tag)}>
-                #{tag}
-              </div>
-            ))}
+            {article.tags.length &&
+              article.tags.map((tag, index) => (
+                <div key={index + tag} onClick={() => onClickTag(tag)}>
+                  {tag}
+                </div>
+              ))}
           </div>
           <div className="article__views unselectable">
             {viewsSVG}

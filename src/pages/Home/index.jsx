@@ -7,6 +7,7 @@ import ArticleItem from '../../components/ArticleItem';
 import ArticleItemLoader from '../../components/ArticleItemLoader';
 import Sidebar from '../../components/Sidebar';
 import PageTitle from '../../components/PageTitle';
+import Banner from '../../components/Banner';
 
 import { fetchArticles, fetchTags } from '../../redux/slices/articles';
 
@@ -24,6 +25,7 @@ function Home() {
   }, [dispatch, filter]);
   return (
     <div className="home">
+      <Banner />
       <Navbar />
       <PageTitle title={filter.search ? `Пошук: ${filter.search}` : 'Cтатті'} />
       <div className="home__body">

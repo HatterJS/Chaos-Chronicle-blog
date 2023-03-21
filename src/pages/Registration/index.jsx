@@ -8,25 +8,25 @@ import PageTitle from '../../components/PageTitle/index.jsx';
 import './index.css';
 
 import { fetchRegistrationData, isAuthCheck } from '../../redux/slices/authorization';
+import { backendUrl } from '../../variables.js';
 import { closeSVG, deleteSVG } from '../../components/SvgSprite';
 
 function Registration() {
   //ref for avatar input
   const inputAvatar = React.useRef();
   //default avatar url
-  const defaultAvatarUrl = 'http://localhost:3000/img/avatars/defaultAvatar.png';
+  const defaultAvatarUrl = `${backendUrl}uploads/defaultAvatar.png`;
   //create dispatch for redux
   const dispatch = useDispatch();
   //check is authorized from redux
   const isAuthorized = useSelector(isAuthCheck);
-  const [currentAvatarUrl, setCurrentAvatarUrl] = React.useState('');
   //create state for user data
   const [registrationData, setRegistrationData] = React.useState({
+    avatarUrl: defaultAvatarUrl,
     fullName: '',
     email: '',
     password: '',
-    confirmPassword: '',
-    avatarUrl: defaultAvatarUrl
+    confirmPassword: ''
   });
   //send registration data and get user data from backend
   async function sendRegistrationData() {
@@ -77,27 +77,27 @@ function Registration() {
       const formData = new FormData();
       formData.append('image', file);
       const { data } = await axios.post(`/upload?dir=users`, formData);
-      currentAvatarUrl &&
-        (await axios.delete(
-          `delete/${currentAvatarUrl.slice(currentAvatarUrl.lastIndexOf('/') + 1)}?dir=users`
-        ));
-      setRegistrationData((prev) => ({ ...prev, avatarUrl: 'http://localhost:9999' + data.url }));
-      setCurrentAvatarUrl(data.url);
+      deleteAvatar();
+      setRegistrationData((prev) => ({ ...prev, avatarUrl: backendUrl + data.url }));
     } catch (err) {
       alert('Не вдалось завантажити аватар');
     }
   }
-  //delete avatar from server
-  function deleteAvatar() {
-    axios.delete(
-      `delete/${currentAvatarUrl.slice(currentAvatarUrl.lastIndexOf('/') + 1)}?dir=users`
-    );
-  }
   //clear avatar
   function clearAvatar() {
-    currentAvatarUrl && deleteAvatar();
+    deleteAvatar();
     inputAvatar.current.value = '';
     setRegistrationData((prev) => ({ ...prev, avatarUrl: defaultAvatarUrl }));
+  }
+  //delete avatar from server
+  function deleteAvatar() {
+    if (registrationData.avatarUrl !== defaultAvatarUrl) {
+      axios.delete(
+        `delete/${registrationData.avatarUrl.slice(
+          registrationData.avatarUrl.lastIndexOf('/') + 1
+        )}?dir=users`
+      );
+    }
   }
   //if authorizet redirect to home page
   if (isAuthorized) {

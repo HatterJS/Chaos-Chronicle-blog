@@ -14,6 +14,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: 20px 0;
 }
 .article__author .pageTitle__leftLine, .article__author .pageTitle__rightLine {
   border-top: 1px dashed gray;
@@ -105,10 +106,8 @@
 .article__body li {
   text-align: justify;
   list-style: circle;
+  list-style-position: inside;
   margin: 5px 0;
-}
-.article__body li:first-child {
-  margin-left: 20px;
 }
 .article__body a {
   color: rgb(13, 89, 253);

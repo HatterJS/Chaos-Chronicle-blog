@@ -25,7 +25,7 @@ function Sidebar({ tags }) {
         <div className="aside__tags">
           {tags.map((tag) => (
             <div key={tag} onClick={() => dispatch(setSearch(tag))}>
-              #{tag}
+              {tag}
             </div>
           ))}
         </div>
