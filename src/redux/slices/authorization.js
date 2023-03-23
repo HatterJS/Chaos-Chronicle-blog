@@ -29,6 +29,19 @@ export const fetchToken = createAsyncThunk('/authorization/fetchToken', async ()
   const { data } = await axios.get('/authorization/verification');
   return data;
 });
+//async request to the backend for Email confirmation
+export const fetchConfirmEmail = createAsyncThunk('/authorization/fetchConfirmEmail', async () => {
+  try {
+    const { data } = await axios.get('/confirmemail');
+    localStorage.setItem('token', data.token);
+    alert(data.message);
+    return data;
+  } catch (err) {
+    const { message } = err.response.data;
+    alert(message);
+    throw new Error(message);
+  }
+});
 //async request to the backend to change user data
 export const fetchChangeUserData = createAsyncThunk(
   '/authorization/fetchChangeUserData',
@@ -95,6 +108,18 @@ const authorizationSlice = createSlice({
         state.status = 'loaded';
       })
       .addCase(fetchToken.rejected, (state) => {
+        state.userData = null;
+        state.status = 'error';
+      })
+      .addCase(fetchConfirmEmail.pending, (state) => {
+        state.userData = null;
+        state.status = 'loading';
+      })
+      .addCase(fetchConfirmEmail.fulfilled, (state, action) => {
+        state.userData = action.payload;
+        state.status = 'loaded';
+      })
+      .addCase(fetchConfirmEmail.rejected, (state) => {
         state.userData = null;
         state.status = 'error';
       })

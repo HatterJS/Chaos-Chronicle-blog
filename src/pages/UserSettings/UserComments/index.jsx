@@ -2,8 +2,6 @@ import React from 'react';
 import axios from '../../../axios.js';
 import { Link } from 'react-router-dom';
 
-import AuthorSign from '../../../components/AuthorSign/index.jsx';
-
 import { formingDate } from '../../../formingDate.js';
 import './index.css';
 import { likeSVG } from '../../../components/SvgSprite.js';

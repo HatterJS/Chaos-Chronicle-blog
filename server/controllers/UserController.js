@@ -95,17 +95,28 @@ export const confirmEmail = async (req, res) => {
   try {
     const user = await UserModel.findById(userId);
     if (!user) {
-      return res
-        .status(403)
-        .json({ message: 'Термін підтвердження скінчився. Створіть, будь ласка, новий акаунт.' });
+      return res.status(403).json({
+        message: 'Термін підтвердження E-mail минув. Пройдіть повторно процедуру реєстрації.'
+      });
     }
-    const { data } = await UserModel.findByIdAndUpdate(
+    const userData = await UserModel.findByIdAndUpdate(
       userId,
       { emailConfirmed: true },
       { new: true }
     );
+    const token = jwt.sign(
+      {
+        _id: user._id
+      },
+      'blog_secret_key',
+      {
+        expiresIn: '30d'
+      }
+    );
+
     res.json({
-      ...data,
+      ...userData._doc,
+      token,
       message:
         'Підтвердження по Email пройшло успішно. Тепер Ви маєте доступ до повного функціоналу.'
     });

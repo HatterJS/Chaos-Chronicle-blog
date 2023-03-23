@@ -104,7 +104,7 @@ function Settings() {
   }
   return (
     <div className="settings">
-      <div className="settings__mainData">
+      <div className="settings__mainData unselectable">
         <div className="settings__statistics">
           <div title="Рейтинг">
             {ratingSVG}

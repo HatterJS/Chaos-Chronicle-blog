@@ -8,5 +8,6 @@
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   gap: 10px;
-  margin-top: 20px;
+  margin: 0 auto;
+  max-width: 1000px;
 }

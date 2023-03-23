@@ -12,7 +12,8 @@ import {
   authVerification,
   patchUserData,
   getAuthors,
-  promoteUser
+  promoteUser,
+  confirmEmail
 } from './controllers/UserController.js';
 import {
   getAllArticles,
@@ -112,6 +113,8 @@ app.post(
 );
 //authorization by token
 app.get('/authorization/verification', checkAuthorization, authVerification);
+//Email confirmation
+app.get('/confirmemail', checkAuthorization, confirmEmail);
 //change user data
 app.patch(
   '/authorization/changeData',
