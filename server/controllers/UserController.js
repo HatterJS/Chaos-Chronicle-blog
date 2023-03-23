@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
 import UserModel from '../models/Authorized.js';
+import { sendMail } from '../sendMail.js';
 
 //registration
 export const registration = async (req, res) => {
@@ -33,6 +34,8 @@ export const registration = async (req, res) => {
         expiresIn: '30d'
       }
     );
+
+    sendMail(req, token);
 
     const { passwordHash, ...userData } = user._doc;
 
@@ -84,6 +87,30 @@ export const authVerification = async (req, res) => {
     }
   } catch (err) {
     res.status(500).json('Авторизація пройшла не коректно');
+  }
+};
+//confirm email by token
+export const confirmEmail = async (req, res) => {
+  const { userId } = req;
+  try {
+    const user = await UserModel.findById(userId);
+    if (!user) {
+      return res
+        .status(403)
+        .json({ message: 'Термін підтвердження скінчився. Створіть, будь ласка, новий акаунт.' });
+    }
+    const { data } = await UserModel.findByIdAndUpdate(
+      userId,
+      { emailConfirmed: true },
+      { new: true }
+    );
+    res.json({
+      ...data,
+      message:
+        'Підтвердження по Email пройшло успішно. Тепер Ви маєте доступ до повного функціоналу.'
+    });
+  } catch (err) {
+    res.status(500).json({ message: 'Не вдалось підтвердити Email' });
   }
 };
 //change user data

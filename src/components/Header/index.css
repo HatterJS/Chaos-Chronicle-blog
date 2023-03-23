@@ -12,7 +12,7 @@ header {
           align-items: center;
   background-color: rgba(255, 255, 255, 0.8);
   padding: 5px 0;
-  z-index: 99;
+  z-index: 55;
   border: 1px solid;
   border-image-slice: 1;
   border-image-source: linear-gradient(to left, rgba(0, 0, 0, 0), rgb(225, 225, 225), rgba(0, 0, 0, 0));
