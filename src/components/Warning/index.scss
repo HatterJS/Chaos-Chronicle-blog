@@ -1,0 +1,33 @@
+.warning {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(255, 210, 80, 0.6);
+    white-space: nowrap;
+    overflow: hidden;
+    z-index: 55;
+}
+
+.warning p {
+  display: inline-block;
+  padding-left: 100%;
+  animation: warning 15s linear infinite;
+  color: rgb(130, 80, 50);
+  svg {
+      vertical-align: sub;
+      margin-right: 10px;
+      fill: rgb(130, 80, 50);
+  }
+}
+
+@keyframes warning {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100%, 0);
+  }
+}

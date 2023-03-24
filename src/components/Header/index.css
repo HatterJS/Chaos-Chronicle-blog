@@ -55,7 +55,7 @@ header .header__user {
   display: flex;
   gap: 10px;
 }
-header .header__user button {
+header .header__user a, header .header__user button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -69,15 +69,15 @@ header .header__user button {
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
-header .header__user button svg {
+header .header__user a svg, header .header__user button svg {
   fill: rgb(100, 100, 100);
   margin: 5px;
 }
-header .header__user button:hover {
+header .header__user a:hover, header .header__user button:hover {
   -webkit-filter: contrast(3);
           filter: contrast(3);
 }
-header .header__user button:active {
+header .header__user a:active, header .header__user button:active {
   -webkit-box-shadow: 1px 1px 2px gray inset;
           box-shadow: 1px 1px 2px gray inset;
   -webkit-transform: translateY(2px);
@@ -88,6 +88,17 @@ header .header__user .header__authorizedUserButtons {
   display: -ms-flexbox;
   display: flex;
   gap: 10px;
+}
+header .header__user .disabledLink {
+  border: 1px solid rgb(130, 80, 50);
+  background-color: rgb(245, 230, 220);
+  pointer-events: none;
+}
+header .header__user .disabledLink p {
+  color: rgb(200, 160, 160);
+}
+header .header__user .disabledLink svg {
+  fill: rgb(200, 160, 160);
 }
 
 @media (max-width: 780px) {

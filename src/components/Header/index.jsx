@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { isAuthCheck, logOut } from '../../redux/slices/authorization';
+import { logOut } from '../../redux/slices/authorization';
 
 import './index.css';
 
@@ -19,7 +19,7 @@ function Header({ setIsShowForm }) {
   //create dispatch for redux
   const dispatch = useDispatch();
   //check authorization with redux
-  const isAuth = useSelector(isAuthCheck);
+  const { userData } = useSelector((state) => state.authorization);
 
   function handleLogOut() {
     if (window.confirm('Ви дійсно бажаєте вийти?')) {
@@ -29,7 +29,7 @@ function Header({ setIsShowForm }) {
   }
 
   return (
-    <header>
+    <header className="unselectable">
       <a href="/" className="header__logo">
         <img src="/img/logo/dub.png" width={105} height={45} alt="logo" />
       </a>
@@ -54,21 +54,31 @@ function Header({ setIsShowForm }) {
         </Link>
       </div>
       <div className="header__user">
-        {!isAuth ? (
+        {!userData ? (
           <button className="header__authorization" onClick={setIsShowForm}>
             {authorizationSVG}
             <p>Авторизація</p>
           </button>
         ) : (
           <div className="header__authorizedUserButtons">
-            <Link to={'/addarticle'}>
-              <button className="header__createArticle">
-                {createArticleSVG}
-                <p>Нова стаття</p>
-              </button>
+            <Link
+              to={'/addarticle'}
+              className={
+                userData.emailConfirmed
+                  ? 'header__createArticle'
+                  : 'header__createArticle disabledLink'
+              }>
+              {createArticleSVG}
+              <p>Нова стаття</p>
             </Link>
-            <Link to={'/usersettings/settings'}>
-              <button className="header__userSetting">{userSettingSVG}</button>
+            <Link
+              to={'/usersettings/settings'}
+              className={
+                userData.emailConfirmed
+                  ? 'header__createArticle'
+                  : 'header__createArticle disabledLink'
+              }>
+              {userSettingSVG}
             </Link>
             <button className="header__logOut" onClick={handleLogOut}>
               {logOutSVG}

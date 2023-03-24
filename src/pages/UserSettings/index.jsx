@@ -8,7 +8,7 @@ import UserComments from './UserComments';
 
 import './index.css';
 
-import { isAuthCheck, logOut } from '../../redux/slices/authorization';
+import { logOut } from '../../redux/slices/authorization';
 import {
   commentsSVG,
   createArticleSVG,
@@ -20,7 +20,7 @@ function UserSettings() {
   //dispatch for redux
   const dispatch = useDispatch();
   //is authorized user
-  const isAuthorized = useSelector(isAuthCheck);
+  const { userData } = useSelector((state) => state.authorization);
 
   function handleLogOut() {
     if (window.confirm('Ви дійсно бажаєте вийти?')) {
@@ -28,8 +28,8 @@ function UserSettings() {
       localStorage.removeItem('token');
     }
   }
-
-  if (!isAuthorized) {
+  //if not authorized redirect to home page
+  if (!userData || !userData.emailConfirmed) {
     return <Navigate to={'/'} />;
   }
   return (

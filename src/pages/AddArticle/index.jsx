@@ -9,13 +9,12 @@ import PageTitle from '../../components/PageTitle/index.jsx';
 import 'react-quill/dist/quill.snow.css';
 import './index.css';
 
-import { isAuthCheck } from '../../redux/slices/authorization';
 import { closeSVG } from '../../components/SvgSprite.js';
 import { backendUrl } from '../../variables.js';
 
 function AddArticle() {
   //check is authorized from redux
-  const isAuthorized = useSelector(isAuthCheck);
+  const { userData } = useSelector((state) => state.authorization);
   //useNavigate for redirect user to Article page after submit the article
   const navigate = useNavigate();
   //get the id of the article if it is an edit page
@@ -107,8 +106,8 @@ function AddArticle() {
       });
     }
   }, [id]);
-  //if authorizet redirect to home page
-  if (!isAuthorized) {
+  //if not authorized redirect to home page
+  if (!userData || !userData.emailConfirmed) {
     return <Navigate to={'/'} />;
   }
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header';
@@ -19,12 +19,15 @@ import UserSettings from './pages/UserSettings';
 import Authors from './pages/Authors';
 import AuthorArticles from './pages/AuthorArticles';
 import EmailConfirmation from './pages/EmailConfirmation';
+import Warning from './components/Warning';
 
 import './App.css';
 
 import { fetchToken } from './redux/slices/authorization';
 
 function App() {
+  //check is authorized from redux
+  const { userData } = useSelector((state) => state.authorization);
   //create dispatch for redux
   const dispatch = useDispatch();
   //show/hide authorization form
@@ -33,11 +36,11 @@ function App() {
   React.useEffect(() => {
     dispatch(fetchToken());
   }, [dispatch]);
-
   return (
     <div className="App">
       <AuthorizationForm isShowForm={isShowForm} setIsShowForm={setIsShowForm} />
       <Header setIsShowForm={() => setIsShowForm(true)} />
+      {userData && !userData.emailConfirmed && <Warning />}
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
