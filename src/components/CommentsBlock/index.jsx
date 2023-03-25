@@ -21,11 +21,14 @@ function CommentsBlock() {
   const { id } = useParams();
   //comment text
   const [text, setText] = React.useState('');
+  //handle textarea change
+  function handleChange(event) {
+    setText(event.target.value);
+    event.target.style.height = '20px';
+    event.target.style.height = `${event.target.scrollHeight - 20}px`;
+  }
   //handle Enter
   function handleKey(event) {
-    if (text.length > 500 && event.key !== 'Backspace') {
-      return alert('Текст коментаря не може перевищувати 500 символів');
-    }
     if (event.key === 'Enter') {
       sendComment();
     }
@@ -64,12 +67,14 @@ function CommentsBlock() {
           <div className="commentsBlock__input">
             <textarea
               placeholder="Написати коментар"
+              maxLength={500}
               value={text}
-              onChange={(event) => setText(event.target.value)}
+              onChange={handleChange}
               onKeyUp={handleKey}
             />
-            <button className="acceptButton" onClick={sendComment} disabled={text.length > 500}>
-              {sendSVG}Відправити
+            <button className="acceptButton" onClick={sendComment}>
+              {sendSVG}
+              <p>Відправити</p>
             </button>
           </div>
         </div>

@@ -117,8 +117,7 @@ export const confirmEmail = async (req, res) => {
     res.json({
       ...userData._doc,
       token,
-      message:
-        'Підтвердження по Email пройшло успішно. Тепер Ви маєте доступ до повного функціоналу.'
+      message: 'Вітаємо! Підтвердження E-mail пройшло успішно.'
     });
   } catch (err) {
     res.status(500).json({ message: 'Не вдалось підтвердити Email' });

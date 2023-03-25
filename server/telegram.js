@@ -1,7 +1,11 @@
 import axios from 'axios';
+import dotenv from 'dotenv';
+
+//dotenv configure
+dotenv.config();
 
 export const telegramMessage = (article, authorName) => {
-  const token = 'MY_TOKEN';
+  const token = process.env.REACT_APP_TELEGRAM_TOKEN;
   const chat_id = '-1001925615260';
   const URI_API = `https://api.telegram.org/bot${token}/sendMessage`;
 

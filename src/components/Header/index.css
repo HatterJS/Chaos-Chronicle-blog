@@ -109,10 +109,10 @@ header .header__user .disabledLink svg {
     width: 25px;
     height: 25px;
   }
-  header .header__user button p {
+  header .header__user a p, header .header__user button p {
     display: none;
   }
-  header .header__user button svg {
+  header .header__user a svg, header .header__user button svg {
     width: 25px;
     height: 25px;
   }

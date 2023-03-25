@@ -23,6 +23,7 @@ import Warning from './components/Warning';
 
 import './App.css';
 
+import ScrollToTop from './components/ScrollToTop';
 import { fetchToken } from './redux/slices/authorization';
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
       <Header setIsShowForm={() => setIsShowForm(true)} />
       {userData && !userData.emailConfirmed && <Warning />}
       <main>
+        <ScrollToTop /> {/* scrolling up while navigating to any page */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

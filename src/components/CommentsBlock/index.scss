@@ -20,12 +20,6 @@
         gap: 10px;
         margin-top: 10px;
     }
-    // .commentItem:nth-child(even) {
-    //     align-self: flex-end;
-    //     .commentItem__delete {
-    //         left: -30px;
-    //     }
-    // }
     .commentsBlock__input {
         display: flex;
         align-items: flex-end;
@@ -33,8 +27,8 @@
         textarea {
             padding: 10px;
             resize: none;
-            border-radius: 15px;
             height: 20px;
+            border-radius: 15px;
             flex: 1 1 auto;
             font-size: 1em;
         }
@@ -47,6 +41,18 @@
             }
             &:hover svg {
                 fill: rgb(90, 90, 90);
+            }
+        }
+    }
+}
+
+@media (max-width: 860px) {
+    .commentsBlock {
+        .commentsBlock__input {
+            button {
+                p {
+                    display: none;
+                }
             }
         }
     }
