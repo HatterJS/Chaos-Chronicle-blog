@@ -17,12 +17,11 @@
   margin: 20px 0;
 }
 .article__author .pageTitle__leftLine, .article__author .pageTitle__rightLine {
-  border-top: 1px dashed gray;
+  border-top: 1px solid gray;
   margin: 0 20px;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
-  border: 1px 0 0 0 solid;
   border-image-slice: 1;
 }
 .article__author .pageTitle__leftLine {

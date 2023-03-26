@@ -36,6 +36,7 @@
 .articleItemLoader__image .articleItemLoader__title div:last-child {
   height: 15px;
   width: 30%;
+  width: 100px;
 }
 
 .articleItemLoader__description {

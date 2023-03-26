@@ -6,10 +6,14 @@ import { validationResult } from 'express-validator';
 import { telegramMessage } from '../telegram.js';
 
 export const getAllArticles = async (req, res) => {
-  const { sort } = req.query;
-  const { search } = req.query;
+  const { sort, search, page, perPage } = req.query;
+  const pageNumber = Number(page);
+  const itemsPerPage = Number(perPage);
   try {
-    const allArticles = await ArticleModel.find(
+    const totalArticles = await ArticleModel.countDocuments();
+    const totalPages = Math.ceil(totalArticles / itemsPerPage);
+    const startIndex = (pageNumber - 1) * itemsPerPage;
+    const articles = await ArticleModel.find(
       search
         ? {
             $or: [{ $text: { $search: search } }, { tags: { $in: [search] } }]
@@ -17,9 +21,11 @@ export const getAllArticles = async (req, res) => {
         : {}
     )
       .populate('author')
+      .skip(startIndex)
+      .limit(itemsPerPage)
       .sort({ [sort]: -1 })
       .exec();
-    res.json(allArticles);
+    res.json({ articles, totalPages });
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: 'Не вдалось знайти статті' });

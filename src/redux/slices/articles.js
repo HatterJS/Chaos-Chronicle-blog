@@ -20,7 +20,12 @@ export const fetchAuthorArticles = createAsyncThunk('/articles/fetchAuthorArticl
 const initialState = {
   articles: {
     items: [],
-    status: 'loading'
+    status: 'loading',
+    pagination: {
+      totalPages: null,
+      page: 1,
+      perPage: 7
+    }
   },
   tags: {
     items: [],
@@ -41,6 +46,9 @@ const articlesSlice = createSlice({
     },
     setSearch: (state, action) => {
       state.filter.search = action.payload;
+    },
+    switchPage: (state, action) => {
+      state.articles.pagination.page = action.payload;
     }
   },
   extraReducers: (build) => {
@@ -50,7 +58,8 @@ const articlesSlice = createSlice({
         state.articles.status = 'loading';
       })
       .addCase(fetchArticles.fulfilled, (state, action) => {
-        state.articles.items = action.payload;
+        state.articles.items = action.payload.articles;
+        state.articles.pagination.totalPages = action.payload.totalPages;
         state.articles.status = 'loaded';
       })
       .addCase(fetchArticles.rejected, (state) => {
@@ -84,6 +93,6 @@ const articlesSlice = createSlice({
   }
 });
 
-export const { setSort, setSearch } = articlesSlice.actions;
+export const { setSort, setSearch, switchPage } = articlesSlice.actions;
 
 export default articlesSlice.reducer;

@@ -1,0 +1,28 @@
+.pageSwitcher {
+  display: flex;
+  gap: 5px;
+  margin: 20px auto 0;
+  width: fit-content;
+  input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    width: 40px;
+    height: 40px;
+    appearance: none;
+    cursor: pointer;
+    &:checked {
+      outline: none;
+      background-color: rgb(245, 245, 245);
+      box-shadow: 2px 2px 4px gray inset;
+      pointer-events: none;
+    }
+    &:active {
+      outline: none;
+    }
+    &::after {
+      content: attr(label);
+    }
+  }
+}

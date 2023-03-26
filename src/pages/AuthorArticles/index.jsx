@@ -1,10 +1,11 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 
 import ArticleItem from '../../components/ArticleItem';
 import ArticleItemLoader from '../../components/ArticleItemLoader';
 import AuthorSign from '../../components/AuthorSign';
+import PageSwitcher from '../../components/PageSwitcher';
 
 import { fetchAuthorArticles } from '../../redux/slices/articles';
 
@@ -25,6 +26,9 @@ function AuthorArticles() {
   React.useEffect(() => {
     dispatch(fetchAuthorArticles(id));
   }, [dispatch, id]);
+  if (!authors.length) {
+    return <Navigate to={'/'} />;
+  }
   return (
     <div className="authorArticles">
       <div className="authorArticles__author">
@@ -54,6 +58,7 @@ function AuthorArticles() {
               </Link>
             ))}
       </div>
+      <PageSwitcher />
     </div>
   );
 }
