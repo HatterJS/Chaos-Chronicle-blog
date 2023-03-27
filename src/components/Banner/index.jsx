@@ -64,9 +64,19 @@ function Banner() {
 
   return (
     <div className="banner__parallax" ref={parallaxRef} onMouseMove={handleMouseMove}>
-      <div className="banner__parallax-first" ref={firstRef}></div>
-      <div className="banner__parallax-second" ref={secondRef}></div>
-      <div className="banner__parallax-third" ref={thirdRef}></div>
+      <img src="/img/logo/first.jpg" alt="first" ref={firstRef} />
+      <img
+        className="banner__parallax-second"
+        src="/img/logo/second.png"
+        alt="first"
+        ref={secondRef}
+      />
+      <img
+        className="banner__parallax-third"
+        src="/img/logo/third.png"
+        alt="first"
+        ref={thirdRef}
+      />
       <div className="banner__gradient"></div>
     </div>
   );

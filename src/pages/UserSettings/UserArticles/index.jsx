@@ -12,7 +12,7 @@ function UserArticles() {
   React.useEffect(() => {
     axios
       .get('/myarticles')
-      .then((res) => setMyArticles(res.data))
+      .then((res) => setMyArticles(res.data.myArticles))
       .catch((err) => alert(err.response.data.message));
   }, []);
   return (

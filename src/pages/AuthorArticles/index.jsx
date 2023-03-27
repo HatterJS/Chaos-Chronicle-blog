@@ -22,10 +22,11 @@ function AuthorArticles() {
   const author = authors.find((item) => item._id === id);
   //get articles and tags from redux
   const { articles } = useSelector((state) => state.articles);
+  const { page, perPage } = articles.pagination;
   //async request to the backend to getting all articles (redux articlesSlice)
   React.useEffect(() => {
-    dispatch(fetchAuthorArticles(id));
-  }, [dispatch, id]);
+    dispatch(fetchAuthorArticles({ id, page, perPage }));
+  }, [dispatch, id, page, perPage]);
   if (!authors.length) {
     return <Navigate to={'/'} />;
   }

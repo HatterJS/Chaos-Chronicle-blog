@@ -33,13 +33,21 @@ export const getAllArticles = async (req, res) => {
 };
 
 export const getMyArticles = async (req, res) => {
-  const userId = req.params.id || req.userId;
+  const userId = req.query.id || req.userId;
+  const { page, perPage } = req.query;
+  const pageNumber = Number(page);
+  const itemsPerPage = Number(perPage);
   try {
+    const totalArticles = await ArticleModel.countDocuments({ author: userId });
+    const totalPages = Math.ceil(totalArticles / itemsPerPage);
+    const startIndex = (pageNumber - 1) * itemsPerPage;
     const myArticles = await ArticleModel.find({ author: userId })
       .populate('author')
+      .skip(startIndex)
+      .limit(itemsPerPage)
       .sort({ createdAt: -1 })
       .exec();
-    res.json(myArticles);
+    res.json({ myArticles, totalPages });
   } catch (err) {
     res.status(500).json({ message: 'Не вдалось знайти статті' });
   }

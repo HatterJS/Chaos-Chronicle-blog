@@ -12,8 +12,8 @@ nav {
   border-image-slice: 1;
   border-image-source: linear-gradient(to left, rgba(0, 0, 0, 0), rgb(225, 225, 225), rgba(0, 0, 0, 0));
   padding: 5px 0 5px 0;
-  background: -webkit-gradient(linear, right top, left top, from(rgba(0, 0, 0, 0)), color-stop(rgba(178, 246, 255, 0.3)), color-stop(rgba(255, 250, 178, 0.3)), to(rgba(0, 0, 0, 0)));
-  background: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(178, 246, 255, 0.3), rgba(255, 250, 178, 0.3), rgba(0, 0, 0, 0));
+  background: -webkit-gradient(linear, right top, left top, from(rgba(0, 0, 0, 0)), color-stop(rgb(230, 240, 245)), color-stop(rgb(250, 250, 230)), to(rgba(0, 0, 0, 0)));
+  background: linear-gradient(to left, rgba(0, 0, 0, 0), rgb(230, 240, 245), rgb(250, 250, 230), rgba(0, 0, 0, 0));
   margin-bottom: 20px;
 }
 nav .nav__menu ul {

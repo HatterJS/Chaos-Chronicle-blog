@@ -4,6 +4,12 @@
     height: 300px;
     overflow: hidden;
     margin: 0 auto;
+    background-color: rgb(250, 250, 250);
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
 }
 .banner__parallax-first, .banner__parallax-second, .banner__parallax-third, .banner__gradient {
     position: absolute;
@@ -11,15 +17,6 @@
     height: 100%;
     top: 0;
     left: 0;
-}
-.banner__parallax-first {
-    background: url("../../../public/img/logo/first.jpg") center / contain no-repeat;
-}
-.banner__parallax-second {
-    background: url("../../../public/img/logo/second.png") center / contain no-repeat;
-}
-.banner__parallax-third {
-    background: url("../../../public/img/logo/third.png") center / contain no-repeat;
 }
 .banner__gradient {
     background: radial-gradient(circle, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%);
