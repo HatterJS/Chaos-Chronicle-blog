@@ -43,9 +43,6 @@
 .article__header .article__titleBlock p {
   font-size: 0.9em;
 }
-.article__header .article__toolsBlock {
-  display: none;
-}
 .article__header .article__toolsBlock p {
   color: gray;
 }

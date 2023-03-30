@@ -12,7 +12,7 @@ import { setSearch } from '../../redux/slices/articles';
 
 import './index.css';
 
-import { deleteSVG, penSVG, viewsSVG } from '../../components/SvgSprite';
+import { deleteSVG, penSVG, remindSVG, viewsSVG } from '../../components/SvgSprite';
 import { formingDate } from '../../formingDate';
 
 function Article() {
@@ -26,6 +26,8 @@ function Article() {
   const navigate = useNavigate();
   //article object
   const [article, setArticle] = React.useState({});
+  //ramainder status
+  const [isRemind, setIsRemind] = React.useState(false);
   //is loading an article state
   const [isLoading, setIsLoading] = React.useState(true);
   //set search value and navigate to home page
@@ -41,12 +43,21 @@ function Article() {
       navigate('/');
     }
   }
+  //remind about article to subscribers
+  async function handleArticleRemind() {
+    await axios
+      .get(`/article/remind/${id}`)
+      .then((res) => alert(res.data.message))
+      .catch((err) => alert(err.response.data.message));
+    setIsRemind(false);
+  }
   //get article from backend
   React.useEffect(() => {
     axios
       .get(`/article/${id}`)
       .then((res) => {
         setArticle(res.data);
+        setIsRemind(res.data.isRemind);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -79,9 +90,14 @@ function Article() {
             className="article__toolsBlock"
             style={isOwner() ? { display: 'flex' } : { display: 'none' }}>
             <Link to={`/editarticle/${id}`}>
-              <button>{penSVG}</button>
+              <button title="Редагувати статтю">{penSVG}</button>
             </Link>
-            <button onClick={deleteArticle}>{deleteSVG}</button>
+            <button onClick={handleArticleRemind} title="Нагадати про статтю" disabled={!isRemind}>
+              {remindSVG}
+            </button>
+            <button onClick={deleteArticle} title="Видалити статтю">
+              {deleteSVG}
+            </button>
           </div>
         </div>
         <div className="article__body">

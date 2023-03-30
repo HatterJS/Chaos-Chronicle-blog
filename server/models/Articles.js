@@ -24,6 +24,10 @@ const ArticleSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Authorized',
       required: true
+    },
+    isRemind: {
+      type: Boolean,
+      default: true
     }
   },
   {

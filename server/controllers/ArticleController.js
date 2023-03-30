@@ -78,6 +78,7 @@ export const getArticle = async (req, res) => {
 };
 
 export const postArticle = async (req, res) => {
+  const appeal = "Друзі, раді повідомити, що на каналі з'явилась нова стаття!";
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -95,7 +96,7 @@ export const postArticle = async (req, res) => {
     const author = await UserModel.findById(req.userId);
     await UserModel.findByIdAndUpdate(req.userId, { $inc: { userArticles: 1, rating: 10 } });
 
-    telegramMessage(article._doc, author.fullName);
+    telegramMessage(article._doc, author.fullName, appeal);
 
     res.json({ ...article._doc, message: 'Статтю опубліковано успішно' });
   } catch (err) {
@@ -176,5 +177,27 @@ export const getPopularTags = async (req, res) => {
     res.json(sortedTags.slice(0, 6));
   } catch (err) {
     res.status(500).json({ message: 'Не вдалось знайти статті' });
+  }
+};
+
+export const articleReminder = async (req, res) => {
+  const { id } = req.params;
+  const { userId } = req;
+  const appeal = 'Друзі, будь ласка, зверніть увагу на цікаву статтю.';
+  try {
+    const article = await ArticleModel.findById(id).populate('author').exec();
+    if (userId !== String(article.author.id)) {
+      return res.status(403).json({ message: 'Доступ відсутній' });
+    }
+
+    telegramMessage(article._doc, article.author.fullName, appeal);
+
+    // await ArticleModel.findByIdAndUpdate(id, { isRemind: false });
+
+    res.json({
+      message: 'Нагадування успішно відправлено всім підписникам телеграм-каналу Chaos Cronicles'
+    });
+  } catch (err) {
+    res.status(500).json({ message: 'Не вдалось відправити нагадування' });
   }
 };

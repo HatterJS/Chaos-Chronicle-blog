@@ -22,7 +22,8 @@ import {
   deleteArticle,
   patchArticle,
   getPopularTags,
-  getMyArticles
+  getMyArticles,
+  articleReminder
 } from './controllers/ArticleController.js';
 import {
   deleteComment,
@@ -148,6 +149,8 @@ app.patch(
   handleValidationErrors,
   patchArticle
 );
+//remind subscribers about the article
+app.get('/article/remind/:id', checkAuthorization, articleReminder);
 
 //get popular tags
 app.get('/tags', getPopularTags);
