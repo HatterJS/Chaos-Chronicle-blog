@@ -1,7 +1,7 @@
 footer {
     border-top: 1px solid rgba(64, 64, 64, 0.2);
     margin-top: 20px;
-    padding: 10px 0;
+    padding: 20px 0;
     background: linear-gradient(
         to left, 
         rgba(0, 0, 0, 0),
@@ -25,6 +25,14 @@ footer {
             cursor: pointer;
             &:hover {
                 text-decoration: underline;
+            }
+        }
+        .footer__socialBlock {
+            align-self: center;
+            flex-direction: row;
+            gap: 20px;
+            .footer__social {
+                text-align: center;
             }
         }
     }

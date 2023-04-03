@@ -16,13 +16,25 @@ function Footer() {
           <Link to={'/sponsorship'}>Стати спонсором</Link>
           <Link to={'/privacypolicy'}>Політика конфіденційності</Link>
         </div>
-        <div className="footer__social unselectable">
-          <h3>Приєднуйтесь</h3>
-          <div className="footer__socialImg">
-            <div className="banner__telegram unselectable">
-              <a href="https://t.me/ChaosChroniclesBlog" target={'_blank'} rel="noreferrer">
-                <img src="/img/logo/telegram.jpg" alt="telegram" width={80} height={80} />
-              </a>
+        <div className="footer__socialBlock">
+          <div className="footer__social unselectable">
+            <h3>Долучайтесь</h3>
+            <div className="footer__socialImg">
+              <div className="banner__telegram unselectable">
+                <a href="https://t.me/ChaosChroniclesBlog" target={'_blank'} rel="noreferrer">
+                  <img src="/img/logo/channel_QR.jpg" alt="telegram" width={80} height={80} />
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="footer__social unselectable">
+            <h3>Звертайтесь</h3>
+            <div className="footer__socialImg">
+              <div className="banner__telegram unselectable">
+                <a href="https://t.me/chaosChronicle_bot" target={'_blank'} rel="noreferrer">
+                  <img src="/img/logo/assistant_QR.jpg" alt="telegram" width={80} height={80} />
+                </a>
+              </div>
             </div>
           </div>
         </div>

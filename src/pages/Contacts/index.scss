@@ -9,14 +9,17 @@
         line-height: 1.5;
     }
 }
-.constacts__telegram {
+.contacts__telegram {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
     border: 1px solid gray;
     border-radius: 15px;
     padding: 15px;
     margin: 10px 0;
+    max-width: 500px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
-    width: fit-content;
     &:hover {
         box-shadow: 2px 2px 4px gray;
         transform: translateY(-1px);
@@ -36,11 +39,11 @@
 .constacts__describe {
     display: flex;
     flex-direction: column;
-    ul {
-    }
+    flex: 1 1 auto;
     h2 {
         flex: 1 1 auto;
         margin: 0;
+        margin-bottom: 20px;
         text-align: center;
     }
 }

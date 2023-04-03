@@ -13,25 +13,31 @@
   line-height: 1.5;
 }
 
-.constacts__telegram {
+.contacts__telegram {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   border: 1px solid gray;
   border-radius: 15px;
   padding: 15px;
   margin: 10px 0;
+  max-width: 500px;
   cursor: pointer;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
-.constacts__telegram:hover {
+.contacts__telegram:hover {
   -webkit-box-shadow: 2px 2px 4px gray;
           box-shadow: 2px 2px 4px gray;
   -webkit-transform: translateY(-1px);
           transform: translateY(-1px);
 }
-.constacts__telegram a {
+.contacts__telegram a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -42,7 +48,7 @@
       flex-wrap: wrap;
   gap: 20px;
 }
-.constacts__telegram a li {
+.contacts__telegram a li {
   margin: 5px 0;
   list-style: circle;
   list-style-position: inside;
@@ -56,11 +62,15 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
 }
 .constacts__describe h2 {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
   margin: 0;
+  margin-bottom: 20px;
   text-align: center;
 }

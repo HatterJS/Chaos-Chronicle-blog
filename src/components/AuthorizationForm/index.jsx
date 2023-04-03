@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchUserData, isAuthCheck } from '../../redux/slices/authorization';
 
-import { closeSVG, faceBookSVG, googleSVG, instagramSVG } from '../SvgSprite';
+import { closeSVG } from '../SvgSprite';
 
 import './index.css';
 
@@ -94,11 +94,11 @@ function AuthorizationForm({ isShowForm, setIsShowForm }) {
               Реєстрація.
             </Link>
           </div>
-          <div className="authorizationForm__social">
+          {/* <div className="authorizationForm__social">
             {googleSVG}
             {faceBookSVG}
             {instagramSVG}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

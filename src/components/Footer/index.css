@@ -1,7 +1,7 @@
 footer {
   border-top: 1px solid rgba(64, 64, 64, 0.2);
   margin-top: 20px;
-  padding: 10px 0;
+  padding: 20px 0;
   background: -webkit-gradient(linear, right top, left top, from(rgba(0, 0, 0, 0)), color-stop(rgba(178, 246, 255, 0.3)), color-stop(rgba(255, 250, 178, 0.3)), to(rgba(0, 0, 0, 0)));
   background: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(178, 246, 255, 0.3), rgba(255, 250, 178, 0.3), rgba(0, 0, 0, 0));
 }
@@ -32,6 +32,19 @@ footer .footer a {
 }
 footer .footer a:hover {
   text-decoration: underline;
+}
+footer .footer .footer__socialBlock {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 20px;
+}
+footer .footer .footer__socialBlock .footer__social {
+  text-align: center;
 }
 footer .banner__telegram a {
   display: inline-block;

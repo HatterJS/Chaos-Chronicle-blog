@@ -50,7 +50,7 @@ function CommentsBlock() {
       </div>
       {!isAuthorized ? (
         <div className={'commentsBlock__notAuth'}>
-          Читати та доадавати коментарі можуть тільки авторизовані користувачі.
+          Читати та додавати коментарі можуть тільки авторизовані користувачі.
         </div>
       ) : (
         <div className="commentsBlock__body">

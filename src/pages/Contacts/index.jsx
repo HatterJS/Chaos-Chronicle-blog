@@ -7,23 +7,45 @@ function Contacts() {
     <div className="contacts">
       <PageTitle title="Контакти" />
       <div className="contacts__content">
-        <p>Задати будь-яке питання можна у спільноті Telegram:</p>
-        <div className="constacts__telegram unselectable">
+        <p>Долучайтесь до нашої спільноти в Telegram:</p>
+        <div className="contacts__telegram unselectable">
           <a href="https://t.me/ChaosChroniclesBlog" target={'_blank'} rel="noreferrer">
-            <img src="/img/logo/telegram.jpg" alt="telegram" width={200} height={200} />
+            <img src="/img/logo/channel_QR.jpg" alt="telegram" width={150} height={150} />
             <div className="constacts__describe">
-              <h2>CHAOS CHRONICLES BLOG</h2>
-              <h3>Долучайся щоб:</h3>
+              <h2>Спільнота в Telegram</h2>
+              <h3>Долучайтесь, щоб:</h3>
               <ul>
-                <li>отримувати інформацію про нові статті</li>
-                <li>обговорювати актуальні теми</li>
-                <li>ставити запитання та отримувати відповіді</li>
+                <li>першим дізнаватись про нові статті</li>
+                <li>ставити запитання авторам статей</li>
+                <li>спілкуватись з іншими читачами</li>
               </ul>
             </div>
           </a>
         </div>
-        <p>Якщо виникли питання або потрібна додаткова інформація, будь ласка, звертайтесь.</p>
-        <p>Наші спеціалісти будуть раді допомогти Вам.</p>
+        <br />
+        <p>Якщо виникли питання або потрібна додаткова інформація, будь ласка, звертайтесь:</p>
+        <div className="contacts__telegram unselectable">
+          <a href="https://t.me/chaosChronicle_bot" target={'_blank'} rel="noreferrer">
+            <img src="/img/logo/assistant_QR.jpg" alt="telegram" width={150} height={150} />
+            <div className="constacts__describe">
+              <h2>Технічна підтримка</h2>
+              <h3>Звертайтесь, якщо:</h3>
+              <ul>
+                <li>виникли технічні проблеми</li>
+                <li>маєте цікаві пропозиції</li>
+                <li>бажаєте долучитись до нашої команди</li>
+              </ul>
+            </div>
+          </a>
+        </div>
+        <p>
+          Ми розуміємо, що ваш час дуже цінний, тому зробимо все можливе, щоб якнайшвидше та
+          якнайбільш ефективно відповісти на Ваші запитання.
+        </p>
+        <br />
+        <p>
+          Дякуємо за використання нашого сервісу і сподіваємося на продуктивну співпрацю з Вами!
+        </p>
       </div>
     </div>
   );
