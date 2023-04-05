@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { backendUrl } from './variables.js';
+import axios from "axios";
+import { backendUrl } from "./variables.js";
 
 const instance = axios.create({
-  baseURL: backendUrl
+  baseURL: backendUrl,
 });
 
 instance.interceptors.request.use((config) => {
-  config.headers.Authorization = localStorage.getItem('token');
+  config.headers.Authorization = localStorage.getItem("token");
   return config;
 });
 

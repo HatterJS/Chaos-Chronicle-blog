@@ -1,30 +1,30 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Routes, Route } from 'react-router-dom';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Routes, Route } from "react-router-dom";
 
-import Header from './components/Header';
-import Footer from './components/Footer';
-import AuthorizationForm from './components/AuthorizationForm';
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import AuthorizationForm from "./components/AuthorizationForm";
 
-import Home from './pages/Home';
-import Registration from './pages/Registration';
-import About from './pages/About';
-import Contacts from './pages/Contacts';
-import Sponsorship from './pages/Sponsorship';
-import Privacy from './pages/Privacy';
-import Article from './pages/Article';
-import AddArticle from './pages/AddArticle';
-import NotFound from './pages/NonFound';
-import UserSettings from './pages/UserSettings';
-import Authors from './pages/Authors';
-import AuthorArticles from './pages/AuthorArticles';
-import EmailConfirmation from './pages/EmailConfirmation';
-import Warning from './components/Warning';
+import Home from "./pages/Home";
+import Registration from "./pages/Registration";
+import About from "./pages/About";
+import Contacts from "./pages/Contacts";
+import Sponsorship from "./pages/Sponsorship";
+import Privacy from "./pages/Privacy";
+import Article from "./pages/Article";
+import AddArticle from "./pages/AddArticle";
+import NotFound from "./pages/NonFound";
+import UserSettings from "./pages/UserSettings";
+import Authors from "./pages/Authors";
+import AuthorArticles from "./pages/AuthorArticles";
+import EmailConfirmation from "./pages/EmailConfirmation";
+import Warning from "./components/Warning";
 
-import './App.css';
+import "./App.css";
 
-import ScrollToTop from './components/ScrollToTop';
-import { fetchToken } from './redux/slices/authorization';
+import ScrollToTop from "./components/ScrollToTop";
+import { fetchToken } from "./redux/slices/authorization";
 
 function App() {
   //check is authorized from redux
@@ -39,7 +39,10 @@ function App() {
   }, [dispatch]);
   return (
     <div className="App">
-      <AuthorizationForm isShowForm={isShowForm} setIsShowForm={setIsShowForm} />
+      <AuthorizationForm
+        isShowForm={isShowForm}
+        setIsShowForm={setIsShowForm}
+      />
       <Header setIsShowForm={() => setIsShowForm(true)} />
       {userData && !userData.emailConfirmed && <Warning />}
       <main>

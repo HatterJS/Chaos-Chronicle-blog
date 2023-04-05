@@ -118,9 +118,6 @@ header .header__user .disabledLink svg {
   }
 }
 @media (max-width: 520px) {
-  header .header__logo {
-    display: none;
-  }
   header .header__links {
     gap: 10px;
   }

@@ -29,7 +29,7 @@ function Home() {
     <div className="home">
       <Banner />
       <Navbar />
-      <PageTitle title={filter.search ? `Пошук: ${filter.search}` : 'Cтатті'} />
+      <PageTitle title={'Cтатті'} />
       <div className="home__body">
         <div className="home__articleBlock">
           <div className="home__articles">

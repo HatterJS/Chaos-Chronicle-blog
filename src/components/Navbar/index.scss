@@ -40,11 +40,55 @@ nav {
                 padding-right: 5px;
             }}
     }
-    input {
-        background: url(../../assets/lens.svg) no-repeat 6px white;
-        padding-left: 30px;
-        padding-right: 10px;
-        color: rgb(30, 140, 220);
+    .nav__search {
+        display: flex;
+        gap: 5px;
+        input {
+            border-radius: 15px 0 0 15px;
+            // background: url(../../assets/lens.svg) no-repeat 6px white;
+            // padding-left: 30px;
+            // padding-right: 10px;
+            color: rgb(30, 140, 220);
+        }
+        button {
+            background-color: gray;
+            border: 1px solid rgb(219, 219, 219);
+            border-radius: 0 15px 15px 0;
+            height: 40px;
+            line-height: 0;
+            padding: 5px 10px;
+            transition: all 0.2s ease-in-out;
+            &:hover {
+                background-color: rgb(150, 150, 150);
+            }
+            &:active {
+                transform: translateY(1px);
+                box-shadow: 2px 2px 4px rgb(54, 54, 54) inset;
+            }
+            svg {
+                fill: rgb(255, 255, 255)
+            }
+        }
+    }
+}
+.nav__searchWarning {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: fixed;
+    top: 30%;
+    left: 0;
+    background-color: rgba(240, 145, 0, 0.7);
+    border-radius: 0 0 15px 15px;
+    color: rgb(255, 255, 255);
+    padding: 5px 20px 5px 10px;
+    transform: rotate(-90deg);
+    transform-origin: top left;
+    z-index: 99;
+    button {
+        svg {
+            fill: white;
+        }
     }
 }
 

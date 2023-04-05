@@ -43,11 +43,62 @@ nav .nav__menu ul svg {
   fill: rgb(100, 100, 100);
   padding-right: 5px;
 }
-nav input {
-  background: url(../../assets/lens.svg) no-repeat 6px white;
-  padding-left: 30px;
-  padding-right: 10px;
+nav .nav__search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 5px;
+}
+nav .nav__search input {
+  border-radius: 15px 0 0 15px;
   color: rgb(30, 140, 220);
+}
+nav .nav__search button {
+  background-color: gray;
+  border: 1px solid rgb(219, 219, 219);
+  border-radius: 0 15px 15px 0;
+  height: 40px;
+  line-height: 0;
+  padding: 5px 10px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+nav .nav__search button:hover {
+  background-color: rgb(150, 150, 150);
+}
+nav .nav__search button:active {
+  -webkit-transform: translateY(1px);
+          transform: translateY(1px);
+  -webkit-box-shadow: 2px 2px 4px rgb(54, 54, 54) inset;
+          box-shadow: 2px 2px 4px rgb(54, 54, 54) inset;
+}
+nav .nav__search button svg {
+  fill: rgb(255, 255, 255);
+}
+
+.nav__searchWarning {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  position: fixed;
+  top: 30%;
+  left: 0;
+  background-color: rgba(240, 145, 0, 0.7);
+  border-radius: 0 0 15px 15px;
+  color: rgb(255, 255, 255);
+  padding: 5px 20px 5px 10px;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+  z-index: 99;
+}
+.nav__searchWarning button svg {
+  fill: white;
 }
 
 @media (max-width: 650px) {

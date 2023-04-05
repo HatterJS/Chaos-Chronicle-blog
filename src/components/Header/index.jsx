@@ -31,7 +31,10 @@ function Header({ setIsShowForm }) {
   return (
     <header className="unselectable">
       <a href="/" className="header__logo">
-        <img src="/img/logo/dub.png" width={105} height={45} alt="logo" />
+        <picture>
+          <source media="(max-width: 520px)" srcSet="/img/logo/ccb_low.png" width="45" />
+          <img src="/img/logo/ccb.png" width="110" height="45" alt="logo" />
+        </picture>
       </a>
       <div className="header__links">
         <Link to={'/'}>

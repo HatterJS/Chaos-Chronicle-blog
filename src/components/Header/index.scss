@@ -109,9 +109,6 @@ header {
 
 @media (max-width: 520px) {
     header {
-        .header__logo {
-            display: none;
-        }
         .header__links {
             gap: 10px;
             p {

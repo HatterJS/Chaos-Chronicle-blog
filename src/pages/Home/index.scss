@@ -5,6 +5,11 @@
     gap: 20px;
     margin-top: 20px;
 }
+.home__articleBlock {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
 .home__articles {
     display: flex;
     flex-wrap: wrap;

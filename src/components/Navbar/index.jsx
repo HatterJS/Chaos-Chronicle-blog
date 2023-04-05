@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { setSearch, setSort } from '../../redux/slices/articles';
-import { authorsSVG, newArticleSVG, recomendationSVG } from '../SvgSprite';
+import { authorsSVG, closeSVG, lensSVG, newArticleSVG, recomendationSVG } from '../SvgSprite';
 import './index.css';
 
 function Navbar() {
@@ -17,11 +17,20 @@ function Navbar() {
   function handleSearchKey(event) {
     event.key === 'Enter' && dispatch(setSearch(searchValue));
   }
+  //handle search button
+  function handleSearchBtn() {
+    dispatch(setSearch(searchValue));
+  }
   //handle changes in search field
   function handleSearchChange(event) {
     const value = event.target.value;
     setSearchValue(value);
     !value && dispatch(setSearch(''));
+  }
+  //clear search
+  function clearSearch() {
+    setSearchValue('');
+    dispatch(setSearch(''));
   }
   React.useEffect(() => {
     setSearchValue(search);
@@ -46,7 +55,14 @@ function Navbar() {
           onChange={handleSearchChange}
           onKeyUp={handleSearchKey}
         />
+        <button onClick={handleSearchBtn}>{lensSVG}</button>
       </div>
+      {searchValue && (
+        <div className="nav__searchWarning unselectable">
+          <button onClick={clearSearch}>{closeSVG}</button>
+          {searchValue}
+        </div>
+      )}
     </nav>
   );
 }
