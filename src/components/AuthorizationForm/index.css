@@ -136,24 +136,3 @@
 .authorizationForm__form .authorizationForm__registration a {
   color: rgb(0, 110, 255);
 }
-.authorizationForm__form .authorizationForm__social {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  gap: 10px;
-  border-top: 1px dashed gray;
-  padding-top: 10px;
-  margin-top: 10px;
-}
-.authorizationForm__form .authorizationForm__social svg {
-  fill: gray;
-  cursor: pointer;
-  -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-}
-.authorizationForm__form .authorizationForm__social svg:hover {
-  fill: rgb(75, 75, 75);
-}

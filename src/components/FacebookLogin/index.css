@@ -1,0 +1,21 @@
+.facebookLogin__social {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 10px;
+  border-top: 1px dashed gray;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+.facebookLogin__social svg {
+  fill: rgb(75, 130, 230);
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.facebookLogin__social svg:hover {
+  fill: rgb(80, 140, 250);
+}

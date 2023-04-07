@@ -1,120 +1,104 @@
 .show {
-    visibility: visible;
-    opacity: 1;
+  visibility: visible;
+  opacity: 1;
 }
 .hint {
-    visibility: hidden;
-    opacity: 0;
+  visibility: hidden;
+  opacity: 0;
 }
 .authorizationForm {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    z-index: 99;
-    transition: all 0.5s ease-in-out;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  transition: all 0.5s ease-in-out;
 }
 .authorizationForm__shadow {
-    background-color: rgba(0, 0, 0, 0.6);
-    width: 100%;
-    height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
 }
 .authorizationForm__form {
+  position: absolute;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 4px 4px 6px rgb(30, 30, 30);
+  top: 50%;
+  left: 50%;
+  min-width: 300px;
+  transform: translate3d(-50%, -50%, 0);
+  overflow: hidden;
+  .authorizationForm__close {
     position: absolute;
-    background-color: white;
-    border-radius: 20px;
-    box-shadow: 4px 4px 6px rgb(30, 30, 30);
-    top: 50%;
-    left: 50%;
-    min-width: 300px;
-    transform: translate3d(-50%, -50%, 0);
-    overflow: hidden;
-    .authorizationForm__close {
+    top: 10px;
+    right: 10px;
+    svg {
+      fill: rgb(160, 160, 160);
+      cursor: pointer;
+      &:hover {
+        fill: rgb(90, 90, 90);
+      }
+    }
+  }
+  .authorizationForm__header {
+    background-color: rgb(255, 255, 255);
+    padding-top: 20px;
+    text-align: center;
+  }
+  .authorizationForm__body {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 40px;
+    .authorizationForm__inputField {
+      position: relative;
+      border: 1px solid gray;
+      border-radius: 15px;
+      margin-bottom: 15px;
+      input {
+        outline: none;
+        border: none;
+        &:focus + div {
+          padding: 0 10px;
+          font-size: 0.8em;
+          color: rgb(120, 120, 120);
+          top: 0;
+        }
+        &:not(:placeholder-shown) + div {
+          display: block;
+          padding: 0 10px;
+          font-size: 0.8em;
+          color: rgb(120, 120, 120);
+          top: 0;
+        }
+      }
+      div {
         position: absolute;
-        top: 10px;
-        right: 10px;
-        svg {
-            fill: rgb(160, 160, 160);
-            cursor: pointer;
-            &:hover {
-                fill: rgb(90, 90, 90);
-            }
-        }
+        top: 50%;
+        left: 15px;
+        border-radius: 10px;
+        transform: translateY(-50%);
+        background-color: white;
+        width: fit-content;
+        color: rgb(190, 190, 190);
+        transition: all 0.2s ease-in-out;
+        pointer-events: none;
+      }
     }
-    .authorizationForm__header {
-        background-color: rgb(255, 255, 255);
-        padding-top: 20px;
-        text-align: center;
+    .authorizationForm__buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+      button {
+        flex: 1 1 auto;
+      }
     }
-    .authorizationForm__body {
-        display: flex;
-        flex-direction: column;
-        padding: 20px 40px;
-        .authorizationForm__inputField {
-            position: relative;
-            border: 1px solid gray;
-            border-radius: 15px;
-            margin-bottom: 15px;
-            input {
-                outline: none;
-                border: none;
-                &:focus + div {
-                    padding: 0 10px;
-                    font-size: 0.8em;
-                    color: rgb(120, 120, 120);
-                    top: 0;
-                }
-                &:not(:placeholder-shown) + div {
-                    display: block;
-                    padding: 0 10px;
-                    font-size: 0.8em;
-                    color: rgb(120, 120, 120);
-                    top: 0;
-                }
-            }
-            div {
-                position: absolute;
-                top: 50%;
-                left: 15px;
-                border-radius: 10px;
-                transform: translateY(-50%);
-                background-color: white;
-                width: fit-content;
-                color: rgb(190, 190, 190);
-                transition: all 0.2s ease-in-out;
-                pointer-events: none;
-            }
-        }
-        .authorizationForm__buttons {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 10px;
-            button {
-                flex: 1 1 auto;
-            }
-        }
+  }
+  .authorizationForm__registration {
+    text-align: center;
+    a {
+      color: rgb(0, 110, 255);
     }
-    .authorizationForm__registration {
-        text-align: center;
-        a {
-            color: rgb(0, 110, 255);
-        }
-    }
-    .authorizationForm__social {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        border-top: 1px dashed gray;
-        padding-top: 10px;
-        margin-top: 10px;
-        svg {
-            fill: gray;
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
-            &:hover {
-                fill: rgb(75, 75, 75);
-            }
-        }
-    }
+  }
 }

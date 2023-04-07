@@ -1,12 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import React from "react";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-import { fetchUserData, isAuthCheck } from '../../redux/slices/authorization';
+import FacebookLogin from "../FacebookLogin";
 
-import { closeSVG } from '../SvgSprite';
+import { fetchUserData, isAuthCheck } from "../../redux/slices/authorization";
 
-import './index.css';
+import { closeSVG } from "../SvgSprite";
+
+import "./index.css";
 
 function AuthorizationForm({ isShowForm, setIsShowForm }) {
   //create dispatch for redux
@@ -15,17 +17,17 @@ function AuthorizationForm({ isShowForm, setIsShowForm }) {
   const isAuthorized = useSelector(isAuthCheck);
   //create state for email and password
   const [authData, setAuthData] = React.useState({
-    email: '',
-    password: ''
+    email: "",
+    password: "",
   });
   //send authorization data and get user data from backend
   async function sendAuthData() {
     const data = await dispatch(fetchUserData(authData));
     if (data.payload) {
-      localStorage.setItem('token', data.payload.token);
+      localStorage.setItem("token", data.payload.token);
       setAuthData({
-        email: '',
-        password: ''
+        email: "",
+        password: "",
       });
     } else {
       alert(data.error.message);
@@ -33,7 +35,7 @@ function AuthorizationForm({ isShowForm, setIsShowForm }) {
   }
   //catch Enter on last input field
   function handleLastInputKey(event) {
-    if (event.key === 'Enter') {
+    if (event.key === "Enter") {
       event.preventDefault();
       sendAuthData();
     }
@@ -41,18 +43,30 @@ function AuthorizationForm({ isShowForm, setIsShowForm }) {
   //check user data
   function userDataValidation() {
     if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(authData.email)) {
-      return 'Перевірте email';
+      return "Перевірте email";
     }
-    return 'Вхід';
+    return "Вхід";
   }
   React.useEffect(() => {
     isAuthorized && setIsShowForm(false);
   }, [isAuthorized, setIsShowForm]);
   return (
-    <div className={isShowForm ? 'authorizationForm show unselectable' : 'authorizationForm hint'}>
-      <div className="authorizationForm__shadow" onClick={() => setIsShowForm(false)}></div>
+    <div
+      className={
+        isShowForm
+          ? "authorizationForm show unselectable"
+          : "authorizationForm hint"
+      }
+    >
+      <div
+        className="authorizationForm__shadow"
+        onClick={() => setIsShowForm(false)}
+      ></div>
       <div className="authorizationForm__form">
-        <div className="authorizationForm__close" onClick={() => setIsShowForm(false)}>
+        <div
+          className="authorizationForm__close"
+          onClick={() => setIsShowForm(false)}
+        >
           {closeSVG}
         </div>
         <div className="authorizationForm__header">
@@ -64,7 +78,9 @@ function AuthorizationForm({ isShowForm, setIsShowForm }) {
               type="email"
               placeholder=" "
               value={authData.email}
-              onChange={(event) => setAuthData((prev) => ({ ...prev, email: event.target.value }))}
+              onChange={(event) =>
+                setAuthData((prev) => ({ ...prev, email: event.target.value }))
+              }
             />
             <div>E-mail</div>
           </div>
@@ -74,7 +90,10 @@ function AuthorizationForm({ isShowForm, setIsShowForm }) {
               placeholder=" "
               value={authData.password}
               onChange={(event) =>
-                setAuthData((prev) => ({ ...prev, password: event.target.value }))
+                setAuthData((prev) => ({
+                  ...prev,
+                  password: event.target.value,
+                }))
               }
               onKeyUp={handleLastInputKey}
             />
@@ -84,7 +103,8 @@ function AuthorizationForm({ isShowForm, setIsShowForm }) {
             <button
               className="acceptButton"
               onClick={sendAuthData}
-              disabled={userDataValidation() !== 'Вхід'}>
+              disabled={userDataValidation() !== "Вхід"}
+            >
               {userDataValidation()}
             </button>
           </div>
@@ -94,11 +114,7 @@ function AuthorizationForm({ isShowForm, setIsShowForm }) {
               Реєстрація.
             </Link>
           </div>
-          {/* <div className="authorizationForm__social">
-            {googleSVG}
-            {faceBookSVG}
-            {instagramSVG}
-          </div> */}
+          <FacebookLogin />
         </div>
       </div>
     </div>
