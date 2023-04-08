@@ -30,6 +30,10 @@
 .privacy__deleteAccount li {
   list-style: circle;
 }
+.privacy__content a,
+.privacy__deleteAccount a {
+  color: rgb(76, 133, 219);
+}
 .privacy__content svg,
 .privacy__deleteAccount svg {
   fill: rgb(255, 163, 43);

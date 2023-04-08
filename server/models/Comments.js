@@ -1,29 +1,29 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const CommentSchema = new mongoose.Schema(
   {
     articleId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Articles',
-      required: true
+      ref: "Articles",
+      required: true,
     },
     text: {
       type: String,
-      required: true
+      required: true,
     },
     author: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Authorized',
-      required: true
+      ref: "Authorized",
+      required: true,
     },
     usersLiked: {
       type: Array,
-      default: []
-    }
+      default: [],
+    },
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
 
-export default mongoose.model('Comments', CommentSchema);
+export default mongoose.model("Comments", CommentSchema);

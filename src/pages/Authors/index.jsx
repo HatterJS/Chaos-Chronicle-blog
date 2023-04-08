@@ -1,12 +1,12 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import PageTitle from '../../components/PageTitle';
-import AuthorsItem from '../../components/AuthorsItem';
-import AuthorItemLoader from '../../components/AuthorItemLoader';
+import PageTitle from "../../components/PageTitle";
+import AuthorsItem from "../../components/AuthorsItem";
+import AuthorItemLoader from "../../components/AuthorItemLoader";
 
-import { fetchAuthors } from '../../redux/slices/authors';
-import './index.css';
+import { fetchAuthors } from "../../redux/slices/authors";
+import "./index.css";
 
 function Authors() {
   //dispatch for redux
@@ -20,9 +20,9 @@ function Authors() {
 
   return (
     <div className="authors">
-      <PageTitle title={'Активні користувачі'} />
+      <PageTitle title={"Активні користувачі"} />
       <div className="authors__content">
-        {status === 'loaded'
+        {status === "loaded"
           ? authors.map((item) => (
               <AuthorsItem
                 key={item._id}
@@ -35,7 +35,9 @@ function Authors() {
                 userComments={item.userComments}
               />
             ))
-          : [...Array(6)].map((item, index) => <AuthorItemLoader key={index} />)}
+          : [...Array(6)].map((item, index) => (
+              <AuthorItemLoader key={index} />
+            ))}
       </div>
     </div>
   );

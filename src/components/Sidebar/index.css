@@ -18,14 +18,16 @@ aside h3 {
   color: white;
 }
 
-.aside__tagsBlock, .aside__commentsBlock {
+.aside__tagsBlock,
+.aside__commentsBlock {
   border: 1px solid gray;
   border-radius: 20px;
   overflow: hidden;
   -webkit-box-shadow: 1px 1px 2px gray;
           box-shadow: 1px 1px 2px gray;
 }
-.aside__tagsBlock .aside__tags, .aside__commentsBlock .aside__tags {
+.aside__tagsBlock .aside__tags,
+.aside__commentsBlock .aside__tags {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -34,15 +36,18 @@ aside h3 {
   padding: 10px;
   min-height: 40px;
 }
-.aside__tagsBlock .aside__tags div, .aside__commentsBlock .aside__tags div {
+.aside__tagsBlock .aside__tags div,
+.aside__commentsBlock .aside__tags div {
   color: rgb(53, 94, 189);
   margin-right: 10px;
   cursor: pointer;
 }
-.aside__tagsBlock .aside__tags div:hover, .aside__commentsBlock .aside__tags div:hover {
+.aside__tagsBlock .aside__tags div:hover,
+.aside__commentsBlock .aside__tags div:hover {
   text-decoration: underline;
 }
-.aside__tagsBlock .aside__commentItem, .aside__commentsBlock .aside__commentItem {
+.aside__tagsBlock .aside__commentItem,
+.aside__commentsBlock .aside__commentItem {
   padding: 10px;
   cursor: pointer;
   -webkit-filter: grayscale(0.5);
@@ -50,12 +55,14 @@ aside h3 {
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
-.aside__tagsBlock .aside__commentItem:hover, .aside__commentsBlock .aside__commentItem:hover {
+.aside__tagsBlock .aside__commentItem:hover,
+.aside__commentsBlock .aside__commentItem:hover {
   background-color: rgb(240, 240, 240);
   -webkit-box-shadow: 1px 1px 4px gray inset;
           box-shadow: 1px 1px 4px gray inset;
 }
-.aside__tagsBlock .aside__commentText, .aside__commentsBlock .aside__commentText {
+.aside__tagsBlock .aside__commentText,
+.aside__commentsBlock .aside__commentText {
   font-size: 0.9em;
 }
 
@@ -85,7 +92,8 @@ aside h3 {
 }
 
 @media (max-width: 680px) {
-  .aside__tagsBlock, .aside__commentsBlock {
+  .aside__tagsBlock,
+.aside__commentsBlock {
     display: none;
   }
 }

@@ -1,4 +1,4 @@
-import { validationResult } from 'express-validator';
+import { validationResult } from "express-validator";
 
 const handleValidationErrors = (req, res, next) => {
   const errors = validationResult(req);
@@ -7,7 +7,7 @@ const handleValidationErrors = (req, res, next) => {
       message: errors
         .array()
         .map((item) => item.msg)
-        .join('\n')
+        .join("\n"),
     });
   }
   next();

@@ -1,69 +1,69 @@
 .home__body {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    gap: 20px;
-    margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  gap: 20px;
+  margin-top: 20px;
 }
 .home__articleBlock {
-    display: flex;
-    flex-direction: column;
-    flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
 }
 .home__articles {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: baseline;
-    gap: 20px;
-    flex: 1 1 auto;
-    height: fit-content;
-    & > a {
-        flex: 1 1 350px;
-        &:first-child {
-            width: 100%;
-            flex: 1 1 auto;
-            .articleItem {
-                flex-direction: row;
-                .articleItem__image {
-                    width: 150%;
-                    min-width: 200px;
-                }
-                .articleItem__description {
-                    padding: 20px 30px;
-                    &>p {
-                        font-size: 1em;
-                    }
-                }
-            }
-            .articleItemLoader {
-                flex-direction: row;
-            }
+  display: flex;
+  flex-wrap: wrap;
+  align-content: baseline;
+  gap: 20px;
+  flex: 1 1 auto;
+  height: fit-content;
+  & > a {
+    flex: 1 1 350px;
+    &:first-child {
+      width: 100%;
+      flex: 1 1 auto;
+      .articleItem {
+        flex-direction: row;
+        .articleItem__image {
+          width: 150%;
+          min-width: 200px;
         }
+        .articleItem__description {
+          padding: 20px 30px;
+          & > p {
+            font-size: 1em;
+          }
+        }
+      }
+      .articleItemLoader {
+        flex-direction: row;
+      }
     }
+  }
 }
 
 @media (max-width: 1070px) {
-    .home {
-        .home__articles {
-            & > a {
-                &:first-child {
-                    flex: 1 1 350px;
-                    .articleItem {
-                        flex-direction: column;
-                        .articleItem__image {
-                            width: 100%;
-                        }
-                    }
-                    .articleItemLoader {
-                        flex-direction: column;
-                    }
-                }
+  .home {
+    .home__articles {
+      & > a {
+        &:first-child {
+          flex: 1 1 350px;
+          .articleItem {
+            flex-direction: column;
+            .articleItem__image {
+              width: 100%;
             }
+          }
+          .articleItemLoader {
+            flex-direction: column;
+          }
         }
+      }
     }
+  }
 }
 @media (max-width: 680px) {
-    .home__body {
-        flex-wrap: wrap;
-    }
+  .home__body {
+    flex-wrap: wrap;
+  }
 }

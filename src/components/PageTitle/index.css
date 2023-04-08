@@ -7,7 +7,8 @@
           align-items: center;
   margin: 20px 0;
 }
-.pageTitle .pageTitle__leftLine, .pageTitle .pageTitle__rightLine {
+.pageTitle .pageTitle__leftLine,
+.pageTitle .pageTitle__rightLine {
   border-top: 1px solid;
   margin: 0 20px;
   -webkit-box-flex: 1;

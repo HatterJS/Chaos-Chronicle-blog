@@ -1,38 +1,38 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const ArticleSchema = new mongoose.Schema(
   {
     title: {
       type: String,
       required: true,
-      unique: true
+      unique: true,
     },
     text: {
       type: String,
-      required: true
+      required: true,
     },
     tags: {
       type: Array,
-      default: []
+      default: [],
     },
     imageUrl: String,
     viewsCount: {
       type: Number,
-      default: 0
+      default: 0,
     },
     author: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Authorized',
-      required: true
+      ref: "Authorized",
+      required: true,
     },
     isRemind: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
 
-export default mongoose.model('Articles', ArticleSchema);
+export default mongoose.model("Articles", ArticleSchema);

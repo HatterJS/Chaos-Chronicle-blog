@@ -26,6 +26,7 @@
   line-height: 0;
   border-right: 1px solid gray;
   width: 100px;
+  height: 100%;
 }
 .authorItem__avatar img {
   -o-object-fit: cover;

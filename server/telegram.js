@@ -1,12 +1,12 @@
-import axios from 'axios';
-import dotenv from 'dotenv';
+import axios from "axios";
+import dotenv from "dotenv";
 
 //dotenv configure
 dotenv.config();
 
 export const telegramMessage = (article, authorName, appeal) => {
   const token = process.env.REACT_APP_TELEGRAM_TOKEN;
-  const chat_ids = ['-1001925615260'];
+  const chat_ids = ["-1001925615260"];
   const URI_API = `https://api.telegram.org/bot${token}/sendPhoto`;
 
   const message =
@@ -24,9 +24,9 @@ export const telegramMessage = (article, authorName, appeal) => {
   const requests = chat_ids.map((chat_id) => {
     return axios.post(URI_API, {
       chat_id,
-      parse_mode: 'html',
+      parse_mode: "html",
       caption: message,
-      photo: 'http://www.ccblog.com.ua/img/ukrainian_blogger.jpg'
+      photo: "http://www.ccblog.com.ua/img/ukrainian_blogger.jpg",
     });
   });
 

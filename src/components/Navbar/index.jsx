@@ -1,10 +1,16 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import React from "react";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-import { setSearch, setSort } from '../../redux/slices/articles';
-import { authorsSVG, closeSVG, lensSVG, newArticleSVG, recomendationSVG } from '../SvgSprite';
-import './index.css';
+import { setSearch, setSort } from "../../redux/slices/articles";
+import {
+  authorsSVG,
+  closeSVG,
+  lensSVG,
+  newArticleSVG,
+  recomendationSVG,
+} from "../SvgSprite";
+import "./index.css";
 
 function Navbar() {
   //dispatch for redux
@@ -12,10 +18,10 @@ function Navbar() {
   //search value from redux
   const { search } = useSelector((state) => state.articles.filter);
   //search value
-  const [searchValue, setSearchValue] = React.useState('');
+  const [searchValue, setSearchValue] = React.useState("");
   //on press Enter in search field
   function handleSearchKey(event) {
-    event.key === 'Enter' && dispatch(setSearch(searchValue));
+    event.key === "Enter" && dispatch(setSearch(searchValue));
   }
   //handle search button
   function handleSearchBtn() {
@@ -25,12 +31,12 @@ function Navbar() {
   function handleSearchChange(event) {
     const value = event.target.value;
     setSearchValue(value);
-    !value && dispatch(setSearch(''));
+    !value && dispatch(setSearch(""));
   }
   //clear search
   function clearSearch() {
-    setSearchValue('');
-    dispatch(setSearch(''));
+    setSearchValue("");
+    dispatch(setSearch(""));
   }
   React.useEffect(() => {
     setSearchValue(search);
@@ -40,10 +46,14 @@ function Navbar() {
     <nav>
       <div className="nav__menu unselectable">
         <ul>
-          <li onClick={() => dispatch(setSort('createdAt'))}>{newArticleSVG}Нові статті</li>
-          <li onClick={() => dispatch(setSort('viewsCount'))}>{recomendationSVG}Популярні</li>
+          <li onClick={() => dispatch(setSort("createdAt"))}>
+            {newArticleSVG}Нові статті
+          </li>
+          <li onClick={() => dispatch(setSort("viewsCount"))}>
+            {recomendationSVG}Популярні
+          </li>
           <li>
-            <Link to={'/authors'}>{authorsSVG}Автори</Link>
+            <Link to={"/authors"}>{authorsSVG}Автори</Link>
           </li>
         </ul>
       </div>

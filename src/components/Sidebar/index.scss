@@ -1,74 +1,76 @@
 aside {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 300px;
-    min-width: 300px;
-    h3 {
-        display: block;
-        background-color: gray;
-        padding: 10px;
-        color: white;
-    }
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 300px;
+  min-width: 300px;
+  h3 {
+    display: block;
+    background-color: gray;
+    padding: 10px;
+    color: white;
+  }
 }
-.aside__tagsBlock, .aside__commentsBlock {
-    border: 1px solid gray;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 1px 1px 2px gray;
-    .aside__tags {
-        display: flex;
-        flex-wrap: wrap;
-        padding: 10px;
-        min-height: 40px;
-        div {
-            color: rgb(53, 94, 189);
-            margin-right: 10px;
-            cursor: pointer;
-        }
-        div:hover {
-            text-decoration: underline;
-        }
+.aside__tagsBlock,
+.aside__commentsBlock {
+  border: 1px solid gray;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 1px 1px 2px gray;
+  .aside__tags {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    min-height: 40px;
+    div {
+      color: rgb(53, 94, 189);
+      margin-right: 10px;
+      cursor: pointer;
     }
-    .aside__commentItem {
-        padding: 10px;
-        cursor: pointer;
-        filter: grayscale(0.5);
-        transition: all 0.2s ease-in-out;
-        &:hover {
-            background-color: rgb(240, 240, 240);
-            box-shadow: 1px 1px 4px gray inset;
-        }
+    div:hover {
+      text-decoration: underline;
     }
-    .aside__commentText {
-        font-size: 0.9em;
+  }
+  .aside__commentItem {
+    padding: 10px;
+    cursor: pointer;
+    filter: grayscale(0.5);
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      background-color: rgb(240, 240, 240);
+      box-shadow: 1px 1px 4px gray inset;
     }
+  }
+  .aside__commentText {
+    font-size: 0.9em;
+  }
 }
 .aside__donate {
-    display: flex;
-    position: sticky;
-    top: 70px;
-    a {
-        border: 1px solid gray;
-        border-radius: 20px;
-        box-shadow: 1px 1px 2px gray;
-        line-height: 0;
-        overflow: hidden;
-        transition: all 0.2s ease-in-out;
-        min-width: 300px;
-        &:hover {
-            box-shadow: 2px 2px 4px gray;
-            transform: translateY(-2px);
-        }
+  display: flex;
+  position: sticky;
+  top: 70px;
+  a {
+    border: 1px solid gray;
+    border-radius: 20px;
+    box-shadow: 1px 1px 2px gray;
+    line-height: 0;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+    min-width: 300px;
+    &:hover {
+      box-shadow: 2px 2px 4px gray;
+      transform: translateY(-2px);
     }
+  }
 }
 
 @media (max-width: 680px) {
-    // aside {
-    //     display: none;
-    // }
-    .aside__tagsBlock, .aside__commentsBlock {
-        display: none;
-    }
+  // aside {
+  //     display: none;
+  // }
+  .aside__tagsBlock,
+  .aside__commentsBlock {
+    display: none;
+  }
 }

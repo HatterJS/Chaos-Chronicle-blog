@@ -1,16 +1,25 @@
 .authorSign {
-    display: flex;
-    align-items: center;
-    min-width: 150px;
-    img {
-        border: 1px solid gray;
-        border-radius: 50%;
-        margin-right: 5px;
-    }
-    p:first-child {
-        font-weight: 500;
-    }
-    p:last-child {
-        font-size: 0.8em;
-    }
+  display: flex;
+  align-items: center;
+  min-width: 150px;
+  .authorSign__avatar {
+    position: relative;
+    border: 1px solid gray;
+    border-radius: 50%;
+    margin-right: 5px;
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+  }
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  p:first-child {
+    font-weight: 500;
+  }
+  p:last-child {
+    font-size: 0.8em;
+  }
 }

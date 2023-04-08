@@ -1,25 +1,25 @@
 .about {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 .about__content {
-    max-width: 800px;
-    margin: 20px auto;
-    text-align: center;
-    p {
-        text-align: justify;
-        text-indent: 2em;
-        margin: 10px 0;
-    }
-    img {
-        border-radius: 20px;
-    }
+  max-width: 800px;
+  margin: 20px auto;
+  text-align: center;
+  p {
+    text-align: justify;
+    text-indent: 2em;
+    margin: 10px 0;
+  }
+  img {
+    border-radius: 20px;
+  }
 }
 
 @media (max-width: 830px) {
-    .about__content {
-        img {
-            width: 100%;
-            height: inherit;
-        }
+  .about__content {
+    img {
+      width: 100%;
+      height: inherit;
     }
+  }
 }

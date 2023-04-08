@@ -1,11 +1,11 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import React from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 
-import PageTitle from '../../components/PageTitle';
-import NotFound from '../NonFound';
+import PageTitle from "../../components/PageTitle";
+import NotFound from "../NonFound";
 
-import { fetchConfirmEmail } from '../../redux/slices/authorization';
+import { fetchConfirmEmail } from "../../redux/slices/authorization";
 
 function EmailConfirmation() {
   //dispatch for redux
@@ -15,9 +15,9 @@ function EmailConfirmation() {
   //navigate to main page after confirmation
   const navigate = useNavigate();
   React.useEffect(() => {
-    localStorage.setItem('token', id);
+    localStorage.setItem("token", id);
     dispatch(fetchConfirmEmail());
-    navigate('/');
+    navigate("/");
   }, [dispatch, navigate, id]);
   return (
     <div className="emailConfirmation">

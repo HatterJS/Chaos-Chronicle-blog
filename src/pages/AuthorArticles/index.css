@@ -10,7 +10,8 @@
           align-items: center;
   margin: 20px 0;
 }
-.authorArticles__author .pageTitle__leftLine, .authorArticles__author .pageTitle__rightLine {
+.authorArticles__author .pageTitle__leftLine,
+.authorArticles__author .pageTitle__rightLine {
   border-top: 1px solid gray;
   margin: 0 20px;
   -webkit-box-flex: 1;

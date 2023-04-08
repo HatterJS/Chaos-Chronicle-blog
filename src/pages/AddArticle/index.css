@@ -104,11 +104,13 @@
   min-height: 200px;
   font-size: 1.2em;
 }
-.addArticle__body .addArticle__addTitle input, .addArticle__body .addArticle__addTags input {
+.addArticle__body .addArticle__addTitle input,
+.addArticle__body .addArticle__addTags input {
   width: 100%;
   border-color: gray;
 }
-.addArticle__body .addArticle__addTitle input:focus, .addArticle__body .addArticle__addTags input:focus {
+.addArticle__body .addArticle__addTitle input:focus,
+.addArticle__body .addArticle__addTags input:focus {
   outline: none;
 }
 .addArticle__body .addArticle__addTitle input {

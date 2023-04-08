@@ -1,20 +1,20 @@
-import { Routes, Route, Link, Navigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { Routes, Route, Link, Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-import PageTitle from '../../components/PageTitle';
-import Settings from './Settings';
-import UserArticles from './UserArticles';
-import UserComments from './UserComments';
+import PageTitle from "../../components/PageTitle";
+import Settings from "./Settings";
+import UserArticles from "./UserArticles";
+import UserComments from "./UserComments";
 
-import './index.css';
+import "./index.css";
 
-import { logOut } from '../../redux/slices/authorization';
+import { logOut } from "../../redux/slices/authorization";
 import {
   commentsSVG,
   createArticleSVG,
   logOutSVG,
-  userSettingSVG
-} from '../../components/SvgSprite';
+  userSettingSVG,
+} from "../../components/SvgSprite";
 
 function UserSettings() {
   //dispatch for redux
@@ -23,33 +23,33 @@ function UserSettings() {
   const { userData } = useSelector((state) => state.authorization);
 
   function handleLogOut() {
-    if (window.confirm('Ви дійсно бажаєте вийти?')) {
+    if (window.confirm("Ви дійсно бажаєте вийти?")) {
       dispatch(logOut());
-      localStorage.removeItem('token');
+      localStorage.removeItem("token");
     }
   }
   //if not authorized redirect to home page
   if (!userData || !userData.emailConfirmed) {
-    return <Navigate to={'/'} />;
+    return <Navigate to={"/"} />;
   }
   return (
     <div className="userSettings">
-      <PageTitle title={'Особистий кабінет'} />
+      <PageTitle title={"Особистий кабінет"} />
       <div className="userSettings__body">
         <div className="userSettings__nav">
-          <Link to={'/usersettings/settings'}>
+          <Link to={"/usersettings/settings"}>
             <button className="cancelButton">
               {userSettingSVG}
               <p>Налаштування</p>
             </button>
           </Link>
-          <Link to={'/usersettings/articles'}>
+          <Link to={"/usersettings/articles"}>
             <button className="cancelButton">
               {createArticleSVG}
               <p>Статті</p>
             </button>
           </Link>
-          <Link to={'/usersettings/comments'}>
+          <Link to={"/usersettings/comments"}>
             <button className="cancelButton">
               {commentsSVG}
               <p>Коментарі</p>

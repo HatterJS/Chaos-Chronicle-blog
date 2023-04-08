@@ -36,8 +36,13 @@
 }
 .commentItem .commentItem__block p {
   margin: 10px 0;
+  white-space: pre-line;
 }
-.commentItem .commentItem__likes, .commentItem .commentItem__delete {
+.commentItem .authorSign {
+  max-width: 200px;
+}
+.commentItem .commentItem__likes,
+.commentItem .commentItem__delete {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -51,7 +56,8 @@
   width: fit-content;
   cursor: pointer;
 }
-.commentItem .commentItem__likes svg, .commentItem .commentItem__delete svg {
+.commentItem .commentItem__likes svg,
+.commentItem .commentItem__delete svg {
   fill: gray;
   width: 20px;
   height: 20px;

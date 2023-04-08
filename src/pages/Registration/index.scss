@@ -1,126 +1,126 @@
 .registration {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 .registration__form {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid gray;
-    border-radius: 20px;
-    box-shadow: 2px 2px 4px gray;
-    padding: 20px;
-    box-sizing: border-box;
-    width: fit-content;
-    min-width: 300px;
-    margin: 20px auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid gray;
+  border-radius: 20px;
+  box-shadow: 2px 2px 4px gray;
+  padding: 20px;
+  box-sizing: border-box;
+  width: fit-content;
+  min-width: 300px;
+  margin: 20px auto;
 }
 .registration__close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    svg {
-        fill: rgb(160, 160, 160);
-        cursor: pointer;
-        &:hover {
-            fill: rgb(90, 90, 90);
-        }
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  svg {
+    fill: rgb(160, 160, 160);
+    cursor: pointer;
+    &:hover {
+      fill: rgb(90, 90, 90);
     }
+  }
 }
 .registration__avatar {
-    position: relative;
-    margin: 10px 0;
-    label {
-        display: block;
-        height: 150px;
-        width: 150px;
-        border: 2px solid gray;
-        border-radius: 50%;
-        overflow: hidden;
-        cursor: pointer;
-        filter: contrast(0.8);
-        &:hover {
-            filter: none;
-        }
+  position: relative;
+  margin: 10px 0;
+  label {
+    display: block;
+    height: 150px;
+    width: 150px;
+    border: 2px solid gray;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    filter: contrast(0.8);
+    &:hover {
+      filter: none;
     }
-    img {
-        pointer-events: none;
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
+  }
+  img {
+    pointer-events: none;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  input {
+    display: none;
+  }
+  button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid gray;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    z-index: 2;
+    transition: all 0.2s ease-in-out;
+    svg {
+      fill: rgb(120, 120, 120);
+      transition: all 0.2s ease-in-out;
     }
-    input {
-        display: none;
+    &:hover {
+      box-shadow: 1px 1px 1px gray;
+      transform: translateY(-1px);
+      svg {
+        fill: rgb(90, 90, 90);
+      }
     }
-    button {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        background-color: rgb(255, 255, 255);
-        border: 2px solid gray;
-        border-radius: 50%;
-        width: 45px;
-        height: 45px;
-        z-index: 2;
-        transition: all 0.2s ease-in-out;
-        svg {
-            fill: rgb(120, 120, 120);
-            transition: all 0.2s ease-in-out;
-        }
-        &:hover {
-            box-shadow: 1px 1px 1px gray;
-            transform: translateY(-1px);
-            svg {
-                fill: rgb(90, 90, 90);
-            }
-        }
-    }
+  }
 }
 .registration__inputField {
-    position: relative;
-    border: 1px solid gray;
-    border-radius: 15px;
-    margin-bottom: 15px;
+  position: relative;
+  border: 1px solid gray;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  width: 100%;
+  input {
+    box-sizing: border-box;
     width: 100%;
-    input {
-        box-sizing: border-box;
-        width: 100%;
-        outline: none;
-        border: none;
-        &:focus + div {
-            padding: 0 10px;
-            font-size: 0.8em;
-            color: rgb(120, 120, 120);
-            top: 0;
-            visibility: visible;
-        }
-        &:not(:placeholder-shown) + div {
-            display: block;
-            padding: 0 10px;
-            font-size: 0.8em;
-            color: rgb(120, 120, 120);
-            top: 0;
-        }
+    outline: none;
+    border: none;
+    &:focus + div {
+      padding: 0 10px;
+      font-size: 0.8em;
+      color: rgb(120, 120, 120);
+      top: 0;
+      visibility: visible;
     }
-    div {
-        position: absolute;
-        top: 50%;
-        left: 10px;
-        border-radius: 10px;
-        transform: translateY(-50%);
-        background-color: white;
-        width: fit-content;
-        color: rgb(190, 190, 190);
-        transition: all 0.2s ease-in-out;
-        pointer-events: none;
+    &:not(:placeholder-shown) + div {
+      display: block;
+      padding: 0 10px;
+      font-size: 0.8em;
+      color: rgb(120, 120, 120);
+      top: 0;
     }
+  }
+  div {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    border-radius: 10px;
+    transform: translateY(-50%);
+    background-color: white;
+    width: fit-content;
+    color: rgb(190, 190, 190);
+    transition: all 0.2s ease-in-out;
+    pointer-events: none;
+  }
 }
 .registration__buttons {
-    display: flex;
-    gap: 10px;
-    width: 100%;
-    margin: 10px 0;
-    button {
-        flex: 1 1 auto;
-    }
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin: 10px 0;
+  button {
+    flex: 1 1 auto;
+  }
 }

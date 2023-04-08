@@ -1,19 +1,24 @@
-import React from 'react';
-import axios from '../../axios';
-import ReactMarkdown from 'react-markdown';
-import rehypeRaw from 'rehype-raw';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import React from "react";
+import axios from "../../axios";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-import AuthorSign from '../../components/AuthorSign';
-import CommentsBlock from '../../components/CommentsBlock';
-import Loader from '../../components/Loader';
-import { setSearch } from '../../redux/slices/articles';
+import AuthorSign from "../../components/AuthorSign";
+import CommentsBlock from "../../components/CommentsBlock";
+import Loader from "../../components/Loader";
+import { setSearch } from "../../redux/slices/articles";
 
-import './index.css';
+import "./index.css";
 
-import { deleteSVG, penSVG, remindSVG, viewsSVG } from '../../components/SvgSprite';
-import { formingDate } from '../../formingDate';
+import {
+  deleteSVG,
+  penSVG,
+  remindSVG,
+  viewsSVG,
+} from "../../components/SvgSprite";
+import { formingDate } from "../../formingDate";
 
 function Article() {
   //dispatch for redux
@@ -33,14 +38,14 @@ function Article() {
   //set search value and navigate to home page
   function onClickTag(tag) {
     dispatch(setSearch(tag));
-    navigate('/');
+    navigate("/");
   }
   //checking that the user is the owner of the article
   async function deleteArticle() {
-    if (window.confirm('Ви пеерконані, що бажаєте видалити статтю?')) {
+    if (window.confirm("Ви пеерконані, що бажаєте видалити статтю?")) {
       await axios.delete(`/article/${id}`);
-      alert('Статтю видалено успішно.');
-      navigate('/');
+      alert("Статтю видалено успішно.");
+      navigate("/");
     }
   }
   //remind about article to subscribers
@@ -62,7 +67,7 @@ function Article() {
       })
       .catch((err) => {
         console.log(err);
-        alert('Нажаль, виникла помилка під час завантаження статті');
+        alert("Нажаль, виникла помилка під час завантаження статті");
       });
   }, [id]);
   function isOwner() {
@@ -88,11 +93,16 @@ function Article() {
           </div>
           <div
             className="article__toolsBlock"
-            style={isOwner() ? { display: 'flex' } : { display: 'none' }}>
+            style={isOwner() ? { display: "flex" } : { display: "none" }}
+          >
             <Link to={`/editarticle/${id}`}>
               <button title="Редагувати статтю">{penSVG}</button>
             </Link>
-            <button onClick={handleArticleRemind} title="Нагадати про статтю" disabled={!isRemind}>
+            <button
+              onClick={handleArticleRemind}
+              title="Нагадати про статтю"
+              disabled={!isRemind}
+            >
               {remindSVG}
             </button>
             <button onClick={deleteArticle} title="Видалити статтю">

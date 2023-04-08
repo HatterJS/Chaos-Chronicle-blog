@@ -42,7 +42,7 @@
 .commentsBlock .commentsBlock__input textarea {
   padding: 10px;
   resize: none;
-  height: 20px;
+  height: 60px;
   border-radius: 15px;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;

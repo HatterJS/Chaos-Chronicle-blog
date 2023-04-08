@@ -1,24 +1,36 @@
-import React from 'react';
-import axios from '../../axios.js';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React from "react";
+import axios from "../../axios.js";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
-import { commentsSVG, createArticleSVG, ratingSVG } from '../SvgSprite';
-import './index.css';
+import { commentsSVG, createArticleSVG, ratingSVG } from "../SvgSprite";
+import "./index.css";
 
-function AuthorsItem({ userId, avatarUrl, fullName, status, rating, userArticles, userComments }) {
+function AuthorsItem({
+  userId,
+  avatarUrl,
+  fullName,
+  status,
+  rating,
+  userArticles,
+  userComments,
+}) {
   //current user data
   const { userData } = useSelector((state) => state.authorization);
   //user promotion
   const [promotion, setPromotion] = React.useState(status);
 
   //users status array for promote
-  const userStatusArr = ['Читач', 'Автор', 'Редактор'];
+  const userStatusArr = ["Читач", "Автор", "Редактор"];
   //admin user status
-  const adminStatusArr = ['Головний редактор', 'Редактор'];
+  const adminStatusArr = ["Головний редактор", "Редактор"];
 
   function isPromotional() {
-    return userData && adminStatusArr.includes(userData.status) && status !== 'Головний редактор';
+    return (
+      userData &&
+      adminStatusArr.includes(userData.status) &&
+      status !== "Головний редактор"
+    );
   }
 
   function promoteUser(event) {
@@ -28,7 +40,7 @@ function AuthorsItem({ userId, avatarUrl, fullName, status, rating, userArticles
       )
     ) {
       axios
-        .patch('/promotion', { userId, status: event.target.value })
+        .patch("/promotion", { userId, status: event.target.value })
         .then((res) => {
           setPromotion(res.data.status);
           alert(res.data.message);
@@ -40,10 +52,17 @@ function AuthorsItem({ userId, avatarUrl, fullName, status, rating, userArticles
     <div className="authorItem unselectable">
       <Link
         to={`/authorarticles/${userId}`}
-        className={userArticles === 0 ? 'disabled_link' : undefined}>
-        <div className={`authorItem__item${isPromotional() ? ' authorItem__options' : ''}`}>
-          <div className="authorItem__avatar">
-            <img src={avatarUrl} alt="avatar" />
+        className={userArticles === 0 ? "disabled_link" : undefined}
+      >
+        <div
+          className={`authorItem__item${
+            isPromotional() ? " authorItem__options" : ""
+          }`}
+        >
+          <div>
+            <div className="authorItem__avatar">
+              <img src={avatarUrl} alt="avatar" />
+            </div>
           </div>
           <div className="authorItem__info">
             <h3>{fullName}</h3>
@@ -67,7 +86,12 @@ function AuthorsItem({ userId, avatarUrl, fullName, status, rating, userArticles
       </Link>
       {isPromotional() && (
         <div className="authorItem__promotion">
-          <select name="promotion" id="promotion" value={promotion} onChange={promoteUser}>
+          <select
+            name="promotion"
+            id="promotion"
+            value={promotion}
+            onChange={promoteUser}
+          >
             {userStatusArr.map((item) => (
               <option key={item} value={item}>
                 {item}

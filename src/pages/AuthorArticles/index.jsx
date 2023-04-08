@@ -1,15 +1,15 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, Navigate, useParams } from 'react-router-dom';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, Navigate, useParams } from "react-router-dom";
 
-import ArticleItem from '../../components/ArticleItem';
-import ArticleItemLoader from '../../components/ArticleItemLoader';
-import AuthorSign from '../../components/AuthorSign';
-import PageSwitcher from '../../components/PageSwitcher';
+import ArticleItem from "../../components/ArticleItem";
+import ArticleItemLoader from "../../components/ArticleItemLoader";
+import AuthorSign from "../../components/AuthorSign";
+import PageSwitcher from "../../components/PageSwitcher";
 
-import { fetchAuthorArticles } from '../../redux/slices/articles';
+import { fetchAuthorArticles } from "../../redux/slices/articles";
 
-import './index.css';
+import "./index.css";
 
 function AuthorArticles() {
   //create dispatch for redux
@@ -28,7 +28,7 @@ function AuthorArticles() {
     dispatch(fetchAuthorArticles({ id, page, perPage }));
   }, [dispatch, id, page, perPage]);
   if (!authors.length) {
-    return <Navigate to={'/'} />;
+    return <Navigate to={"/"} />;
   }
   return (
     <div className="authorArticles">
@@ -38,14 +38,14 @@ function AuthorArticles() {
         <div className="pageTitle__rightLine"></div>
       </div>
       <div className="authorArticles__content">
-        {articles.status === 'loaded'
+        {articles.status === "loaded"
           ? articles.items.map((item) => (
               <Link to={`/article/${item._id}`} key={item._id}>
                 <ArticleItem
                   title={item.title}
                   fullDate={item.createdAt}
                   imageUrl={item.imageUrl}
-                  text={item.text.slice(0, 280) + ' ...'}
+                  text={item.text.slice(0, 280) + " ..."}
                   tags={item.tags}
                   views={item.viewsCount}
                   author={item.author}

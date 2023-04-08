@@ -1,123 +1,126 @@
-$transition:  all 0.2s ease-in-out;
+$transition: all 0.2s ease-in-out;
 
 header {
-    position: sticky;
-    top: 0;
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px 0;
+  z-index: 55;
+  border: 1px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0),
+    rgba(225, 225, 225, 1),
+    rgba(0, 0, 0, 0)
+  );
+  p {
+    line-height: 1;
+  }
+  .header__logo {
+    transition: $transition;
+  }
+  .header__links {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 5px 0;
-    z-index: 55;
-    border: 1px solid;
-    border-image-slice: 1;
-    border-image-source:  
-    linear-gradient(
-      to left, 
-      rgba(0, 0, 0, 0),
-      rgba(225, 225, 225, 1), 
-      rgba(0, 0, 0, 0)
-    );
-    p {
-        line-height: 1;
+    gap: 30px;
+    margin: 0 20px;
+    div {
+      display: flex;
+      align-items: center;
+      transition: $transition;
+      svg {
+        fill: rgb(100, 100, 100);
+        padding-right: 5px;
+      }
     }
-    .header__logo {
-        transition: $transition;
+    div:hover {
+      filter: contrast(3);
     }
-    .header__links {
-        display: flex;
-        gap: 30px;
-        margin: 0 20px;
-        div {
-            display: flex;
-            align-items: center;
-            transition: $transition;
-            svg {
-                fill: rgb(100, 100, 100);
-                padding-right: 5px;
-            }
-        }
-        div:hover {
-            filter: contrast(3);
-        }
+  }
+  .header__user {
+    display: flex;
+    gap: 10px;
+    a,
+    button {
+      display: flex;
+      align-items: center;
+      border: 1px solid gray;
+      border-radius: 10px;
+      padding: 5px;
+      font-size: 1em;
+      transition: $transition;
+      svg {
+        fill: rgb(100, 100, 100);
+        margin: 5px;
+      }
     }
-    .header__user {
-        display: flex;
-        gap: 10px;
-        a, button {
-            display: flex;
-            align-items: center;
-            border: 1px solid gray;
-            border-radius: 10px;
-            padding: 5px;
-            font-size: 1em;
-            transition: $transition;
-            svg {
-                fill: rgb(100, 100, 100);
-                margin: 5px;
-            }
-        }
-        a:hover, button:hover {
-            filter: contrast(3);
-        }
-        a:active, button:active {
-            box-shadow: 1px 1px 2px gray inset;
-            transform: translateY(2px);
-        }
-        .header__authorizedUserButtons {
-            display: flex;
-            gap: 10px;
-        }
-        .disabledLink {
-            border: 1px solid rgb(130, 80, 50);
-            background-color: rgb(245, 230, 220);
-            pointer-events: none;
-            p {
-                color: rgb(200, 160, 160);
-            }
-            svg {
-                fill: rgb(200, 160, 160);
-            }
-        }
+    a:hover,
+    button:hover {
+      filter: contrast(3);
     }
+    a:active,
+    button:active {
+      box-shadow: 1px 1px 2px gray inset;
+      transform: translateY(2px);
+    }
+    .header__authorizedUserButtons {
+      display: flex;
+      gap: 10px;
+    }
+    .disabledLink {
+      border: 1px solid rgb(130, 80, 50);
+      background-color: rgb(245, 230, 220);
+      pointer-events: none;
+      p {
+        color: rgb(200, 160, 160);
+      }
+      svg {
+        fill: rgb(200, 160, 160);
+      }
+    }
+  }
 }
 
 @media (max-width: 780px) {
-    header {
-        .header__links {
-            p {
-                display: none;
-            }
-            svg {
-                width: 25px;
-                height: 25px;
-            }
-        }
-        .header__user {
-            a, button {
-                p {
-                    display: none;
-                }
-                svg {
-                    width: 25px;
-                    height: 25px;
-                }
-            }
-        }
+  header {
+    .header__links {
+      p {
+        display: none;
+      }
+      svg {
+        width: 25px;
+        height: 25px;
+      }
     }
+    .header__user {
+      a,
+      button {
+        p {
+          display: none;
+        }
+        svg {
+          width: 25px;
+          height: 25px;
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 520px) {
-    header {
-        .header__links {
-            gap: 10px;
-            p {
-                display: none;
-            }
-            svg {
-                width: 25px;
-                height: 25px;
-            }
-        }
+  header {
+    .header__links {
+      gap: 10px;
+      p {
+        display: none;
+      }
+      svg {
+        width: 25px;
+        height: 25px;
+      }
     }
+  }
 }

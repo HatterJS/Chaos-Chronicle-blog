@@ -1,13 +1,13 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
-import AuthorSign from '../AuthorSign';
+import AuthorSign from "../AuthorSign";
 
-import { fetchLastComments } from '../../redux/slices/comments';
-import { setSearch } from '../../redux/slices/articles';
+import { fetchLastComments } from "../../redux/slices/comments";
+import { setSearch } from "../../redux/slices/articles";
 
-import './index.css';
+import "./index.css";
 
 function Sidebar({ tags }) {
   //dispatch for redux
@@ -44,8 +44,17 @@ function Sidebar({ tags }) {
         </div>
       )}
       <div className="aside__donate">
-        <a href="https://send.monobank.ua/jar/2D2z173X3Q" target={'_blank'} rel="noreferrer">
-          <img src="/img/donate/donate_zsu.jpg" alt="ZSU" width={300} height={525} />
+        <a
+          href="https://send.monobank.ua/jar/2D2z173X3Q"
+          target={"_blank"}
+          rel="noreferrer"
+        >
+          <img
+            src="/img/donate/donate_zsu.jpg"
+            alt="ZSU"
+            width={300}
+            height={525}
+          />
         </a>
       </div>
     </aside>

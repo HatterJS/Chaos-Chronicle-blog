@@ -254,7 +254,7 @@ function Settings() {
         <h3>Видалення облікового запису:</h3>
         <div className="settings__deleteWarning">
           {warningSVG} УВАГА! Видалення облікового запису - незворотня
-          процедура, що призведе до виделення доступу до написаних вами статей
+          процедура, що призведе до виделення доступу до написаних Вами статей
           та коментарів.
         </div>
         <button className="acceptButton" onClick={deleteAccount}>

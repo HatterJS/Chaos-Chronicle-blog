@@ -1,13 +1,15 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { switchPage } from '../../redux/slices/articles';
+import { useDispatch, useSelector } from "react-redux";
+import { switchPage } from "../../redux/slices/articles";
 
-import './index.css';
+import "./index.css";
 
 function PageSwitcher() {
   //dispatch for redux
   const dispatch = useDispatch();
   //pagination from redux
-  const { totalPages, page } = useSelector((state) => state.articles.articles.pagination);
+  const { totalPages, page } = useSelector(
+    (state) => state.articles.articles.pagination
+  );
   //handle switch page
   function handleSwitchPage(index) {
     dispatch(switchPage(index + 1));

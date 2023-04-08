@@ -1,14 +1,14 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
-import CommentItem from '../CommentItem';
+import CommentItem from "../CommentItem";
 
-import { isAuthCheck } from '../../redux/slices/authorization';
-import { fetchAddComment, fetchComments } from '../../redux/slices/comments';
+import { isAuthCheck } from "../../redux/slices/authorization";
+import { fetchAddComment, fetchComments } from "../../redux/slices/comments";
 
-import { sendSVG } from '../SvgSprite';
-import './index.css';
+import { sendSVG } from "../SvgSprite";
+import "./index.css";
 
 function CommentsBlock() {
   //dispatch for redux
@@ -19,24 +19,16 @@ function CommentsBlock() {
   const { comments } = useSelector((state) => state.comments);
   //get article id
   const { id } = useParams();
-  //comment text
-  const [text, setText] = React.useState('');
-  //handle textarea change
-  function handleChange(event) {
-    setText(event.target.value);
-    event.target.style.height = '20px';
-    event.target.style.height = `${event.target.scrollHeight - 20}px`;
-  }
   //handle Enter
   function handleKey(event) {
-    if (event.key === 'Enter') {
-      sendComment();
+    if (event.key === "Enter" && event.ctrlKey) {
+      sendComment(event.target.value);
+      event.target.value = "";
     }
   }
   //send comment
-  async function sendComment() {
+  async function sendComment(text) {
     dispatch(fetchAddComment({ articleId: id, text }));
-    setText('');
   }
   //get article comments
   React.useEffect(() => {
@@ -49,7 +41,7 @@ function CommentsBlock() {
         <div></div>
       </div>
       {!isAuthorized ? (
-        <div className={'commentsBlock__notAuth'}>
+        <div className={"commentsBlock__notAuth"}>
           Читати та додавати коментарі можуть тільки авторизовані користувачі.
         </div>
       ) : (
@@ -68,8 +60,6 @@ function CommentsBlock() {
             <textarea
               placeholder="Написати коментар"
               maxLength={500}
-              value={text}
-              onChange={handleChange}
               onKeyUp={handleKey}
             />
             <button className="acceptButton" onClick={sendComment}>

@@ -31,7 +31,8 @@
   height: 75px;
   background-color: rgba(240, 240, 240, 0.7);
 }
-.loader .loader__body .loader__shapeEye01, .loader .loader__body .loader__shapeEye02 {
+.loader .loader__body .loader__shapeEye01,
+.loader .loader__body .loader__shapeEye02 {
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.589);
   width: 25px;

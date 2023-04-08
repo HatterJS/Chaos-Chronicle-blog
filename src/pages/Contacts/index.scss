@@ -1,49 +1,49 @@
 .contacts {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 .contacts__content {
-    max-width: 800px;
-    margin: 20px auto;
-    h2 {
-        margin-top: 20px;
-        line-height: 1.5;
-    }
+  max-width: 800px;
+  margin: 20px auto;
+  h2 {
+    margin-top: 20px;
+    line-height: 1.5;
+  }
 }
 .contacts__telegram {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  border: 1px solid gray;
+  border-radius: 15px;
+  padding: 15px;
+  margin: 10px 0;
+  max-width: 500px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    box-shadow: 2px 2px 4px gray;
+    transform: translateY(-1px);
+  }
+  a {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
-    align-items: flex-start;
-    border: 1px solid gray;
-    border-radius: 15px;
-    padding: 15px;
-    margin: 10px 0;
-    max-width: 500px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    &:hover {
-        box-shadow: 2px 2px 4px gray;
-        transform: translateY(-1px);
+    gap: 20px;
+    li {
+      margin: 5px 0;
+      list-style: circle;
+      list-style-position: inside;
     }
-    a {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 20px;
-        li {
-            margin: 5px 0;
-            list-style: circle;
-            list-style-position: inside;
-        }
-    }
+  }
 }
 .constacts__describe {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  h2 {
     flex: 1 1 auto;
-    h2 {
-        flex: 1 1 auto;
-        margin: 0;
-        margin-bottom: 20px;
-        text-align: center;
-    }
+    margin: 0;
+    margin-bottom: 20px;
+    text-align: center;
+  }
 }

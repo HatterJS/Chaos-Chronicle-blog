@@ -39,7 +39,8 @@
   background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
 }
-.articleItem__image .articleItem__title h2, .articleItem__image .articleItem__title p {
+.articleItem__image .articleItem__title h2,
+.articleItem__image .articleItem__title p {
   color: white;
   line-height: 1;
 }

@@ -1,109 +1,111 @@
 .addArticle {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 .addArticle__body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  .addArticle__rules {
+    max-width: 1000px;
+    margin: 0 auto;
+    h3 {
+      margin: 10px 0;
+    }
+    li {
+      list-style: circle;
+      margin-left: 20px;
+    }
+    p {
+      text-align: justify;
+      margin: 10px 0;
+    }
+  }
+  .addArticle__coverBlock {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-top: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    .addArticle__rules {
-        max-width: 1000px;
-        margin: 0 auto;
-        h3 {
-            margin: 10px 0;
-        }
-        li {
-            list-style: circle;
-            margin-left: 20px;
-        }
-        p {
-            text-align: justify;
-            margin: 10px 0;
-        }
+    input[type="file"] {
+      display: none;
     }
-    .addArticle__coverBlock {
-        display: flex;
-        flex-direction: column;
-        input[type="file"] {
-            display: none;
-        }
+  }
+  .addArticle__coverImage {
+    display: inline-block;
+    width: fit-content;
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid gray;
+    border-radius: 15px;
+    color: rgb(70, 70, 70);
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      box-shadow: 1px 1px 2px gray;
+      transform: translate3d(0, -1px, 0);
     }
-    .addArticle__coverImage {
-        display: inline-block;
-        width: fit-content;
-        padding: 10px;
-        cursor: pointer;
-        border: 1px solid gray;
-        border-radius: 15px;
-        color: rgb(70, 70, 70);
+  }
+  .addArticle__uploadedImage {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    padding: 7px 10px;
+    border: 1px solid gray;
+    border-radius: 15px;
+    div {
+      line-height: 0;
+      margin-right: 10px;
+      cursor: pointer;
+      svg {
+        fill: gray;
         transition: all 0.2s ease-in-out;
         &:hover {
-            box-shadow: 1px 1px 2px gray;
-            transform: translate3d(0, -1px, 0);
+          fill: rgb(180, 92, 92);
         }
+      }
     }
-    .addArticle__uploadedImage {
-        display: flex;
-        align-items: center;
-        width: fit-content;
-        padding: 7px 10px;
-        border: 1px solid gray;
-        border-radius: 15px;
-        div {
-            line-height: 0;
-            margin-right: 10px;
-            cursor: pointer;
-            svg {
-                fill: gray;
-                transition: all 0.2s ease-in-out;
-                &:hover {
-                    fill: rgb(180, 92, 92);
-                }
-            }
-        }
+  }
+  .addArticle__quill {
+    width: 100%;
+  }
+  .ql-toolbar.ql-snow {
+    border-color: gray;
+  }
+  .ql-container.ql-snow {
+    border-color: gray;
+  }
+  .ql-editor {
+    width: 100%;
+    min-height: 200px;
+    font-size: 1.2em;
+  }
+  .addArticle__addTitle,
+  .addArticle__addTags {
+    input {
+      width: 100%;
+      border-color: gray;
+      &:focus {
+        outline: none;
+      }
     }
-    .addArticle__quill {
-        width: 100%;
+  }
+  .addArticle__addTitle {
+    input {
+      font-size: 1.3em;
+      border-radius: 15px 15px 0 0;
     }
-    .ql-toolbar.ql-snow {
-        border-color: gray;
+  }
+  .addArticle__addTags {
+    input {
+      border-radius: 0 0 15px 15px;
     }
-    .ql-container.ql-snow {
-        border-color: gray;
+  }
+  .addArticle__buttonsBlock {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin: 10px 0;
+    button {
+      min-width: 130px;
     }
-    .ql-editor {
-        width: 100%;
-        min-height: 200px;
-        font-size: 1.2em;
-    }
-    .addArticle__addTitle, .addArticle__addTags {
-        input {
-            width: 100%;
-            border-color: gray;
-            &:focus {
-                outline: none;
-            }}
-    }
-    .addArticle__addTitle {
-        input {
-            font-size: 1.3em;
-            border-radius: 15px 15px 0 0;
-        }
-    }
-    .addArticle__addTags {
-        input {
-            border-radius: 0 0 15px 15px;
-        }
-    }
-    .addArticle__buttonsBlock {
-        display: flex;
-        justify-content: flex-end;
-        gap: 10px;
-        margin: 10px 0;
-        button {
-            min-width: 130px;
-        }
-    }
+  }
 }
