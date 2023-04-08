@@ -14,6 +14,7 @@ import {
   getAuthors,
   promoteUser,
   confirmEmail,
+  deleteAccount,
 } from "./controllers/UserController.js";
 import {
   getAllArticles,
@@ -124,6 +125,8 @@ app.patch(
   checkAuthorization,
   patchUserData
 );
+//delete user
+app.delete("/authorization/delete", checkAuthorization, deleteAccount);
 //user promotion
 app.patch("/promotion", checkAuthorization, promoteUser);
 //get all authors

@@ -15,7 +15,10 @@
           flex: 1 1 auto;
 }
 
-.settings__mainData, .settings__passwordData, .settings__nameData {
+.settings__mainData,
+.settings__passwordData,
+.settings__nameData,
+.settings__deleteAccount {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -36,9 +39,26 @@
           box-sizing: border-box;
   width: 300px;
 }
-.settings__mainData button, .settings__passwordData button, .settings__nameData button {
+.settings__mainData button,
+.settings__passwordData button,
+.settings__nameData button,
+.settings__deleteAccount button {
   width: 100%;
   margin-top: auto;
+}
+
+.settings__deleteAccount h3 {
+  text-align: center;
+}
+.settings__deleteAccount .settings__deleteWarning {
+  text-align: justify;
+}
+.settings__deleteAccount .settings__deleteWarning svg {
+  fill: rgb(255, 80, 0);
+}
+.settings__deleteAccount button {
+  background-color: rgb(255, 112, 86);
+  color: white;
 }
 
 .settings__statistics {

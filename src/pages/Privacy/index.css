@@ -4,21 +4,39 @@
           flex: 1 1 auto;
 }
 
-.privacy__content {
+.privacy__content,
+.privacy__deleteAccount {
   max-width: 800px;
   margin: 20px auto;
 }
-.privacy__content h3 {
-  line-height: 1.5;
+.privacy__content h3,
+.privacy__deleteAccount h3 {
+  line-height: 1;
+  margin-bottom: 10px;
 }
-.privacy__content > p {
+.privacy__content > p,
+.privacy__deleteAccount > p {
   text-align: justify;
   text-indent: 2em;
   margin-bottom: 15px;
 }
-.privacy__content ul {
+.privacy__content ul,
+.privacy__content ol,
+.privacy__deleteAccount ul,
+.privacy__deleteAccount ol {
   margin: 0 0 15px 2em;
 }
-.privacy__content li {
+.privacy__content li,
+.privacy__deleteAccount li {
   list-style: circle;
+}
+.privacy__content svg,
+.privacy__deleteAccount svg {
+  fill: rgb(255, 163, 43);
+  margin-right: 10px;
+  vertical-align: sub;
+}
+
+.privacy__deleteAccount li {
+  list-style: inherit;
 }

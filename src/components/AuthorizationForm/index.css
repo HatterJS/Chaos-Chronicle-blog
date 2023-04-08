@@ -74,6 +74,7 @@
 .authorizationForm__form .authorizationForm__body .authorizationForm__inputField input {
   outline: none;
   border: none;
+  width: 100%;
 }
 .authorizationForm__form .authorizationForm__body .authorizationForm__inputField input:focus + div {
   padding: 0 10px;
