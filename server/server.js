@@ -1,10 +1,10 @@
-import express from "express";
-import mongoose from "mongoose";
-import multer from "multer";
-import cors from "cors";
+import express from 'express';
+import mongoose from 'mongoose';
+import multer from 'multer';
+import cors from 'cors';
 
-import fs from "fs";
-import path from "path";
+import fs from 'fs';
+import path from 'path';
 
 import {
   registration,
@@ -15,7 +15,7 @@ import {
   promoteUser,
   confirmEmail,
   deleteAccount,
-} from "./controllers/UserController.js";
+} from './controllers/UserController.js';
 import {
   getAllArticles,
   getArticle,
@@ -25,7 +25,7 @@ import {
   getPopularTags,
   getMyArticles,
   articleReminder,
-} from "./controllers/ArticleController.js";
+} from './controllers/ArticleController.js';
 import {
   deleteComment,
   getComments,
@@ -33,21 +33,26 @@ import {
   getMyComments,
   likeComment,
   postComment,
-} from "./controllers/CommentController.js";
+} from './controllers/CommentController.js';
+import {
+  deleteAnswer,
+  getAnswers,
+  postAnswer,
+} from './controllers/AnswerController.js';
 
 import {
   registrationValidation,
   authorizationValidation,
   articleValidation,
-} from "./validations.js";
-import checkAuthorization from "./utils/checkAuthorization.js";
-import handleValidationErrors from "./utils/handleValidationErrors.js";
+} from './validations.js';
+import checkAuthorization from './utils/checkAuthorization.js';
+import handleValidationErrors from './utils/handleValidationErrors.js';
 
 //connect to MongoDB
 mongoose
-  .connect("mongodb://127.0.0.1:27017/CCBlog")
-  .then(() => console.log("DB ok"))
-  .catch((err) => console.log("DB error:", err));
+  .connect('mongodb://127.0.0.1:27017/CCBlog')
+  .then(() => console.log('DB ok'))
+  .catch((err) => console.log('DB error:', err));
 
 //connect express
 const app = express();
@@ -63,19 +68,19 @@ const storage = multer.diskStorage({
   },
   filename: (__, file, cb) => {
     const originalName = file.originalname;
-    const extention = originalName.split(".").pop();
-    const unicName = `${Date.now()}-${originalName.split(".")[0]}.${extention}`;
+    const extention = originalName.split('.').pop();
+    const unicName = `${Date.now()}-${originalName.split('.')[0]}.${extention}`;
     cb(null, unicName);
   },
 });
 const upload = multer({ storage });
-app.use("/uploads", express.static("uploads/"));
+app.use('/uploads', express.static('uploads/'));
 
 //upload image
 app.post(
-  "/upload",
+  '/upload',
   // checkAuthorization,
-  upload.single("image"),
+  upload.single('image'),
   (req, res) => {
     res.json({
       url: `uploads/${req.query.dir}/${req.file.filename}`,
@@ -83,17 +88,17 @@ app.post(
   }
 );
 //delete image
-app.delete("/delete/:filename", (req, res) => {
+app.delete('/delete/:filename', (req, res) => {
   const filePath = path.join(`uploads/${req.query.dir}/${req.params.filename}`);
   fs.unlink(filePath, (err) => {
     if (err) {
       console.error(err);
       res.status(500).json({
-        error: "Error deleting file",
+        error: 'Error deleting file',
       });
     } else {
       res.json({
-        message: "File deleted successfully",
+        message: 'File deleted successfully',
       });
     }
   });
@@ -101,86 +106,93 @@ app.delete("/delete/:filename", (req, res) => {
 
 //registration
 app.post(
-  "/authorization/registration",
+  '/authorization/registration',
   registrationValidation,
   handleValidationErrors,
   registration
 );
 //authorization
 app.post(
-  "/authorization/authorization",
+  '/authorization/authorization',
   authorizationValidation,
   handleValidationErrors,
   authorization
 );
 //authorization by token
-app.get("/authorization/verification", checkAuthorization, authVerification);
+app.get('/authorization/verification', checkAuthorization, authVerification);
 //Email confirmation
-app.get("/confirmemail", checkAuthorization, confirmEmail);
+app.get('/confirmemail', checkAuthorization, confirmEmail);
 //change user data
 app.patch(
-  "/authorization/changeData",
+  '/authorization/changeData',
   // registrationValidation,
   // handleValidationErrors,
   checkAuthorization,
   patchUserData
 );
 //delete user
-app.delete("/authorization/delete", checkAuthorization, deleteAccount);
+app.delete('/authorization/delete', checkAuthorization, deleteAccount);
 //user promotion
-app.patch("/promotion", checkAuthorization, promoteUser);
+app.patch('/promotion', checkAuthorization, promoteUser);
 //get all authors
-app.get("/authors", getAuthors);
+app.get('/authors', getAuthors);
 
 //get all articles
-app.get("/articles", getAllArticles);
+app.get('/articles', getAllArticles);
 //get my articles
-app.get("/myarticles", checkAuthorization, getMyArticles);
+app.get('/myarticles', checkAuthorization, getMyArticles);
 //get author articles
-app.get("/authorarticles/:id", getMyArticles);
+app.get('/authorarticles/:id', getMyArticles);
 //get an article
-app.get("/article/:id", getArticle);
+app.get('/article/:id', getArticle);
 //post an article
 app.post(
-  "/article",
+  '/article',
   checkAuthorization,
   articleValidation,
   handleValidationErrors,
   postArticle
 );
 //delete an article
-app.delete("/article/:id", checkAuthorization, deleteArticle);
+app.delete('/article/:id', checkAuthorization, deleteArticle);
 //update an article
 app.patch(
-  "/article/:id",
+  '/article/:id',
   checkAuthorization,
   articleValidation,
   handleValidationErrors,
   patchArticle
 );
 //remind subscribers about the article
-app.get("/article/remind/:id", checkAuthorization, articleReminder);
+app.get('/article/remind/:id', checkAuthorization, articleReminder);
 
 //get popular tags
-app.get("/tags", getPopularTags);
+app.get('/tags', getPopularTags);
 
 //get last comments
-app.get("/lastcomments", getLastComments);
+app.get('/lastcomments', getLastComments);
 //get comments
-app.get("/comments/:id", checkAuthorization, getComments);
+app.get('/comments/:id', checkAuthorization, getComments);
 //get user comments
-app.get("/mycomments", checkAuthorization, getMyComments);
+app.get('/mycomments', checkAuthorization, getMyComments);
 //post comment
-app.post("/comment", checkAuthorization, postComment);
+app.post('/comment', checkAuthorization, postComment);
 //like comment
-app.get("/likecomment/:id", checkAuthorization, likeComment);
+app.get('/likecomment/:id', checkAuthorization, likeComment);
 //delete comment
-app.delete("/comment/:id", checkAuthorization, deleteComment);
+app.delete('/comment/:id', checkAuthorization, deleteComment);
+
+//get answers
+app.get('/answers/:id', getAnswers);
+//post answer
+app.post('/answer', checkAuthorization, postAnswer);
+// delete answer
+app.delete('/answer/:id', checkAuthorization, deleteAnswer);
 
 //server port
 app.listen(9999, (err) => {
   if (err) {
     return console.log(err);
   }
-  console.log("server started");
+  console.log('server started');
 });

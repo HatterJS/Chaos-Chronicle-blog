@@ -1,18 +1,18 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "../../axios.js";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from '../../axios.js';
 
 export const fetchComments = createAsyncThunk(
-  "comments/fetchComments",
+  'comments/fetchComments',
   async (id) => {
     const { data } = await axios.get(`/comments/${id}`);
     return data;
   }
 );
 export const fetchAddComment = createAsyncThunk(
-  "/comments/fetchAddComment",
+  '/comments/fetchAddComment',
   async (commentData) => {
     try {
-      const { data } = await axios.post("/comment", commentData);
+      const { data } = await axios.post('/comment', commentData);
       return data;
     } catch (err) {
       const { message } = err.response.data;
@@ -21,7 +21,7 @@ export const fetchAddComment = createAsyncThunk(
   }
 );
 export const fetchLastComments = createAsyncThunk(
-  "/comments/fetchLastComments",
+  '/comments/fetchLastComments',
   async (limit) => {
     try {
       const { data } = await axios.get(`/lastcomments?limit=${limit}`);
@@ -36,11 +36,11 @@ export const fetchLastComments = createAsyncThunk(
 const initialState = {
   comments: [],
   lastComments: [],
-  status: "loading",
+  status: 'loading',
 };
 
 const commentsSlice = createSlice({
-  name: "comments",
+  name: 'comments',
   initialState,
   reducers: {
     removeComment: (state, action) => {
@@ -53,36 +53,38 @@ const commentsSlice = createSlice({
     builder
       .addCase(fetchComments.pending, (state) => {
         state.comments = [];
-        state.status = "loading";
+        state.status = 'loading';
       })
       .addCase(fetchComments.fulfilled, (state, action) => {
         state.comments = action.payload;
-        state.status = "loaded";
+        state.status = 'loaded';
       })
       .addCase(fetchComments.rejected, (state) => {
         state.comments = [];
-        state.status = "error";
+        state.status = 'error';
       })
       .addCase(fetchAddComment.pending, (state) => {
-        state.status = "loading";
+        state.status = 'loading';
       })
       .addCase(fetchAddComment.fulfilled, (state, action) => {
         state.comments.unshift(action.payload);
+        state.status = 'loaded';
       })
       .addCase(fetchAddComment.rejected, (state, action) => {
         alert(action.error.message);
+        state.status = 'error';
       })
       .addCase(fetchLastComments.pending, (state) => {
         state.lastComments = [];
-        state.status = "loading";
+        state.status = 'loading';
       })
       .addCase(fetchLastComments.fulfilled, (state, action) => {
         state.lastComments = action.payload;
-        state.status = "loaded";
+        state.status = 'loaded';
       })
       .addCase(fetchLastComments.rejected, (state, action) => {
         state.lastComments = [];
-        state.status = "error";
+        state.status = 'error';
       });
   },
 });

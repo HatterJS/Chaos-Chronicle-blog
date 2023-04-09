@@ -19,16 +19,12 @@ function CommentsBlock() {
   const { comments } = useSelector((state) => state.comments);
   //get article id
   const { id } = useParams();
-  //handle Enter
-  function handleKey(event) {
-    if (event.key === "Enter" && event.ctrlKey) {
-      sendComment(event.target.value);
-      event.target.value = "";
-    }
-  }
+  //textarea value
+  const [text, setText] = React.useState("");
   //send comment
-  async function sendComment(text) {
+  async function sendComment() {
     dispatch(fetchAddComment({ articleId: id, text }));
+    setText("");
   }
   //get article comments
   React.useEffect(() => {
@@ -49,6 +45,7 @@ function CommentsBlock() {
           {comments.map((item) => (
             <CommentItem
               key={item._id}
+              articleId={id}
               id={item._id}
               text={item.text}
               author={item.author}
@@ -60,12 +57,10 @@ function CommentsBlock() {
             <textarea
               placeholder="Написати коментар"
               maxLength={500}
-              onKeyUp={handleKey}
+              value={text}
+              onChange={(event) => setText(event.target.value)}
             />
-            <button className="acceptButton" onClick={sendComment}>
-              {sendSVG}
-              <p>Відправити</p>
-            </button>
+            <button onClick={sendComment}>{sendSVG}</button>
           </div>
         </div>
       )}

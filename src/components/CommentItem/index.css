@@ -1,21 +1,30 @@
-.commentItem {
+.commentItem__mainComment {
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   border: 1px solid gray;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   border-radius: 20px;
   padding: 10px;
-  width: 80%;
-  gap: 10px;
+  width: 90%;
   -webkit-animation: apear 1s ease-in-out;
           animation: apear 1s ease-in-out;
   -webkit-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
 }
-.commentItem .commentItem__block {
+.commentItem__mainComment .authorSign {
+  max-width: 200px;
+}
+
+.commentItem__mainBlock {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 10px;
+}
+
+.commentItem__block {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -28,21 +37,19 @@
           flex: 1 1 300px;
   text-align: justify;
 }
-.commentItem .commentItem__block .commentItem__time {
+.commentItem__block .commentItem__time {
   -ms-flex-item-align: end;
       align-self: flex-end;
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: gray;
 }
-.commentItem .commentItem__block p {
+.commentItem__block p {
   margin: 10px 0;
   white-space: pre-line;
 }
-.commentItem .authorSign {
-  max-width: 200px;
-}
-.commentItem .commentItem__likes,
-.commentItem .commentItem__delete {
+
+.commentItem__likes,
+.commentItem__delete {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -56,23 +63,108 @@
   width: fit-content;
   cursor: pointer;
 }
-.commentItem .commentItem__likes svg,
-.commentItem .commentItem__delete svg {
+.commentItem__likes svg,
+.commentItem__delete svg {
   fill: gray;
   width: 20px;
   height: 20px;
 }
-.commentItem .commentItem__delete {
+
+.commentItem__delete {
   position: absolute;
   bottom: 10px;
   right: -30px;
 }
-.commentItem .commentItem__delete:hover svg {
+.commentItem__delete:hover svg {
   fill: rgb(187, 92, 37);
 }
-.commentItem .commentItem__likes {
+
+.commentItem__footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+.commentItem__footer button {
+  padding: 5px 10px;
+  border: 1px solid gray;
+  border-radius: 15px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.commentItem__footer button:hover {
+  background-color: gray;
+  color: white;
+}
+.commentItem__footer button:active {
+  -webkit-box-shadow: 1px 1px 4px rgb(0, 0, 0) inset;
+          box-shadow: 1px 1px 4px rgb(0, 0, 0) inset;
+  -webkit-transform: translateY(1px);
+          transform: translateY(1px);
+}
+
+.commentItem__likes {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
   gap: 5px;
   color: gray;
+}
+
+.commentItem__answerBlock {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+.commentItem__answerBlock textarea {
+  padding: 10px;
+  resize: none;
+  height: 60px;
+  border-radius: 15px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  font-size: 1em;
+}
+.commentItem__answerBlock button svg {
+  fill: gray;
+}
+.commentItem__answerBlock button:hover svg {
+  fill: rgb(90, 90, 90);
+}
+.commentItem__answerBlock button:active svg {
+  fill: rgb(143, 161, 139);
+}
+
+.commentItem__answersBlock {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-right: 1px solid gray;
+  padding: 0 5px;
+  width: 90%;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  margin-top: 5px;
+  gap: 5px;
+}
+.commentItem__answersBlock .commentItem__mainComment {
+  width: 80%;
 }
 
 @-webkit-keyframes apear {

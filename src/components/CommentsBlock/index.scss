@@ -33,14 +33,14 @@
       font-size: 1em;
     }
     button {
-      display: flex;
-      align-items: center;
-      gap: 5px;
       svg {
         fill: gray;
       }
       &:hover svg {
         fill: rgb(90, 90, 90);
+      }
+      &:active svg {
+        fill: rgb(143, 161, 139);
       }
     }
   }

@@ -1,10 +1,10 @@
 import mongoose from 'mongoose';
 
-const CommentSchema = new mongoose.Schema(
+const AnswersSchema = mongoose.Schema(
   {
-    articleId: {
+    commentId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Articles',
+      ref: 'Comments',
       required: true,
     },
     text: {
@@ -16,14 +16,10 @@ const CommentSchema = new mongoose.Schema(
       ref: 'Authorized',
       required: true,
     },
-    usersLiked: {
-      type: Array,
-      default: [],
-    },
   },
   {
     timestamps: true,
   }
 );
 
-export default mongoose.model('Comments', CommentSchema);
+export default mongoose.model('Answers', AnswersSchema);
