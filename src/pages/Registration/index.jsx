@@ -1,18 +1,18 @@
-import React from "react";
-import axios from "../../axios.js";
-import { Link, Navigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import React from 'react';
+import axios from '../../axios.js';
+import { Link, Navigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
-import PageTitle from "../../components/PageTitle/index.jsx";
+import PageTitle from '../../components/PageTitle/index.jsx';
 
-import "./index.css";
+import './index.css';
 
 import {
   fetchRegistrationData,
   isAuthCheck,
-} from "../../redux/slices/authorization";
-import { backendUrl } from "../../variables.js";
-import { closeSVG, deleteSVG } from "../../components/SvgSprite";
+} from '../../redux/slices/authorization';
+import { backendUrl } from '../../variables.js';
+import { closeSVG, deleteSVG } from '../../components/SvgSprite';
 
 function Registration() {
   //ref for avatar input
@@ -26,21 +26,21 @@ function Registration() {
   //create state for user data
   const [registrationData, setRegistrationData] = React.useState({
     avatarUrl: defaultAvatarUrl,
-    fullName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
+    fullName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
   });
   //send registration data and get user data from backend
   async function sendRegistrationData() {
     const data = await dispatch(fetchRegistrationData(registrationData));
     if (data.payload) {
-      localStorage.setItem("token", data.payload.token);
+      localStorage.setItem('token', data.payload.token);
       setRegistrationData({
-        fullName: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
+        fullName: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
         avatarUrl: defaultAvatarUrl,
       });
     } else {
@@ -49,7 +49,7 @@ function Registration() {
   }
   //catch Enter on last input field
   function handleLastInputKey(event) {
-    if (event.key === "Enter") {
+    if (event.key === 'Enter') {
       event.preventDefault();
       sendRegistrationData();
     }
@@ -64,25 +64,25 @@ function Registration() {
         registrationData.email
       )
     ) {
-      return "Перевірте email";
+      return 'Перевірте email';
     }
     if (
       registrationData.password.length < 6 ||
       registrationData.password !== registrationData.confirmPassword
     ) {
-      return "Перевірте пароль";
+      return 'Перевірте пароль';
     }
-    return "Реєстрація";
+    return 'Реєстрація';
   }
   //upload avatar to server
   async function uploadAvatar(file) {
     if (file.size > 100000) {
-      alert("Розмір файлу перевищує 100кБ");
+      alert('Розмір файлу перевищує 100кБ');
       return;
     }
     try {
       const formData = new FormData();
-      formData.append("image", file);
+      formData.append('image', file);
       const { data } = await axios.post(`/upload?dir=users`, formData);
       deleteAvatar();
       setRegistrationData((prev) => ({
@@ -90,13 +90,13 @@ function Registration() {
         avatarUrl: backendUrl + data.url,
       }));
     } catch (err) {
-      alert("Не вдалось завантажити аватар");
+      alert('Не вдалось завантажити аватар');
     }
   }
   //clear avatar
   function clearAvatar() {
     deleteAvatar();
-    inputAvatar.current.value = "";
+    inputAvatar.current.value = '';
     setRegistrationData((prev) => ({ ...prev, avatarUrl: defaultAvatarUrl }));
   }
   //delete avatar from server
@@ -104,32 +104,32 @@ function Registration() {
     if (registrationData.avatarUrl !== defaultAvatarUrl) {
       axios.delete(
         `delete/${registrationData.avatarUrl.slice(
-          registrationData.avatarUrl.lastIndexOf("/") + 1
+          registrationData.avatarUrl.lastIndexOf('/') + 1
         )}?dir=users`
       );
     }
   }
   //if authorizet redirect to home page
   if (isAuthorized) {
-    return <Navigate to={"/"} />;
+    return <Navigate to={'/'} />;
   }
   return (
-    <div className="registration">
-      <PageTitle title="Реєстрація" />
-      <div className="registration__form">
-        <Link to={"/"} className="registration__close">
+    <div className='registration'>
+      <PageTitle title='Реєстрація' />
+      <div className='registration__form'>
+        <Link to={'/'} className='registration__close'>
           {closeSVG}
         </Link>
-        <div className="registration__avatar">
-          <label htmlFor="avatar">
-            <img src={registrationData.avatarUrl} alt="avatar" />
+        <div className='registration__avatar'>
+          <label htmlFor='avatar'>
+            <img src={registrationData.avatarUrl} alt='avatar' />
           </label>
           <input
             ref={inputAvatar}
-            type="file"
-            name="avatar"
-            id="avatar"
-            accept="image/*"
+            type='file'
+            name='avatar'
+            id='avatar'
+            accept='image/*'
             onChange={(event) => {
               uploadAvatar(event.target.files[0]);
             }}
@@ -138,10 +138,10 @@ function Registration() {
             <button onClick={clearAvatar}>{deleteSVG}</button>
           )}
         </div>
-        <div className="registration__inputField">
+        <div className='registration__inputField'>
           <input
-            type="text"
-            placeholder=" "
+            type='text'
+            placeholder=' '
             value={registrationData.fullName}
             onChange={(event) =>
               setRegistrationData((prev) => ({
@@ -152,10 +152,10 @@ function Registration() {
           />
           <div>Повне ім'я</div>
         </div>
-        <div className="registration__inputField">
+        <div className='registration__inputField'>
           <input
-            type="email"
-            placeholder=" "
+            type='email'
+            placeholder=' '
             value={registrationData.email}
             onChange={(event) =>
               setRegistrationData((prev) => ({
@@ -166,10 +166,10 @@ function Registration() {
           />
           <div>E-mail</div>
         </div>
-        <div className="registration__inputField">
+        <div className='registration__inputField'>
           <input
-            type="password"
-            placeholder=" "
+            type='password'
+            placeholder=' '
             value={registrationData.password}
             onChange={(event) =>
               setRegistrationData((prev) => ({
@@ -181,10 +181,10 @@ function Registration() {
           />
           <div>Пароль</div>
         </div>
-        <div className="registration__inputField">
+        <div className='registration__inputField'>
           <input
-            type="password"
-            placeholder=" "
+            type='password'
+            placeholder=' '
             value={registrationData.confirmPassword}
             onChange={(event) =>
               setRegistrationData((prev) => ({
@@ -196,11 +196,13 @@ function Registration() {
           />
           <div>Підтвердіть пароль</div>
         </div>
-        <div className="registration__buttons">
+        <p>Перш ніж зареєструватись:</p>
+        <Link to={'/agreement'}>Угода користувача</Link>
+        <div className='registration__buttons'>
           <button
-            className="acceptButton"
+            className='acceptButton'
             onClick={sendRegistrationData}
-            disabled={userDataValidation() !== "Реєстрація"}
+            disabled={userDataValidation() !== 'Реєстрація'}
           >
             {userDataValidation()}
           </button>

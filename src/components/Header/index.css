@@ -49,12 +49,6 @@ header .header__links div:hover {
   -webkit-filter: contrast(3);
           filter: contrast(3);
 }
-header .header__user {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 10px;
-}
 header .header__user a,
 header .header__user button {
   display: -webkit-box;
@@ -105,7 +99,10 @@ header .header__user .disabledLink svg {
   fill: rgb(200, 160, 160);
 }
 
-@media (max-width: 780px) {
+@media (max-width: 910px) {
+  header .header__links {
+    gap: 10px;
+  }
   header .header__links p {
     display: none;
   }
@@ -113,6 +110,8 @@ header .header__user .disabledLink svg {
     width: 25px;
     height: 25px;
   }
+}
+@media (max-width: 780px) {
   header .header__user a p,
 header .header__user button p {
     display: none;
@@ -123,15 +122,20 @@ header .header__user button svg {
     height: 25px;
   }
 }
-@media (max-width: 520px) {
+@media (max-width: 460px) {
   header .header__links {
-    gap: 10px;
+    gap: 5px;
   }
-  header .header__links p {
-    display: none;
+  header .header__user .header__authorizedUserButtons {
+    gap: 5px;
   }
-  header .header__links svg {
-    width: 25px;
-    height: 25px;
+  header .header__user a,
+header .header__user button {
+    padding: 2px;
+  }
+  header .header__user a svg,
+header .header__user button svg {
+    width: 20px;
+    height: 20px;
   }
 }

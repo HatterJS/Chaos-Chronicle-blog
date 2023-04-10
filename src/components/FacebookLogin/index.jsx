@@ -1,15 +1,15 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React from 'react';
+import { useDispatch } from 'react-redux';
 
 import {
   fetchRegistrationData,
   fetchUserData,
-} from "../../redux/slices/authorization";
+} from '../../redux/slices/authorization';
 
-import { backendUrl } from "../../variables.js";
-import { faceBookSVG } from "../SvgSprite";
+import { backendUrl } from '../../variables.js';
+import { faceBookSVG } from '../SvgSprite';
 
-import "./index.css";
+import './index.css';
 
 function FacebookLogin() {
   //default avatar url
@@ -18,7 +18,7 @@ function FacebookLogin() {
   const dispatch = useDispatch();
   //send user data to the backend for authorization / registration
   const sendUserData = () => {
-    window.FB.api("/me", "GET", { fields: "name,email" }, async (res) => {
+    window.FB.api('/me', 'GET', { fields: 'name,email' }, async (res) => {
       if (res && !res.error) {
         const { name, email, id } = res;
         //trying to log in using Facebook data
@@ -26,10 +26,10 @@ function FacebookLogin() {
           fetchUserData({ email, password: id })
         );
         if (authDdata.payload) {
-          localStorage.setItem("token", authDdata.payload.token);
+          localStorage.setItem('token', authDdata.payload.token);
         } else if (
           authDdata.error.message ===
-          "Користувача з таким email або паролем не існує"
+          'Користувача з таким email або паролем не існує'
         ) {
           //trying to register using Facebook data
           const registrationData = await dispatch(
@@ -41,7 +41,7 @@ function FacebookLogin() {
             })
           );
           if (registrationData.payload) {
-            localStorage.setItem("token", registrationData.payload.token);
+            localStorage.setItem('token', registrationData.payload.token);
           } else {
             alert(registrationData.error.message);
           }
@@ -56,31 +56,31 @@ function FacebookLogin() {
         if (res.authResponse) {
           sendUserData();
         } else {
-          alert("Нажаль, не вдалось авторизуватись за допомогою Facebook.");
+          alert('Нажаль, не вдалось авторизуватись за допомогою Facebook.');
         }
       },
-      { scope: "public_profile,email" }
+      { scope: 'public_profile,email' }
     );
   };
 
   React.useEffect(() => {
     //initialize the Facebook SDK
-    const script = document.createElement("script");
+    const script = document.createElement('script');
     const initFacebookSDK = () => {
       window.fbAsyncInit = function () {
         window.FB.init({
-          appId: "104842299248084", // додати код на отримання ID з бекенду
+          appId: '6032401773507562',
           autoLogAppEvents: true,
           xfbml: true,
-          version: "v16.0",
+          version: 'v16.0',
         });
       };
 
       //download the Facebook SDK
-      script.src = "https://connect.facebook.net/en_US/sdk.js";
+      script.src = 'https://connect.facebook.net/en_US/sdk.js';
       script.async = true;
       script.defer = true;
-      script.crossOrigin = "anonymous";
+      script.crossOrigin = 'anonymous';
       document.head.appendChild(script);
     };
     initFacebookSDK();
@@ -92,8 +92,8 @@ function FacebookLogin() {
   }, []);
 
   return (
-    <div className="facebookLogin">
-      <div className="facebookLogin__social">
+    <div className='facebookLogin'>
+      <div className='facebookLogin__social'>
         {/* {googleSVG} */}
         <button onClick={handleLogin}>{faceBookSVG}</button>
       </div>

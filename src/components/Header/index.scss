@@ -41,8 +41,6 @@ header {
     }
   }
   .header__user {
-    display: flex;
-    gap: 10px;
     a,
     button {
       display: flex;
@@ -84,9 +82,10 @@ header {
   }
 }
 
-@media (max-width: 780px) {
+@media (max-width: 910px) {
   header {
     .header__links {
+      gap: 10px;
       p {
         display: none;
       }
@@ -95,6 +94,11 @@ header {
         height: 25px;
       }
     }
+  }
+}
+
+@media (max-width: 780px) {
+  header {
     .header__user {
       a,
       button {
@@ -110,16 +114,22 @@ header {
   }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 460px) {
   header {
     .header__links {
-      gap: 10px;
-      p {
-        display: none;
+      gap: 5px;
+    }
+    .header__user {
+      .header__authorizedUserButtons {
+        gap: 5px;
       }
-      svg {
-        width: 25px;
-        height: 25px;
+      a,
+      button {
+        padding: 2px;
+        svg {
+          width: 20px;
+          height: 20px;
+        }
       }
     }
   }

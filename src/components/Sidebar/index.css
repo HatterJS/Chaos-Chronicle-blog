@@ -38,7 +38,7 @@ aside h3 {
 }
 .aside__tagsBlock .aside__tags div,
 .aside__commentsBlock .aside__tags div {
-  color: rgb(53, 94, 189);
+  color: rgb(76, 133, 219);
   margin-right: 10px;
   cursor: pointer;
 }

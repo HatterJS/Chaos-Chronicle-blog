@@ -1,20 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import PageTitle from "../../components/PageTitle";
+import PageTitle from '../../components/PageTitle';
 
-import { warningSVG } from "../../components/SvgSprite";
+import { warningSVG } from '../../components/SvgSprite';
 
-import "./index.css";
+import './index.css';
 
 function Privacy() {
   return (
-    <div className="privacy">
-      <PageTitle title="Політика конфіденційності" />
-      <div className="privacy__content">
-        <h3>Політика конфіденційності</h3>
+    <div className='privacy'>
+      <PageTitle title='Політика конфіденційності' />
+      <div className='privacy__content'>
         <p>
           Цей документ містить інформацію про збір, використання та розкриття
-          особистої інформації користувачів сайту{" "}
+          особистої інформації користувачів сайту{' '}
           <strong>Chaos Chronicles</strong>. Ми прагнемо забезпечити високий
           рівень захисту вашої приватності, дотримуючись вимог законодавства про
           захист персональних даних.
@@ -51,7 +50,7 @@ function Privacy() {
           поширення.
         </p>
         <p>
-          {" "}
+          {' '}
           Ми застосовуємо сучасні методи захисту інформації, включаючи
           наприклад, такі методи захисту інформації, як шифрування даних,
           захищені з'єднання і захист від вторгнень. Ми не розголошуємо особисту
@@ -65,7 +64,7 @@ function Privacy() {
           контактної інформації на нашому веб-сайті.
         </p>
       </div>
-      <div className="privacy__deleteAccount" id="deleteAccount">
+      <div className='privacy__deleteAccount' id='deleteAccount'>
         <h3>
           Процедура видалення облікового запису користувача з сайту Chaos
           Chronicle наступна:
@@ -76,8 +75,8 @@ function Privacy() {
             даних (логін та пароль) або акаунту Facebook.
           </li>
           <li>
-            Після успішного входу, перейдіть в{" "}
-            <Link to={"/usersettings/settings"}>особистий кабінет</Link>,
+            Після успішного входу, перейдіть в{' '}
+            <Link to={'/usersettings/settings'}>особистий кабінет</Link>,
             натиснувши кнопку, яка розташована у верхньому правому куті екрана.
           </li>
           <li>
