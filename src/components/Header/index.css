@@ -49,6 +49,9 @@ header .header__links div:hover {
   -webkit-filter: contrast(3);
           filter: contrast(3);
 }
+header .header__links .header__sponsorship svg {
+  fill: rgb(87, 161, 87);
+}
 header .header__user a,
 header .header__user button {
   display: -webkit-box;

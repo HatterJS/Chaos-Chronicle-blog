@@ -6,9 +6,7 @@
       -ms-flex-pack: center;
           justify-content: center;
   gap: 10px;
-  border-top: 1px dashed gray;
-  padding-top: 10px;
-  margin-top: 10px;
+  padding: 10px 0;
 }
 .facebookLogin__social svg {
   fill: rgb(75, 130, 230);

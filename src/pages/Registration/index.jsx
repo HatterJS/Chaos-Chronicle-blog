@@ -36,6 +36,7 @@ function Registration() {
     const data = await dispatch(fetchRegistrationData(registrationData));
     if (data.payload) {
       localStorage.setItem('token', data.payload.token);
+      localStorage.setItem('auth', 'Site');
       setRegistrationData({
         fullName: '',
         email: '',

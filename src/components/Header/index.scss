@@ -39,6 +39,11 @@ header {
     div:hover {
       filter: contrast(3);
     }
+    .header__sponsorship {
+      svg {
+        fill: rgb(87, 161, 87);
+      }
+    }
   }
   .header__user {
     a,

@@ -26,6 +26,7 @@ function Header({ setIsShowForm }) {
     if (window.confirm('Ви дійсно бажаєте вийти?')) {
       dispatch(logOut());
       localStorage.removeItem('token');
+      localStorage.removeItem('auth');
     }
   }
 
@@ -61,7 +62,7 @@ function Header({ setIsShowForm }) {
           </div>
         </Link>
         <Link to={'/sponsorship'}>
-          <div className='header__contacts'>
+          <div className='header__sponsorship'>
             {donateSVG} <p>Добро</p>
           </div>
         </Link>

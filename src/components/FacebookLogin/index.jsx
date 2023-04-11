@@ -27,6 +27,7 @@ function FacebookLogin() {
         );
         if (authDdata.payload) {
           localStorage.setItem('token', authDdata.payload.token);
+          localStorage.setItem('auth', 'FB');
         } else if (
           authDdata.error.message ===
           'Користувача з таким email або паролем не існує'
@@ -42,6 +43,7 @@ function FacebookLogin() {
           );
           if (registrationData.payload) {
             localStorage.setItem('token', registrationData.payload.token);
+            localStorage.setItem('auth', 'FB');
           } else {
             alert(registrationData.error.message);
           }

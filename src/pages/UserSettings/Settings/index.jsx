@@ -1,20 +1,20 @@
-import React from "react";
-import axios from "../../../axios.js";
-import { useDispatch, useSelector } from "react-redux";
+import React from 'react';
+import axios from '../../../axios.js';
+import { useDispatch, useSelector } from 'react-redux';
 
-import "./index.css";
+import './index.css';
 import {
   commentsSVG,
   createArticleSVG,
   deleteSVG,
   ratingSVG,
   warningSVG,
-} from "../../../components/SvgSprite";
-import { backendUrl } from "../../../variables.js";
+} from '../../../components/SvgSprite';
+import { backendUrl } from '../../../variables.js';
 import {
   fetchChangeUserData,
   logOut,
-} from "../../../redux/slices/authorization.js";
+} from '../../../redux/slices/authorization.js';
 
 function Settings() {
   //dispatch for redux
@@ -26,13 +26,15 @@ function Settings() {
   const inputAvatar = React.useRef();
   //default avatar url
   const defaultAvatarUrl = `${backendUrl}uploads/defaultAvatar.png`;
+  //check login platform (FB or Site)
+  const [loginPlatform, setLoginPlatform] = React.useState('');
   //state for user data
   const [registrationData, setRegistrationData] = React.useState({
     avatarUrl,
     fullName,
     email,
-    password: "",
-    confirmPassword: "",
+    password: '',
+    confirmPassword: '',
   });
   //check user common data
   function userCommonValidation() {
@@ -44,9 +46,9 @@ function Settings() {
         registrationData.email
       )
     ) {
-      return "Перевірте email";
+      return 'Перевірте email';
     }
-    return "Підтвердити";
+    return 'Підтвердити';
   }
   //check user data
   function userPasswordValidation() {
@@ -54,9 +56,9 @@ function Settings() {
       registrationData.password.length < 6 ||
       registrationData.password !== registrationData.confirmPassword
     ) {
-      return "Перевірте новий пароль";
+      return 'Перевірте новий пароль';
     }
-    return "Підтвердити";
+    return 'Підтвердити';
   }
   //send common data and get user data from backend
   async function sendNameData() {
@@ -77,12 +79,12 @@ function Settings() {
   //upload avatar to server
   async function uploadAvatar(file) {
     if (file.size > 100000) {
-      alert("Розмір файлу перевищує 100кБ");
+      alert('Розмір файлу перевищує 100кБ');
       return;
     }
     try {
       const formData = new FormData();
-      formData.append("image", file);
+      formData.append('image', file);
       const { data } = await axios.post(`/upload?dir=users`, formData);
       deleteAvatar();
       setRegistrationData((prev) => ({
@@ -95,13 +97,13 @@ function Settings() {
         })
       );
     } catch (err) {
-      alert("Не вдалось завантажити аватар");
+      alert('Не вдалось завантажити аватар');
     }
   }
   //clear avatar
   function clearAvatar() {
     deleteAvatar();
-    inputAvatar.current.value = "";
+    inputAvatar.current.value = '';
     setRegistrationData((prev) => ({ ...prev, avatarUrl: defaultAvatarUrl }));
     axios.patch(`/authorization/changeData`, {
       avatarUrl: defaultAvatarUrl,
@@ -112,7 +114,7 @@ function Settings() {
     if (registrationData.avatarUrl !== defaultAvatarUrl) {
       axios.delete(
         `delete/${registrationData.avatarUrl.slice(
-          registrationData.avatarUrl.lastIndexOf("/") + 1
+          registrationData.avatarUrl.lastIndexOf('/') + 1
         )}?dir=users`
       );
     }
@@ -121,46 +123,49 @@ function Settings() {
   function deleteAccount() {
     if (
       window.confirm(
-        "УВАГА! Видалення облікового запису - незворотня процедура.\nВи дійсно бажаєте видалити обліковий запис?"
+        'УВАГА! Видалення облікового запису - незворотня процедура.\nВи дійсно бажаєте видалити обліковий запис?'
       )
     ) {
       axios
         .delete(`/authorization/delete`)
         .then((res) => {
           dispatch(logOut());
-          localStorage.removeItem("token");
+          localStorage.removeItem('token');
           alert(res.data.message);
         })
         .catch((err) => console.log(err));
     }
   }
+  React.useEffect(() => {
+    setLoginPlatform(localStorage.getItem('auth'));
+  }, []);
   return (
-    <div className="settings">
-      <div className="settings__mainData unselectable">
-        <div className="settings__statistics">
-          <div title="Рейтинг">
+    <div className='settings'>
+      <div className='settings__mainData unselectable'>
+        <div className='settings__statistics'>
+          <div title='Рейтинг'>
             {ratingSVG}
             {rating}
           </div>
-          <div title="Опубліковано статей">
+          <div title='Опубліковано статей'>
             {createArticleSVG}
             {userArticles}
           </div>
-          <div title="Додано коментарів">
+          <div title='Додано коментарів'>
             {commentsSVG}
             {userComments}
           </div>
         </div>
-        <div className="settings__avatar">
-          <label htmlFor="avatar">
-            <img src={registrationData.avatarUrl} alt="avatar" />
+        <div className='settings__avatar'>
+          <label htmlFor='avatar'>
+            <img src={registrationData.avatarUrl} alt='avatar' />
           </label>
           <input
             ref={inputAvatar}
-            type="file"
-            name="avatar"
-            id="avatar"
-            accept="image/*"
+            type='file'
+            name='avatar'
+            id='avatar'
+            accept='image/*'
             onChange={(event) => {
               uploadAvatar(event.target.files[0]);
             }}
@@ -171,12 +176,12 @@ function Settings() {
         </div>
         <h3>{fullName}</h3>
       </div>
-      <div className="settings__nameData">
+      <div className='settings__nameData'>
         <h3>Змінити ім'я:</h3>
-        <div className="settings__inputField">
+        <div className='settings__inputField'>
           <input
-            type="text"
-            placeholder=" "
+            type='text'
+            placeholder=' '
             value={registrationData.fullName}
             onChange={(event) =>
               setRegistrationData((prev) => ({
@@ -187,11 +192,11 @@ function Settings() {
           />
           <div>Повне ім'я</div>
         </div>
-        <div className="settings__inputField">
+        <div className='settings__inputField'>
           <input
-            type="email"
+            type='email'
             disabled
-            placeholder=" "
+            placeholder=' '
             value={registrationData.email}
             onChange={(event) =>
               setRegistrationData((prev) => ({
@@ -203,61 +208,63 @@ function Settings() {
           <div>E-mail</div>
         </div>
         <button
-          className="acceptButton"
+          className='acceptButton'
           onClick={sendNameData}
-          disabled={userCommonValidation() !== "Підтвердити"}
+          disabled={userCommonValidation() !== 'Підтвердити'}
         >
           {userCommonValidation()}
         </button>
       </div>
-      <div className="settings__passwordData">
-        <h3>Змінити пароль:</h3>
-        <div className="settings__inputField">
-          <input
-            type="password"
-            placeholder=" "
-            autoComplete="new-password"
-            value={registrationData.password}
-            onChange={(event) =>
-              setRegistrationData((prev) => ({
-                ...prev,
-                password: event.target.value,
-              }))
-            }
-          />
-          <div>Новий пароль</div>
+      {loginPlatform === 'Site' && (
+        <div className='settings__passwordData'>
+          <h3>Змінити пароль:</h3>
+          <div className='settings__inputField'>
+            <input
+              type='password'
+              placeholder=' '
+              autoComplete='new-password'
+              value={registrationData.password}
+              onChange={(event) =>
+                setRegistrationData((prev) => ({
+                  ...prev,
+                  password: event.target.value,
+                }))
+              }
+            />
+            <div>Новий пароль</div>
+          </div>
+          <div className='settings__inputField'>
+            <input
+              type='password'
+              placeholder=' '
+              autoComplete='new-password'
+              value={registrationData.confirmPassword}
+              onChange={(event) =>
+                setRegistrationData((prev) => ({
+                  ...prev,
+                  confirmPassword: event.target.value,
+                }))
+              }
+            />
+            <div>Підтвердіть пароль</div>
+          </div>
+          <button
+            className='acceptButton'
+            onClick={sendPasswordData}
+            disabled={userPasswordValidation() !== 'Підтвердити'}
+          >
+            {userPasswordValidation()}
+          </button>
         </div>
-        <div className="settings__inputField">
-          <input
-            type="password"
-            placeholder=" "
-            autoComplete="new-password"
-            value={registrationData.confirmPassword}
-            onChange={(event) =>
-              setRegistrationData((prev) => ({
-                ...prev,
-                confirmPassword: event.target.value,
-              }))
-            }
-          />
-          <div>Підтвердіть пароль</div>
-        </div>
-        <button
-          className="acceptButton"
-          onClick={sendPasswordData}
-          disabled={userPasswordValidation() !== "Підтвердити"}
-        >
-          {userPasswordValidation()}
-        </button>
-      </div>
-      <div className="settings__deleteAccount">
+      )}
+      <div className='settings__deleteAccount'>
         <h3>Видалення облікового запису:</h3>
-        <div className="settings__deleteWarning">
+        <div className='settings__deleteWarning'>
           {warningSVG} УВАГА! Видалення облікового запису - незворотня
           процедура, що призведе до виделення доступу до написаних Вами статей
           та коментарів.
         </div>
-        <button className="acceptButton" onClick={deleteAccount}>
+        <button className='acceptButton' onClick={deleteAccount}>
           Видалити
         </button>
       </div>
