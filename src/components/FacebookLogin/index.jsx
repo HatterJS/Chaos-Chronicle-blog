@@ -39,6 +39,7 @@ function FacebookLogin() {
               email,
               password: id,
               avatarUrl: defaultAvatarUrl,
+              emailConfirmed: true,
             })
           );
           if (registrationData.payload) {
@@ -47,6 +48,8 @@ function FacebookLogin() {
           } else {
             alert(registrationData.error.message);
           }
+        } else {
+          alert(authDdata.error.message);
         }
       }
     });

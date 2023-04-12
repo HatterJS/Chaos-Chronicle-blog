@@ -20,6 +20,7 @@ import UserSettings from './pages/UserSettings';
 import Authors from './pages/Authors';
 import AuthorArticles from './pages/AuthorArticles';
 import EmailConfirmation from './pages/EmailConfirmation';
+import PasswordRecovery from './pages/PasswordRecovery';
 import Warning from './components/Warning';
 
 import './App.css';
@@ -63,6 +64,7 @@ function App() {
           <Route path='/authors' element={<Authors />} />
           <Route path='/authorarticles/:id' element={<AuthorArticles />} />
           <Route path='/confirmemail/:id' element={<EmailConfirmation />} />
+          <Route path='/recovery/:id' element={<PasswordRecovery />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </main>

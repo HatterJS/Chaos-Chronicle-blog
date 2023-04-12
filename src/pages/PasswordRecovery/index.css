@@ -1,0 +1,83 @@
+.recovery__body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 40px;
+  padding: 40px;
+}
+.recovery__body div {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid gray;
+  border-radius: 20px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 300px;
+          flex: 1 1 300px;
+  padding: 20px;
+}
+.recovery__body div h3 {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 0 10px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.recovery__body div p {
+  text-align: justify;
+}
+.recovery__body div a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 5px;
+  border: 1px solid gray;
+  border-radius: 20px;
+  padding: 10px 20px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.recovery__body div a:hover {
+  background-color: gray;
+  color: white;
+}
+.recovery__body div a:hover svg {
+  fill: white;
+}
+.recovery__body div a:active {
+  -webkit-box-shadow: 1px 1px 4px black inset;
+          box-shadow: 1px 1px 4px black inset;
+  -webkit-transform: translateY(1px);
+          transform: translateY(1px);
+}
+.recovery__body div a svg {
+  fill: gray;
+  -webkit-transition: fill 0.2s ease-in-out;
+  transition: fill 0.2s ease-in-out;
+}
+
+@media (max-width: 760px) {
+  .recovery__body {
+    padding: 10px;
+  }
+}

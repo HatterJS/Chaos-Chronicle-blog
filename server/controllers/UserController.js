@@ -27,7 +27,9 @@ export const registration = async (req, res) => {
       fullName: req.body.fullName,
       avatarUrl: req.body.avatarUrl,
     });
-
+    if (req.body.emailConfirmed) {
+      doc.emailConfirmed = true;
+    }
     const user = await doc.save();
 
     const token = jwt.sign(
@@ -39,8 +41,9 @@ export const registration = async (req, res) => {
         expiresIn: '30d',
       }
     );
-
-    sendMail(req, token);
+    if (!user.emailConfirmed) {
+      sendMail(req, token);
+    }
 
     const { passwordHash, ...userData } = user._doc;
 
