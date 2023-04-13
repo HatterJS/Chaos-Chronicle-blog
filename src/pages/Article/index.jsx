@@ -1,24 +1,24 @@
-import React from "react";
-import axios from "../../axios";
-import ReactMarkdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import React from 'react';
+import axios from '../../axios';
+import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
-import AuthorSign from "../../components/AuthorSign";
-import CommentsBlock from "../../components/CommentsBlock";
-import Loader from "../../components/Loader";
-import { setSearch } from "../../redux/slices/articles";
+import AuthorSign from '../../components/AuthorSign';
+import CommentsBlock from '../../components/CommentsBlock';
+import Loader from '../../components/Loader';
+import { setSearch } from '../../redux/slices/articles';
 
-import "./index.css";
+import './index.css';
 
 import {
   deleteSVG,
   penSVG,
   remindSVG,
   viewsSVG,
-} from "../../components/SvgSprite";
-import { formingDate } from "../../formingDate";
+} from '../../components/SvgSprite';
+import { formingDate } from '../../formingDate';
 
 function Article() {
   //dispatch for redux
@@ -38,14 +38,14 @@ function Article() {
   //set search value and navigate to home page
   function onClickTag(tag) {
     dispatch(setSearch(tag));
-    navigate("/");
+    navigate('/');
   }
   //checking that the user is the owner of the article
   async function deleteArticle() {
-    if (window.confirm("Ви пеерконані, що бажаєте видалити статтю?")) {
+    if (window.confirm('Ви пеерконані, що бажаєте видалити статтю?')) {
       await axios.delete(`/article/${id}`);
-      alert("Статтю видалено успішно.");
-      navigate("/");
+      alert('Статтю видалено успішно.');
+      navigate('/');
     }
   }
   //remind about article to subscribers
@@ -67,7 +67,7 @@ function Article() {
       })
       .catch((err) => {
         console.log(err);
-        alert("Нажаль, виникла помилка під час завантаження статті");
+        alert('Нажаль, виникла помилка під час завантаження статті');
       });
   }, [id]);
   function isOwner() {
@@ -80,44 +80,44 @@ function Article() {
     <Loader />
   ) : (
     <article>
-      <div className="article__content">
-        <div className="article__author">
-          <div className="pageTitle__leftLine"></div>
+      <div className='article__content'>
+        <div className='article__author'>
+          <div className='pageTitle__leftLine'></div>
           <AuthorSign author={article.author} />
-          <div className="pageTitle__rightLine"></div>
+          <div className='pageTitle__rightLine'></div>
         </div>
-        <div className="article__header">
-          <div className="article__titleBlock">
+        <div className='article__header'>
+          <div className='article__titleBlock'>
             <h1>{article.title}</h1>
             <p>{formingDate(article.createdAt)}</p>
           </div>
           <div
-            className="article__toolsBlock"
-            style={isOwner() ? { display: "flex" } : { display: "none" }}
+            className='article__toolsBlock'
+            style={isOwner() ? { display: 'flex' } : { display: 'none' }}
           >
             <Link to={`/editarticle/${id}`}>
-              <button title="Редагувати статтю">{penSVG}</button>
+              <button title='Редагувати статтю'>{penSVG}</button>
             </Link>
             <button
               onClick={handleArticleRemind}
-              title="Нагадати про статтю"
+              title='Нагадати про статтю'
               disabled={!isRemind}
             >
               {remindSVG}
             </button>
-            <button onClick={deleteArticle} title="Видалити статтю">
+            <button onClick={deleteArticle} title='Видалити статтю'>
               {deleteSVG}
             </button>
           </div>
         </div>
-        <div className="article__body">
-          <div className="article__image">
-            <img src={article.imageUrl} alt="article-img" />
+        <div className='article__body'>
+          <div className='article__image'>
+            <img src={article.imageUrl} alt='article-img' />
           </div>
           <ReactMarkdown rehypePlugins={[rehypeRaw]} children={article.text} />
         </div>
-        <div className="article__footer">
-          <div className="article__tags">
+        <div className='article__footer'>
+          <div className='article__tags'>
             {article.tags.length &&
               article.tags.map((tag, index) => (
                 <div key={index + tag} onClick={() => onClickTag(tag)}>
@@ -125,7 +125,7 @@ function Article() {
                 </div>
               ))}
           </div>
-          <div className="article__views unselectable">
+          <div className='article__views unselectable'>
             {viewsSVG}
             {article.viewsCount}
           </div>

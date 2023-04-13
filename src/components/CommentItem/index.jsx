@@ -15,7 +15,7 @@ import { deleteSVG, likedSVG, likeSVG, sendSVG } from '../SvgSprite';
 
 import './index.css';
 
-function CommentItem({ articleId, id, text, author, createdAt, usersLiked }) {
+function CommentItem({ id, text, author, createdAt, usersLiked }) {
   //dispatch for redux
   const dispatch = useDispatch();
   //current user id from redux
@@ -127,4 +127,4 @@ function CommentItem({ articleId, id, text, author, createdAt, usersLiked }) {
   );
 }
 
-export default CommentItem;
+export default React.memo(CommentItem);

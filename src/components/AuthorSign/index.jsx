@@ -1,15 +1,16 @@
-import "./index.css";
+import React from 'react';
+import './index.css';
 
 function AuthorSign({ author }) {
   const { fullName, avatarUrl, status } = author;
   return (
-    <div className="authorSign">
+    <div className='authorSign'>
       <div>
-        <div className="authorSign__avatar">
-          <img src={avatarUrl} alt="avatar" />
+        <div className='authorSign__avatar'>
+          <img src={avatarUrl} alt='avatar' />
         </div>
       </div>
-      <div className="authorSign__description">
+      <div className='authorSign__description'>
         <p>{fullName}</p>
         <p>{status}</p>
       </div>
@@ -17,4 +18,4 @@ function AuthorSign({ author }) {
   );
 }
 
-export default AuthorSign;
+export default React.memo(AuthorSign);
