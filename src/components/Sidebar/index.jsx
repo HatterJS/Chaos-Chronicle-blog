@@ -1,13 +1,13 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import AuthorSign from "../AuthorSign";
+import AuthorSign from '../AuthorSign';
 
-import { fetchLastComments } from "../../redux/slices/comments";
-import { setSearch } from "../../redux/slices/articles";
+import { fetchLastComments } from '../../redux/slices/comments';
+import { setSearch } from '../../redux/slices/articles';
 
-import "./index.css";
+import './index.css';
 
 function Sidebar({ tags }) {
   //dispatch for redux
@@ -20,9 +20,9 @@ function Sidebar({ tags }) {
   }, [dispatch]);
   return (
     <aside>
-      <div className="aside__tagsBlock">
+      <div className='aside__tagsBlock'>
         <h3>Популярні теги</h3>
-        <div className="aside__tags">
+        <div className='aside__tags'>
           {tags.map((tag) => (
             <div key={tag} onClick={() => dispatch(setSearch(tag))}>
               {tag}
@@ -31,27 +31,29 @@ function Sidebar({ tags }) {
         </div>
       </div>
       {lastComments && (
-        <div className="aside__commentsBlock unselectable">
+        <div className='aside__commentsBlock unselectable'>
           <h3>Останні коментарі</h3>
-          {lastComments.map((item) => (
-            <Link to={`/article/${item.articleId}`} key={item._id}>
-              <div className="aside__commentItem">
-                <AuthorSign author={item.author} />
-                <div className="aside__commentText">{item.text}</div>
-              </div>
-            </Link>
-          ))}
+          <div className='aside__comments'>
+            {lastComments.map((item) => (
+              <Link to={`/article/${item.articleId}`} key={item._id}>
+                <div className='aside__commentItem'>
+                  <AuthorSign author={item.author} />
+                  <div className='aside__commentText'>{item.text}</div>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       )}
-      <div className="aside__donate">
+      <div className='aside__donate'>
         <a
-          href="https://send.monobank.ua/jar/2D2z173X3Q"
-          target={"_blank"}
-          rel="noreferrer"
+          href='https://send.monobank.ua/jar/2D2z173X3Q'
+          target={'_blank'}
+          rel='noreferrer'
         >
           <img
-            src="/img/donate/donate_zsu.jpg"
-            alt="ZSU"
+            src='/img/donate/donate_zsu.jpg'
+            alt='ZSU'
             width={300}
             height={525}
           />

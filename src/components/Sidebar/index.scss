@@ -1,5 +1,5 @@
 aside {
-  position: relative;
+  // position: relative;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -46,6 +46,11 @@ aside {
     font-size: 0.9em;
   }
 }
+.aside__comments {
+  position: relative;
+  overflow: auto;
+  max-height: 525px;
+}
 .aside__donate {
   display: flex;
   position: sticky;
@@ -63,6 +68,11 @@ aside {
       transform: translateY(-2px);
     }
   }
+}
+.authorizationForm__social {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 @media (max-width: 680px) {

@@ -86,29 +86,27 @@ function Article() {
           <AuthorSign author={article.author} />
           <div className='pageTitle__rightLine'></div>
         </div>
-        <div className='article__header'>
-          <div className='article__titleBlock'>
-            <h1>{article.title}</h1>
-            <p>{formingDate(article.createdAt)}</p>
-          </div>
-          <div
-            className='article__toolsBlock'
-            style={isOwner() ? { display: 'flex' } : { display: 'none' }}
+        <div
+          className='article__toolsBlock'
+          style={isOwner() ? { display: 'flex' } : { display: 'none' }}
+        >
+          <Link to={`/editarticle/${id}`}>
+            <button title='Редагувати статтю'>{penSVG}</button>
+          </Link>
+          <button
+            onClick={handleArticleRemind}
+            title='Нагадати про статтю'
+            disabled={!isRemind}
           >
-            <Link to={`/editarticle/${id}`}>
-              <button title='Редагувати статтю'>{penSVG}</button>
-            </Link>
-            <button
-              onClick={handleArticleRemind}
-              title='Нагадати про статтю'
-              disabled={!isRemind}
-            >
-              {remindSVG}
-            </button>
-            <button onClick={deleteArticle} title='Видалити статтю'>
-              {deleteSVG}
-            </button>
-          </div>
+            {remindSVG}
+          </button>
+          <button onClick={deleteArticle} title='Видалити статтю'>
+            {deleteSVG}
+          </button>
+        </div>
+        <div className='article__titleBlock'>
+          <h1>{article.title}</h1>
+          <p>{formingDate(article.createdAt)}</p>
         </div>
         <div className='article__body'>
           <div className='article__image'>

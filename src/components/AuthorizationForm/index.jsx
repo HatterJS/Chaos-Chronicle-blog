@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import FacebookLogin from '../FacebookLogin';
+import GoogleAuth from '../GoogleAuth';
 
 import { fetchUserData, isAuthCheck } from '../../redux/slices/authorization';
 
@@ -134,7 +135,10 @@ function AuthorizationForm({ isShowForm, setIsShowForm }) {
             Реєстрація
           </Link>
         </div>
-        <FacebookLogin />
+        <div className='authorizationForm__social'>
+          <GoogleAuth />
+          <FacebookLogin />
+        </div>
       </div>
     </div>
   );

@@ -98,10 +98,7 @@ function FacebookLogin() {
 
   return (
     <div className='facebookLogin'>
-      <div className='facebookLogin__social'>
-        {/* {googleSVG} */}
-        <button onClick={handleLogin}>{faceBookSVG}</button>
-      </div>
+      <button onClick={handleLogin}>{faceBookSVG}</button>
     </div>
   );
 }

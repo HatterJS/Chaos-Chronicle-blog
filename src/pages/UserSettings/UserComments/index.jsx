@@ -16,17 +16,20 @@ function UserComments() {
       .catch((err) => alert(err.response.data.message));
   }, []);
   return (
-    <div className="userComments">
+    <div className='userComments'>
       {myComments ? (
         myComments.map((item) => (
           <Link
             to={`/article/${item.articleId._id}`}
-            className="userComments__item unselectable"
-            key={item._id}>
-            <div className="userComments__date">{formingDate(item.createdAt)}</div>
+            className='userComments__item unselectable'
+            key={item._id}
+          >
+            <div className='userComments__date'>
+              {formingDate(item.createdAt)}
+            </div>
             <h3>{item.articleId.title}</h3>
             <em>{item.text}</em>
-            <div className="userComments__likes">
+            <div className='userComments__likes'>
               {likeSVG}
               {item.usersLiked.length}
             </div>

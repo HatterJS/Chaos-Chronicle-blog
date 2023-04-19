@@ -153,3 +153,7 @@
 .authorizationForm__form .authorizationForm__registration a {
   color: rgb(0, 110, 255);
 }
+
+.authorizationForm__social {
+  padding: 10px;
+}
